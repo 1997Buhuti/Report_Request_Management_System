@@ -90,20 +90,20 @@ public class Report_Requests_Controller {
         
                 Connection con= Connect();
                 PreparedStatement pst = con.prepareStatement("update projects_tbl set project_name=?, department_name=?, branch_name=?, Remarks=?, task_details=?, recieved_date=?, created_date=?, start_date=?, developer_name=?, developer_id=?, request_date=?, completion_date=?, CurrentStatus=? where  project_id=? ");
-                pst.setObject(14, request.getProject_id());
-                pst.setObject(1, request.getProject_name());
-                pst.setObject(2, request.getDepartment_name());
-                pst.setObject(3, request.getBranch_name());
-                pst.setObject(4, request.getRemarks());
-                pst.setObject(5, request.getTask_details());
-                pst.setObject(6, request.getRecieved_date());
-                pst.setObject(7, request.getCreated_date());
-                pst.setObject(8, request.getStart_date());
-                pst.setObject(9, request.getDeveloper_name());
-                pst.setObject(10, request.getDeveloper_id());
-                pst.setObject(11, request.getCreated_date());
-                pst.setObject(12, request.getCompletion_date());
-                pst.setObject(13, request.getCurent_status());
+                pst.setString(14, request.getProject_id());
+                pst.setString(1, request.getProject_name());
+                pst.setString(2, request.getDepartment_name());
+                pst.setString(3, request.getBranch_name());
+                pst.setString(4, request.getRemarks());
+                pst.setString(5, request.getTask_details());
+                pst.setString(6, request.getRecieved_date());
+                pst.setString(7, request.getCreated_date());
+                pst.setString(8, request.getStart_date());
+                pst.setString(9, request.getDeveloper_name());
+                pst.setString(10, request.getDeveloper_id());
+                pst.setString(11, request.getCreated_date());
+                pst.setString(12, request.getCompletion_date());
+                pst.setString(13, request.getCurent_status());
                 return pst.executeUpdate()>0;
     }
   

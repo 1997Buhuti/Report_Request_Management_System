@@ -80,9 +80,8 @@ public class DashBoard extends javax.swing.JFrame {
         raw_data.txt_completion_date.setText("");
         raw_data.txt_remarks.setText("");
         raw_data.txt_recieved_date.setText("");
-        raw_data.txt_developer_name.setText("");
         raw_data.txt_starting_date.setText("");
-        raw_data.txt_developer_name.setText("");
+        raw_data.txt_developer_id.setText("");
         raw_data.txt_department.setText("");
         combo_proj_status.getModel().setSelectedItem("");
     }
@@ -143,7 +142,7 @@ public class DashBoard extends javax.swing.JFrame {
            for(Report_Requests_Model i: report_requests){
                Object arr[]={i.getProject_id(),i.getProject_name(),i.getRecieved_date(),
                    i.getCreated_date(),i.getStart_date(), i.getCompletion_date(),i.getCurent_status(),
-                   i.getRemarks(),i.getTask_details(),i.getDepartment_name(),i.getBranch_name(),i.getDeveloper_name()};
+                   i.getRemarks(),i.getTask_details(),i.getDepartment_name(),i.getBranch_name(),i.getDeveloper_name(),i.getDeveloper_id()};
                     dtm.addRow(arr);
            }
     }
@@ -1253,7 +1252,7 @@ public class DashBoard extends javax.swing.JFrame {
         String department_name = model.getValueAt(index,9).toString(); 
         String branch_name = model.getValueAt(index,10).toString();
         String developer_name = model.getValueAt(index,11).toString();
-        
+        String developer_id = model.getValueAt(index,12).toString();
         raw_data.setVisible(true);
         raw_data.pack();
         raw_data.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -1264,10 +1263,10 @@ public class DashBoard extends javax.swing.JFrame {
         raw_data.txt_completion_date.setText(completion_date);
         raw_data.txt_remarks.setText(remarks);
         raw_data.txt_recieved_date.setText(recieved_date);
-        raw_data.txt_developer_name.setText(developer_name);
+        raw_data.combo_dev_names.setSelectedItem(developer_name);
         raw_data.txt_request_date.setText(created_date);
         raw_data.txt_starting_date.setText(start_date);
-        raw_data.txt_developer_name.setText(developer_name);
+        raw_data.txt_developer_id.setText(developer_id);
         raw_data.txt_department.setText(department_name);
         combo_proj_status.getModel().setSelectedItem(current_status);
     }//GEN-LAST:event_tbl_requestsMouseClicked
