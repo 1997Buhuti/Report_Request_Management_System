@@ -1030,6 +1030,11 @@ public class DashBoard extends javax.swing.JFrame {
             }
         });
 
+        combo_developers.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                combo_developersItemStateChanged(evt);
+            }
+        });
         combo_developers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combo_developersActionPerformed(evt);
@@ -1353,21 +1358,22 @@ public class DashBoard extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_developer_idActionPerformed
 
     private void combo_developersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_developersActionPerformed
-       try {
+      /* try {
             
             String developer_Name = combo_developers.getSelectedItem().toString();
             PreparedStatement pst = DBConnection.getInstance().getConnection().prepareStatement("select * from projects_tbl where developer_name= ?");
             pst.setObject(1,developer_Name);
             ResultSet rst= pst.executeQuery();
+            
             if(rst.next()){
-                
                 txt_developer_id.setText(String.valueOf(rst.getObject("developer_id")));
             }
+            
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }//GEN-LAST:event_combo_developersActionPerformed
 
     private void lbl_create_request2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_create_request2MouseClicked
@@ -1541,6 +1547,26 @@ public class DashBoard extends javax.swing.JFrame {
     private void lbl_logoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_logoMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_lbl_logoMouseClicked
+
+    private void combo_developersItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combo_developersItemStateChanged
+        // TODO add your handling code here:
+        try {
+            
+            String developer_Name = combo_developers.getSelectedItem().toString();
+            System.out.println(developer_Name);
+            PreparedStatement pst = DBConnection.getInstance().getConnection().prepareStatement("select * from users where user_name= ?");
+            pst.setObject(1,developer_Name);
+            ResultSet rst= pst.executeQuery();
+            if(rst.next()){
+                System.out.println(String.valueOf(rst.getObject("user_id")));
+                txt_developer_id.setText(String.valueOf(rst.getObject("user_id")));
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_combo_developersItemStateChanged
 
     /**
      * @param args the command line arguments

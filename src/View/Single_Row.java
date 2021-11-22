@@ -510,20 +510,19 @@ public class Single_Row extends javax.swing.JFrame {
         try {
             
             String developer_Name = combo_dev_names.getSelectedItem().toString();
-            PreparedStatement pst = DBConnection.getInstance().getConnection().prepareStatement("select * from projects_tbl where developer_name= ?");
+            System.out.println(developer_Name);
+            PreparedStatement pst = DBConnection.getInstance().getConnection().prepareStatement("select * from users where user_name= ?");
             pst.setObject(1,developer_Name);
             ResultSet rst= pst.executeQuery();
             if(rst.next()){
-                
-                txt_developer_id.setText(String.valueOf(rst.getObject("developer_id")));
+                System.out.println(String.valueOf(rst.getObject("user_id")));
+                txt_developer_id.setText(String.valueOf(rst.getObject("user_id")));
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
     }//GEN-LAST:event_combo_dev_namesActionPerformed
 
     /**
