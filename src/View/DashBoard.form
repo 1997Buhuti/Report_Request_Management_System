@@ -1025,9 +1025,9 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lbl_view_request" min="-2" pref="271" max="-2" attributes="0"/>
-                              <Component id="lbl_create_request1" min="-2" pref="271" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lbl_view_request" min="-2" pref="277" max="-2" attributes="0"/>
+                              <Component id="lbl_create_request1" min="-2" pref="277" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="pri_CardLayout" min="-2" pref="1181" max="-2" attributes="0"/>
@@ -1118,12 +1118,8 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jScrollPane1" min="-2" pref="1122" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="59" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace pref="960" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
                                           <Component id="btn_refresh" min="-2" pref="136" max="-2" attributes="0"/>
@@ -1134,6 +1130,10 @@
                                           <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jScrollPane1" min="-2" pref="1137" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
