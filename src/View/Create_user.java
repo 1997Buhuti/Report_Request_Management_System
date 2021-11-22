@@ -8,11 +8,15 @@ package View;
 import Controller.User_Controller;
 import Model.UserModel;
 import com.sun.xml.internal.ws.util.JAXWSUtils;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import java.util.UUID;
+import static jdk.nashorn.tools.ShellFunctions.input;
 
 /**
  *
@@ -126,7 +130,35 @@ public class Create_user extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-        public void clearAll() throws ClassNotFoundException, SQLException{
+       public String encrypt_password(String passsword){
+       
+           try {
+  
+            // Static getInstance method is called with hashing MD5
+            MessageDigest md = MessageDigest.getInstance("MD5");
+  
+            // digest() method is called to calculate message digest
+            //  of an input digest() return array of byte
+            byte[] messageDigest = md.digest(passsword.getBytes());
+  
+            // Convert byte array into signum representation
+            BigInteger no = new BigInteger(1, messageDigest);
+  
+            // Convert message digest into hex value
+            String hashtext = no.toString(16);
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+            return hashtext;
+        } 
+  
+        // For specifying wrong message digest algorithms
+        catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+       }
+        
+    public void clearAll() throws ClassNotFoundException, SQLException{
                     txtx_user_name.setText("");
                     txtx_password.setText("");
                     txt_access_level.setText("");
@@ -146,9 +178,10 @@ public class Create_user extends javax.swing.JFrame {
             String UserId = lbl_id.getText();
             String UserName= txtx_user_name.getText();
             String UserPassword = txtx_password.getText();
+            String hashedPassword = encrypt_password(UserPassword);
             String AcessLevel = txt_access_level.getText();
             
-            UserModel user = new UserModel(UserId,UserName,UserPassword,AcessLevel);
+            UserModel user = new UserModel(UserId,UserName,hashedPassword,AcessLevel);
             User_Controller controller= new User_Controller();
             
         try {
