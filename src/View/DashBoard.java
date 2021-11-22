@@ -1553,12 +1553,10 @@ public class DashBoard extends javax.swing.JFrame {
         try {
             
             String developer_Name = combo_developers.getSelectedItem().toString();
-            System.out.println(developer_Name);
             PreparedStatement pst = DBConnection.getInstance().getConnection().prepareStatement("select * from users where user_name= ?");
             pst.setObject(1,developer_Name);
             ResultSet rst= pst.executeQuery();
             if(rst.next()){
-                System.out.println(String.valueOf(rst.getObject("user_id")));
                 txt_developer_id.setText(String.valueOf(rst.getObject("user_id")));
             }
         } catch (ClassNotFoundException ex) {
