@@ -70,6 +70,8 @@ public class Single_Row extends javax.swing.JFrame {
         txt_recieved_date.setText("");
         txt_starting_date.setText("");
         txt_branch_name.setText("");
+        txt_request_date.setText("");
+        txt_developer_id.setText("");
     }
     /**
      * This method is called from within the constructor to initialize the form.

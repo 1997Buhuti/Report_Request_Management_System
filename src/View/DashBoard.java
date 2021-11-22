@@ -70,6 +70,14 @@ public class DashBoard extends javax.swing.JFrame {
        
     }
     
+    public void clearTable(){
+        
+        tbl_requests.setModel(new DefaultTableModel(null,new String[]
+        {"Project_Id","Project_Name" , "Recieve dDate" , "Created_Date",
+         "Start Date","Completion Date", "Current Status", "Remarks","Task Details",
+         "Department Name" ,"Branch Name" ,"Developer Name","Developer_Id"}));
+    }
+    
     /*    This is used to clear all the data in form*/
     
      public void clearAll() throws ClassNotFoundException, SQLException{
@@ -220,6 +228,7 @@ public class DashBoard extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_requests = new javax.swing.JTable();
         btn_refresh = new javax.swing.JButton();
+        refresh = new javax.swing.JButton();
         card1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         lbl_proj_id = new javax.swing.JLabel();
@@ -828,23 +837,37 @@ public class DashBoard extends javax.swing.JFrame {
 
         btn_refresh.setText("Refresh");
 
+        refresh.setText("Refresh");
+        refresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout card2Layout = new javax.swing.GroupLayout(card2);
         card2.setLayout(card2Layout);
         card2Layout.setHorizontalGroup(
             card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, card2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(card2Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 59, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, card2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, card2Layout.createSequentialGroup()
+                        .addComponent(btn_refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, card2Layout.createSequentialGroup()
+                        .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(86, 86, 86))))
         );
         card2Layout.setVerticalGroup(
             card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(card2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 812, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addComponent(btn_refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(44, Short.MAX_VALUE))
         );
@@ -1494,6 +1517,17 @@ public class DashBoard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_updateActionPerformed
 
+    private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
+        try {
+            clearTable();
+            loadTable();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_refreshActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1603,6 +1637,7 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JPanel pri_CardLayout1;
     private javax.swing.JPanel red_line;
     private javax.swing.JPanel red_line1;
+    private javax.swing.JButton refresh;
     private javax.swing.JTable tbl_requests;
     private javax.swing.JTable tbl_requests1;
     private javax.swing.JTextField txt_branch_name;
