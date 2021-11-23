@@ -7,16 +7,15 @@ package View;
 
 import Controller.User_Controller;
 import Model.UserModel;
-import com.sun.xml.internal.ws.util.JAXWSUtils;
+//import com.sun.xml.internal.ws.util.JAXWSUtils;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import java.util.UUID;
-import static jdk.nashorn.tools.ShellFunctions.input;
 
 /**
  *
@@ -167,9 +166,9 @@ public class Create_user extends javax.swing.JFrame {
         
         public String userId_generate(){
             String UID = "Dev" ;
-            String UID2= JAXWSUtils.getUUID();
-            UID2=UID2.substring(0,3);
-            UID=UID+UID2;
+            String uuid=UUID.randomUUID().toString();
+            uuid=uuid.substring(0,3);
+            UID=UID+uuid;
             lbl_id.setText(UID);
             return UID;
             
