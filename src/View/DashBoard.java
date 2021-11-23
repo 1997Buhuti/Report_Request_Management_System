@@ -859,7 +859,7 @@ public class DashBoard extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Project_Id", "Project_Name", "Recieved Date", "Created_Date", "Start Date", "Completion Date", "Current Status", "Remarks", "Task Details", "Department Name", "Branch Name", "Developer Name", "Developer_Id"
+                "Project_Id", "Project_Name", "Recieved Date", "Created_Date", "Start Date", "Completion Date", "Current Status", "Remarks", "Department Name", "Branch Name", "Developer Name", "Developer_Id"
             }
         ));
         tbl_requests.setMaximumSize(new java.awt.Dimension(32763, 32763));
@@ -1032,6 +1032,7 @@ public class DashBoard extends javax.swing.JFrame {
             }
         });
 
+        combo_developers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Not Assigned" }));
         combo_developers.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 combo_developersItemStateChanged(evt);
