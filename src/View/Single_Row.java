@@ -38,7 +38,7 @@ public class Single_Row extends javax.swing.JFrame {
     }
     
     public void load_date(){
-           DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");  
+           DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
            LocalDateTime now = LocalDateTime.now();  
            String format = dtf.format(now);  
            lbl_current_date.setText(format);
