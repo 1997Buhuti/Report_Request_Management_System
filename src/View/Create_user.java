@@ -164,7 +164,7 @@ public class Create_user extends javax.swing.JFrame {
              
         }
         
-        public String userId_generate(){
+    public String userId_generate(){
             String UID = "Dev" ;
             String uuid=UUID.randomUUID().toString();
             uuid=uuid.substring(0,3);
@@ -173,6 +173,7 @@ public class Create_user extends javax.swing.JFrame {
             return UID;
             
         }
+        
     private void btn_create_user1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_create_user1MouseClicked
             String UserId = lbl_id.getText();
             String UserName= txtx_user_name.getText();

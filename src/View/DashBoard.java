@@ -8,7 +8,6 @@ package View;
 import Controller.Report_Requests_Controller;
 import DB.DBConnection;
 import Model.Report_Requests_Model;
-import com.sun.xml.internal.ws.util.JAXWSUtils;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -19,6 +18,7 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -118,9 +118,9 @@ public class DashBoard extends javax.swing.JFrame {
     
     public String Request_Form_Id_generate(){
             String UID = "Proj" ;
-            String UID2= JAXWSUtils.getUUID();
-            UID2=UID2.substring(0,3);
-            UID=UID+UID2;
+            String uuid=UUID.randomUUID().toString();
+            uuid=uuid.substring(0,3);
+            UID=UID+uuid;
             txt_projID.setText(UID);
             txt_projID.disable();
             return UID;
