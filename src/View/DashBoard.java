@@ -859,7 +859,7 @@ public class DashBoard extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Project_Id", "Project_Name", "Recieved Date", "Created_Date", "Start Date", "Completion Date", "Current Status", "Remarks", "Department Name", "Branch Name", "Developer Name", "Developer_Id"
+                "Project_Id", "Project_Name", "Recieved Date", "Created_Date", "Start Date", "Completion Date", "Current Status", "Remarks", "Task Details", "Department Name", "Branch Name", "Developer Name", "Developer_Id"
             }
         ));
         tbl_requests.setMaximumSize(new java.awt.Dimension(32763, 32763));
@@ -1032,7 +1032,6 @@ public class DashBoard extends javax.swing.JFrame {
             }
         });
 
-        combo_developers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Not Assigned" }));
         combo_developers.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 combo_developersItemStateChanged(evt);
@@ -1301,7 +1300,7 @@ public class DashBoard extends javax.swing.JFrame {
         }
         String current_status = model.getValueAt(index,6).toString();
         String remarks = model.getValueAt(index,7).toString();
-        String task_details = model.getValueAt(index,8).toString();
+        String task_details = model.getValueAt(index,10).toString();
         String department_name = model.getValueAt(index,9).toString(); 
         String branch_name = model.getValueAt(index,10).toString();
         String developer_name = model.getValueAt(index,11).toString();
@@ -1309,7 +1308,6 @@ public class DashBoard extends javax.swing.JFrame {
         raw_data.setVisible(true);
         raw_data.pack();
         raw_data.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
         raw_data.txt_proj_id.setText(project_id);
         raw_data.txt_proj_name.setText(project_name);
         raw_data.txt_branch_name.setText(branch_name);
@@ -1330,12 +1328,12 @@ public class DashBoard extends javax.swing.JFrame {
     
     private boolean validate_fields(String ProjId,String ProjName, String 
     recieved_date, String created_date, String starting_date, String proj_status, 
-    String remarks, String task_details, String department, String branch_name, 
+    String remarks, String department, String branch_name, 
     String developers, String dev_Id){
         
         System.out.println("inside validate_fields");
         if( (ProjId!=null)||(ProjName!=null)||(recieved_date!=null)||(created_date!=null)||(starting_date!=null)||
-        (proj_status!=null)||(remarks!=null)||(task_details!=null)||(department!=null)||(branch_name!=null)||
+        (proj_status!=null)||(remarks!=null)||(department!=null)||(branch_name!=null)||
         (developers!=null)||(dev_Id!=null))
         {
             return true;
