@@ -41,6 +41,7 @@ public class DashBoard extends javax.swing.JFrame {
     CardLayout cardLayout;
     public DashBoard() {
         initComponents();
+        txt_developer_id.disable();
         load_developers();
         Request_Form_Id_generate();
         this.setLocationRelativeTo(null);
@@ -65,7 +66,7 @@ public class DashBoard extends javax.swing.JFrame {
         /*    This is used to load the curent dat in the label */
     
     public void load_date(){
-           DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");  
+           DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
            LocalDateTime now = LocalDateTime.now();  
            String format = dtf.format(now);  
            lbl_current_date.setText(format);
@@ -151,10 +152,11 @@ public class DashBoard extends javax.swing.JFrame {
            ArrayList<Report_Requests_Model> report_requests = controller.getAllReportRequests();
            
            for(Report_Requests_Model i: report_requests){
-               Object arr[]={i.getProject_id(),i.getProject_name(),i.getRecieved_date(),
-                   i.getCreated_date(),i.getStart_date(), i.getCompletion_date(),i.getCurent_status(),
-                   i.getRemarks(),i.getTask_details(),i.getDepartment_name(),i.getBranch_name(),i.getDeveloper_name(),i.getDeveloper_id()};
-                    dtm.addRow(arr);
+               
+                Object arr[]={i.getProject_id(),i.getProject_name(),i.getRecieved_date(),
+                i.getCreated_date(),i.getStart_date(), i.getCompletion_date(),i.getCurent_status(),
+                i.getRemarks(),i.getTask_details(),i.getDepartment_name(),i.getBranch_name(),i.getDeveloper_name(),i.getDeveloper_id()};
+                dtm.addRow(arr);
            }
     }
     
@@ -1289,7 +1291,13 @@ public class DashBoard extends javax.swing.JFrame {
         String recieved_date = model.getValueAt(index,2).toString();
         String created_date = model.getValueAt(index,3).toString();
         String start_date = model.getValueAt(index,4).toString();
-        String completion_date = model.getValueAt(index,5).toString();
+        String completion_date;
+        if(model.getValueAt(index,5)!=null){
+            completion_date = model.getValueAt(index,5).toString();
+        }
+        else{
+            completion_date = "";
+        }
         String current_status = model.getValueAt(index,6).toString();
         String remarks = model.getValueAt(index,7).toString();
         String task_details = model.getValueAt(index,8).toString();
@@ -1318,8 +1326,35 @@ public class DashBoard extends javax.swing.JFrame {
     private void txt_branch_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_branch_nameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_branch_nameActionPerformed
-
+    
+    private boolean validate_fields(String ProjId,String ProjName, String 
+    recieved_date, String created_date, String starting_date, String proj_status, 
+    String remarks, String task_details, String department, String branch_name, 
+    String developers, String dev_Id){
+        
+        System.out.println("inside validate_fields");
+        if( (ProjId!=null)||(ProjName!=null)||(recieved_date!=null)||(created_date!=null)||(starting_date!=null)||
+        (proj_status!=null)||(remarks!=null)||(task_details!=null)||(department!=null)||(branch_name!=null)||
+        (developers!=null)||(dev_Id!=null))
+        {
+            return true;
+        }
+        System.out.println("Error all the mandotory fields must be filled");
+        JOptionPane.showMessageDialog(this, "Error all the mandotory fields must be filled");
+        System.out.println("Error all the mandotory fields must be filled");
+        return false;
+    }
     private void btn_submit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submit1ActionPerformed
+            
+            if(txt_projID.getText().isEmpty()||txt_proj_name.getText().isEmpty()||
+               lbl_current_date.getText().isEmpty()||txt_dept_name.getText().isEmpty()||
+               txt_starting_date.getText().isEmpty()||
+               combo_proj_status.getSelectedItem().toString().isEmpty()
+               ||txt_remarks.getText().isEmpty()||txt_dept_name.getText().isEmpty()
+               ||txt_branch_name.getText().isEmpty()||txt_developer_id.getText().isEmpty())
+            {
+                   JOptionPane.showMessageDialog(this, "Error all the mandotory fields must be filled"); 
+            }
             
             String ProjId = txt_projID.getText();
             String ProjName = txt_proj_name.getText();
@@ -1334,21 +1369,47 @@ public class DashBoard extends javax.swing.JFrame {
             String branch_name = txt_branch_name.getText();
             String task_details = "";
             String dev_Id = txt_developer_id.getText();
-            
-            Report_Requests_Model request = new  Report_Requests_Model(ProjId,ProjName,recieved_date,created_date,starting_date,completion_date,proj_status,remarks,task_details,department,branch_name,developers,dev_Id);
-            Report_Requests_Controller controller= new Report_Requests_Controller();
-            
-        try {
-            if(controller.saveReportRequest(request)){
+
+            if( txt_completion_date.getText().isEmpty()){
                 
-                JOptionPane.showMessageDialog(this, "The record inserted");
-                clearAll();
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                Report_Requests_Model request = new Report_Requests_Model(ProjId,ProjName,recieved_date,created_date,starting_date,proj_status,remarks,task_details,department,branch_name,developers,dev_Id);
+                Report_Requests_Controller controller= new Report_Requests_Controller();
+
+                try {
+
+                    if(controller.saveReportRequestWithoutCompletion(request)){
+
+                        JOptionPane.showMessageDialog(this, "The record inserted");
+                        clearAll();
+                    }
+                    
+                    } catch (SQLException ex) {
+                        Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            
+                Report_Requests_Model request = new  Report_Requests_Model(
+                ProjId,ProjName,recieved_date,created_date,starting_date,
+                completion_date,proj_status,remarks,task_details,department,
+                branch_name,developers,dev_Id);
+                
+                Report_Requests_Controller controller= new Report_Requests_Controller();
+
+                try {
+                    if(controller.saveReportRequest(request)){
+
+                        JOptionPane.showMessageDialog(this, "The record inserted");
+                        clearAll();
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+
             
         
     }//GEN-LAST:event_btn_submit1ActionPerformed

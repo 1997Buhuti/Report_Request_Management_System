@@ -449,6 +449,7 @@ public class Single_Row extends javax.swing.JFrame {
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
        
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
         String ProjId = txt_proj_id.getText();
         String ProjName = txt_proj_name.getText();
         String completion_date =  txt_completion_date.getText();
