@@ -231,11 +231,11 @@ public class DashBoard extends javax.swing.JFrame {
         lbl_create_request1 = new javax.swing.JLabel();
         lbl_view_request = new javax.swing.JLabel();
         pri_CardLayout = new javax.swing.JPanel();
-        card2 = new javax.swing.JPanel();
+        Tablecard2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_requests = new javax.swing.JTable();
         refresh = new javax.swing.JButton();
-        card1 = new javax.swing.JPanel();
+        Formcard1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         lbl_proj_id = new javax.swing.JLabel();
         lbl_proj_id1 = new javax.swing.JLabel();
@@ -263,6 +263,18 @@ public class DashBoard extends javax.swing.JFrame {
         combo_developers = new javax.swing.JComboBox<>();
         lbl_proj_dept_name3 = new javax.swing.JLabel();
         txt_developer_id = new javax.swing.JTextField();
+        card5 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        lbl_proj_id5 = new javax.swing.JLabel();
+        lbl_proj_name2 = new javax.swing.JLabel();
+        txt_proj_name2 = new javax.swing.JTextField();
+        txt_projID2 = new javax.swing.JTextField();
+        lbl_current_date2 = new javax.swing.JLabel();
+        btn_submit3 = new javax.swing.JButton();
+        btn_clear3 = new javax.swing.JButton();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btn_clear4 = new javax.swing.JButton();
 
         jTextField2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -857,8 +869,8 @@ public class DashBoard extends javax.swing.JFrame {
         pri_CardLayout.setBackground(new java.awt.Color(255, 255, 255));
         pri_CardLayout.setLayout(new java.awt.CardLayout());
 
-        card2.setBackground(new java.awt.Color(255, 255, 255));
-        card2.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        Tablecard2.setBackground(new java.awt.Color(255, 255, 255));
+        Tablecard2.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
 
         tbl_requests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -891,29 +903,29 @@ public class DashBoard extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout card2Layout = new javax.swing.GroupLayout(card2);
-        card2.setLayout(card2Layout);
-        card2Layout.setHorizontalGroup(
-            card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout Tablecard2Layout = new javax.swing.GroupLayout(Tablecard2);
+        Tablecard2.setLayout(Tablecard2Layout);
+        Tablecard2Layout.setHorizontalGroup(
+            Tablecard2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1115, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, card2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Tablecard2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        card2Layout.setVerticalGroup(
-            card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(card2Layout.createSequentialGroup()
+        Tablecard2Layout.setVerticalGroup(
+            Tablecard2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Tablecard2Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        pri_CardLayout.add(card2, "card2");
+        pri_CardLayout.add(Tablecard2, "card2");
 
-        card1.setBackground(new java.awt.Color(255, 255, 255));
-        card1.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        Formcard1.setBackground(new java.awt.Color(255, 255, 255));
+        Formcard1.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
 
         jLabel2.setBackground(new java.awt.Color(255, 153, 0));
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
@@ -1049,73 +1061,73 @@ public class DashBoard extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout card1Layout = new javax.swing.GroupLayout(card1);
-        card1.setLayout(card1Layout);
-        card1Layout.setHorizontalGroup(
-            card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, card1Layout.createSequentialGroup()
-                .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, card1Layout.createSequentialGroup()
+        javax.swing.GroupLayout Formcard1Layout = new javax.swing.GroupLayout(Formcard1);
+        Formcard1.setLayout(Formcard1Layout);
+        Formcard1Layout.setHorizontalGroup(
+            Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Formcard1Layout.createSequentialGroup()
+                .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Formcard1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(lbl_current_date))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, card1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Formcard1Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, card1Layout.createSequentialGroup()
+                        .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Formcard1Layout.createSequentialGroup()
                                 .addComponent(lbl_proj_id, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(card1Layout.createSequentialGroup()
+                                .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(Formcard1Layout.createSequentialGroup()
                                         .addGap(45, 45, 45)
-                                        .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(card1Layout.createSequentialGroup()
+                                        .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(Formcard1Layout.createSequentialGroup()
                                                 .addComponent(lbl_proj_dept_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(txt_branch_name, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(card1Layout.createSequentialGroup()
+                                            .addGroup(Formcard1Layout.createSequentialGroup()
                                                 .addComponent(lbl_proj_dept_name3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(txt_developer_id, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(card1Layout.createSequentialGroup()
+                                    .addGroup(Formcard1Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(txt_starting_date, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
                                                 .addComponent(txt_recieved_date))
-                                            .addGroup(card1Layout.createSequentialGroup()
+                                            .addGroup(Formcard1Layout.createSequentialGroup()
                                                 .addComponent(btn_submit1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(42, 42, 42)
                                                 .addComponent(btn_clear1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addGap(0, 17, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, card1Layout.createSequentialGroup()
-                                .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(card1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Formcard1Layout.createSequentialGroup()
+                                .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(Formcard1Layout.createSequentialGroup()
                                             .addComponent(lbl_proj_id1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(txt_projID, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(card1Layout.createSequentialGroup()
+                                        .addGroup(Formcard1Layout.createSequentialGroup()
                                             .addComponent(lbl_proj_name, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(txt_proj_name, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(card1Layout.createSequentialGroup()
+                                    .addGroup(Formcard1Layout.createSequentialGroup()
                                         .addComponent(lbl_proj_completion_date, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(txt_completion_date, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(card1Layout.createSequentialGroup()
+                                    .addGroup(Formcard1Layout.createSequentialGroup()
                                         .addComponent(lbl_proj_dept_name, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(txt_dept_name, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(113, 113, 113)
-                                .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(card1Layout.createSequentialGroup()
+                                .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(Formcard1Layout.createSequentialGroup()
                                         .addComponent(lbl_proj_completion_date3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(combo_proj_status, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(lbl_proj_completion_date1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lbl_proj_completion_date2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(card1Layout.createSequentialGroup()
+                                    .addGroup(Formcard1Layout.createSequentialGroup()
                                         .addComponent(lbl_proj_dept_name1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(combo_developers, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1123,64 +1135,191 @@ public class DashBoard extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        card1Layout.setVerticalGroup(
-            card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(card1Layout.createSequentialGroup()
+        Formcard1Layout.setVerticalGroup(
+            Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Formcard1Layout.createSequentialGroup()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_current_date)
                 .addGap(37, 37, 37)
-                .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_recieved_date, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_proj_completion_date1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_projID, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_proj_id1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_proj_name, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_proj_name, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_starting_date, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_proj_completion_date2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
-                .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_completion_date, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_proj_completion_date, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(combo_proj_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_proj_completion_date3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(card1Layout.createSequentialGroup()
+                .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Formcard1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_dept_name, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_proj_dept_name, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(card1Layout.createSequentialGroup()
+                    .addGroup(Formcard1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_proj_dept_name1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(combo_developers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(card1Layout.createSequentialGroup()
+                .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Formcard1Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
-                        .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_developer_id, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_proj_dept_name3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(14, 14, 14)
-                        .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_branch_name, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_proj_dept_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(41, 41, 41)
-                        .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_clear1)
                             .addComponent(btn_submit1)))
-                    .addGroup(card1Layout.createSequentialGroup()
+                    .addGroup(Formcard1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_proj_id, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(251, Short.MAX_VALUE))
         );
 
-        pri_CardLayout.add(card1, "card1");
+        pri_CardLayout.add(Formcard1, "card1");
+
+        card5.setBackground(new java.awt.Color(255, 255, 255));
+        card5.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+
+        jLabel5.setBackground(new java.awt.Color(255, 153, 0));
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("                                            Manage Branches");
+        jLabel5.setOpaque(true);
+
+        lbl_proj_id5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lbl_proj_id5.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_proj_id5.setText("Branch Name");
+
+        lbl_proj_name2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lbl_proj_name2.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_proj_name2.setText("Branch ID");
+
+        txt_proj_name2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_proj_name2ActionPerformed(evt);
+            }
+        });
+
+        txt_projID2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_projID2ActionPerformed(evt);
+            }
+        });
+
+        lbl_current_date2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lbl_current_date2.setForeground(new java.awt.Color(0, 0, 0));
+
+        btn_submit3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btn_submit3.setText("Submit");
+        btn_submit3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_submit3ActionPerformed(evt);
+            }
+        });
+
+        btn_clear3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btn_clear3.setText("Search");
+        btn_clear3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_clear3ActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Branch Name", "Branch Code"
+            }
+        ));
+        jScrollPane7.setViewportView(jTable1);
+
+        btn_clear4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btn_clear4.setText("Clear");
+        btn_clear4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_clear4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout card5Layout = new javax.swing.GroupLayout(card5);
+        card5.setLayout(card5Layout);
+        card5Layout.setHorizontalGroup(
+            card5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, card5Layout.createSequentialGroup()
+                .addContainerGap(94, Short.MAX_VALUE)
+                .addGroup(card5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, card5Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(card5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(card5Layout.createSequentialGroup()
+                                .addComponent(lbl_proj_id5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_projID2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(card5Layout.createSequentialGroup()
+                                .addComponent(lbl_proj_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_proj_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(card5Layout.createSequentialGroup()
+                                .addComponent(btn_submit3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(80, 80, 80)
+                                .addComponent(btn_clear4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(72, 72, 72)
+                                .addComponent(btn_clear3, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_current_date2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, card5Layout.createSequentialGroup()
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 935, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(86, 86, 86))))
+        );
+        card5Layout.setVerticalGroup(
+            card5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(card5Layout.createSequentialGroup()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(card5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_projID2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_proj_id5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(card5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_proj_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_proj_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_current_date2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(card5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_submit3)
+                    .addComponent(btn_clear3)
+                    .addComponent(btn_clear4))
+                .addGap(141, 141, 141))
+        );
+
+        pri_CardLayout.add(card5, "card1");
 
         jSplitPane_menu.setRightComponent(pri_CardLayout);
 
@@ -1581,6 +1720,26 @@ public class DashBoard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_combo_developersItemStateChanged
 
+    private void btn_clear3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clear3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_clear3ActionPerformed
+
+    private void btn_submit3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submit3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_submit3ActionPerformed
+
+    private void txt_projID2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_projID2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_projID2ActionPerformed
+
+    private void txt_proj_name2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_proj_name2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_proj_name2ActionPerformed
+
+    private void btn_clear4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clear4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_clear4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1618,15 +1777,19 @@ public class DashBoard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Formcard1;
+    private javax.swing.JPanel Tablecard2;
     private javax.swing.JButton btn_clear1;
     private javax.swing.JButton btn_clear2;
+    private javax.swing.JButton btn_clear3;
+    private javax.swing.JButton btn_clear4;
     private javax.swing.JButton btn_submit1;
     private javax.swing.JButton btn_submit2;
+    private javax.swing.JButton btn_submit3;
     private javax.swing.JButton btn_update1;
-    private javax.swing.JPanel card1;
-    private javax.swing.JPanel card2;
     private javax.swing.JPanel card3;
     private javax.swing.JPanel card4;
+    private javax.swing.JPanel card5;
     private javax.swing.JComboBox<String> combo_developers;
     private javax.swing.JComboBox<String> combo_developers1;
     private javax.swing.JComboBox<String> combo_proj_status;
@@ -1638,6 +1801,7 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel_main;
     private javax.swing.JPanel jPanel_main1;
@@ -1646,14 +1810,17 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSplitPane jSplitPane_menu;
     private javax.swing.JSplitPane jSplitPane_menu1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lbl_create_request1;
     private javax.swing.JLabel lbl_create_request2;
     private javax.swing.JLabel lbl_current_date;
     private javax.swing.JLabel lbl_current_date1;
+    private javax.swing.JLabel lbl_current_date2;
     private javax.swing.JLabel lbl_logo;
     private javax.swing.JLabel lbl_logo1;
     private javax.swing.JLabel lbl_proj_completion_date;
@@ -1676,8 +1843,10 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_proj_id1;
     private javax.swing.JLabel lbl_proj_id2;
     private javax.swing.JLabel lbl_proj_id3;
+    private javax.swing.JLabel lbl_proj_id5;
     private javax.swing.JLabel lbl_proj_name;
     private javax.swing.JLabel lbl_proj_name1;
+    private javax.swing.JLabel lbl_proj_name2;
     private javax.swing.JLabel lbl_view_request;
     private javax.swing.JLabel lbl_view_request1;
     private javax.swing.JPanel menu_bar;
@@ -1701,8 +1870,10 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JTextField txt_developer_id1;
     private javax.swing.JTextField txt_projID;
     private javax.swing.JTextField txt_projID1;
+    private javax.swing.JTextField txt_projID2;
     private javax.swing.JTextField txt_proj_name;
     private javax.swing.JTextField txt_proj_name1;
+    private javax.swing.JTextField txt_proj_name2;
     private javax.swing.JTextField txt_recieved_date;
     private javax.swing.JTextField txt_recieved_date1;
     private javax.swing.JTextArea txt_remarks;
