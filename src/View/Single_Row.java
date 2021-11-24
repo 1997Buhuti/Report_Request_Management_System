@@ -10,6 +10,7 @@ import DB.DBConnection;
 import Model.Report_Requests_Model;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,6 +30,7 @@ public class Single_Row extends javax.swing.JFrame {
     /**
      * Creates new form Single_Row
      */
+    Connection con = DBConnection.getConnection();
     public Single_Row() {
         initComponents();
          this.setLocationRelativeTo(null);
@@ -511,15 +513,13 @@ public class Single_Row extends javax.swing.JFrame {
             
             String developer_Name = combo_dev_names.getSelectedItem().toString();
             System.out.println(developer_Name);
-            PreparedStatement pst = DBConnection.getInstance().getConnection().prepareStatement("select * from users where user_name= ?");
+            PreparedStatement pst = con.prepareStatement("select * from users where user_name= ?");
             pst.setObject(1,developer_Name);
             ResultSet rst= pst.executeQuery();
             if(rst.next()){
                 System.out.println(String.valueOf(rst.getObject("user_id")));
                 txt_developer_id.setText(String.valueOf(rst.getObject("user_id")));
             }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
         }

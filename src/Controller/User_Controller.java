@@ -21,17 +21,13 @@ import java.util.logging.Logger;
  *
  * @author dpman
  */
+
 public class User_Controller {
     
-    public Connection Connect() throws ClassNotFoundException, SQLException{
-        DBConnection conObj=DBConnection.getInstance();
-        Connection con= conObj.getConnection();
-        return con;
-    }
+    Connection con = DBConnection.getConnection();
     
     public boolean saveUser(UserModel user) throws ClassNotFoundException, SQLException{
         
-                Connection con= Connect();
                 PreparedStatement pst= con.prepareStatement("insert into users (user_id,user_name,password,access_level) values(? ,? ,?, ?);");
                 pst.setString(1, user.getId());
                 pst.setString(2, user.getName());
@@ -74,9 +70,7 @@ public class User_Controller {
     public boolean checkCredentials(String uname , String Password){
         
         try {
-            
-            DBConnection dbcon = DBConnection.getInstance();
-            Connection con=dbcon.getConnection();
+           
             String sql="select* from users where user_name=? and password=?";
             String encryptedPassword = get_encrypt_password(Password);
             PreparedStatement pst= con.prepareStatement(sql);
@@ -89,8 +83,6 @@ public class User_Controller {
                 return true;
             }
             
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(User_Controller.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(User_Controller.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -27,8 +27,7 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    private String password="123" ;
-    private String userName="üser" ;
+
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -218,14 +217,6 @@ public class Login extends javax.swing.JFrame {
              f=new JFrame();  
             JOptionPane.showMessageDialog(f,"Error name or password invalid.");  
         }
-        
-       /*         
-        if(uname.contains("user") && pword.contains("123")){
-          
-            txt_uName.setText("");
-            jPasswordField1.setText("");
-           
-        }*/
     }//GEN-LAST:event_btn_signInActionPerformed
 
     private void btn_signInKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_signInKeyPressed

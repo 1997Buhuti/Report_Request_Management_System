@@ -12,6 +12,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Image;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,6 +40,7 @@ public class DashBoard extends javax.swing.JFrame {
      * Creates new form RequestForm
      */
     CardLayout cardLayout;
+    Connection con = DBConnection.getConnection();
     public DashBoard() {
         initComponents();
         txt_developer_id.disable();
@@ -1517,15 +1519,13 @@ public class DashBoard extends javax.swing.JFrame {
         try {
             
             String developer_Name = combo_developers.getSelectedItem().toString();
-            PreparedStatement pst = DBConnection.getInstance().getConnection().prepareStatement("select * from projects_tbl where developer_name= ?");
+            PreparedStatement pst = con.prepareStatement("select * from projects_tbl where developer_name= ?");
             pst.setObject(1,developer_Name);
             ResultSet rst= pst.executeQuery();
             if(rst.next()){
                 
                 txt_developer_id.setText(String.valueOf(rst.getObject("developer_id")));
             }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1536,15 +1536,13 @@ public class DashBoard extends javax.swing.JFrame {
         try {
             
             String developer_Name = combo_developers.getSelectedItem().toString();
-            PreparedStatement pst = DBConnection.getInstance().getConnection().prepareStatement("select * from projects_tbl where developer_name= ?");
+            PreparedStatement pst = con.prepareStatement("select * from projects_tbl where developer_name= ?");
             pst.setObject(1,developer_Name);
             ResultSet rst= pst.executeQuery();
             if(rst.next()){
                 
                 txt_developer_id.setText(String.valueOf(rst.getObject("developer_id")));
             }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1613,14 +1611,12 @@ public class DashBoard extends javax.swing.JFrame {
         try {
             
             String developer_Name = combo_developers.getSelectedItem().toString();
-            PreparedStatement pst = DBConnection.getInstance().getConnection().prepareStatement("select * from users where user_name= ?");
+            PreparedStatement pst = con.prepareStatement("select * from users where user_name= ?");
             pst.setObject(1,developer_Name);
             ResultSet rst= pst.executeQuery();
             if(rst.next()){
                 txt_developer_id.setText(String.valueOf(rst.getObject("user_id")));
             }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
         }

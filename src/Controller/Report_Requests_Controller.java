@@ -18,18 +18,11 @@ import java.util.ArrayList;
  * @author dpman
  */
 public class Report_Requests_Controller {
-    
-        public Connection Connect() throws ClassNotFoundException, SQLException{
-        DBConnection conObj=DBConnection.getInstance();
-        Connection con= conObj.getConnection();
-        return con;
-    }
-    
+        Connection con = DBConnection.getConnection();
         public ArrayList<Report_Requests_Model> getAllReportRequests() 
             throws ClassNotFoundException, SQLException{
             
             String sql="SELECT * FROM projects_tbl;";
-            Connection con= Connect();
             PreparedStatement pst= con.prepareStatement(sql);
             ResultSet rst= pst.executeQuery(sql);
             
@@ -46,7 +39,6 @@ public class Report_Requests_Controller {
         
             public boolean saveReportRequest(Report_Requests_Model request) throws ClassNotFoundException, SQLException{
         
-                Connection con= Connect();
                 String sql="insert into projects_tbl(project_id, project_name, department_name, branch_name, Remarks, task_details, recieved_date, created_date, start_date, developer_name, developer_id, request_date, completion_date, CurrentStatus) values(?, ? , ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?)";
                 PreparedStatement pst= con.prepareStatement(sql);
                 pst.setString(1, request.getProject_id());
@@ -70,8 +62,7 @@ public class Report_Requests_Controller {
         }
             
         public boolean saveReportRequestWithoutCompletion (Report_Requests_Model request) throws ClassNotFoundException, SQLException{
-        
-                Connection con= Connect();
+
                 String sql="insert into projects_tbl(project_id, project_name, department_name, branch_name, Remarks, task_details, recieved_date, created_date, start_date, developer_name, developer_id, request_date, CurrentStatus) values(?, ? , ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement pst= con.prepareStatement(sql);
                 pst.setString(1, request.getProject_id());
@@ -97,8 +88,6 @@ public class Report_Requests_Controller {
         
         String sql="select* from users";
         ArrayList <String> userNames = new ArrayList<>();
-        DBConnection dbcon = DBConnection.getInstance();
-        Connection con=dbcon.getConnection();
         PreparedStatement pst= con.prepareStatement(sql);
         ResultSet rst=pst.executeQuery();
         
@@ -112,7 +101,6 @@ public class Report_Requests_Controller {
         
         public boolean updateReport_requests (Report_Requests_Model request) throws SQLException, ClassNotFoundException{
         
-                Connection con= Connect();
                 PreparedStatement pst = con.prepareStatement("update projects_tbl set project_name=?, department_name=?, branch_name=?, Remarks=?, task_details=?, recieved_date=?, created_date=?, start_date=?, developer_name=?, developer_id=?, request_date=?, completion_date=?, CurrentStatus=? where  project_id=? ");
                 pst.setString(14, request.getProject_id());
                 pst.setString(1, request.getProject_name());
