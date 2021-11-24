@@ -43,7 +43,7 @@ public class DashBoard extends javax.swing.JFrame {
     Connection con = DBConnection.getConnection();
     public DashBoard() {
         initComponents();
-        txt_developer_id.disable();
+        txt_developer_id2.disable();
         load_developers();
         Request_Form_Id_generate();
         this.setLocationRelativeTo(null);
@@ -57,9 +57,10 @@ public class DashBoard extends javax.swing.JFrame {
         }
         setResizable(false);
         load_date();
-        
+        jTable1.getColumnModel().getColumn(1).setPreferredWidth(5);
         lbl_create_request1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         lbl_view_request.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        lbl_maintenace.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         cardLayout = (CardLayout)(pri_CardLayout.getLayout());
     }
     Single_Row raw_data = new Single_Row();
@@ -72,7 +73,6 @@ public class DashBoard extends javax.swing.JFrame {
            LocalDateTime now = LocalDateTime.now();  
            String format = dtf.format(now);  
            lbl_current_date.setText(format);
-       
     }
     
     public void clearTable(){
@@ -96,7 +96,7 @@ public class DashBoard extends javax.swing.JFrame {
         raw_data.txt_starting_date.setText("");
         raw_data.txt_developer_id.setText("");
         raw_data.txt_department.setText("");
-        combo_proj_status.getModel().setSelectedItem("");
+        combo_proj_status2.getModel().setSelectedItem("");
     }
      
  /*    This is used to scale the image*/
@@ -115,7 +115,7 @@ public class DashBoard extends javax.swing.JFrame {
         HoveredColor= new Color(255, 191, 0);
         
         lbl_create_request1.setBackground(DefaultColor);
-        lbl_view_request.setBackground(DefaultColor);
+        lbl_maintenace.setBackground(DefaultColor);
         //Order.setBackground(DefaultColor);
     }
     
@@ -137,7 +137,7 @@ public class DashBoard extends javax.swing.JFrame {
                 ArrayList <String> userNames = controller.loadUserNames();
                 for(String name:userNames){
                     
-                    combo_developers.addItem(name);
+                    combo_developers2.addItem(name);
                 }
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
@@ -221,6 +221,7 @@ public class DashBoard extends javax.swing.JFrame {
         combo_developers1 = new javax.swing.JComboBox<>();
         lbl_proj_dept_name7 = new javax.swing.JLabel();
         txt_developer_id1 = new javax.swing.JTextField();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
         jPanel_main = new javax.swing.JPanel();
         menu_header = new javax.swing.JPanel();
         red_line = new javax.swing.JPanel();
@@ -229,52 +230,53 @@ public class DashBoard extends javax.swing.JFrame {
         jSplitPane_menu = new javax.swing.JSplitPane();
         menu_bar = new javax.swing.JPanel();
         lbl_create_request1 = new javax.swing.JLabel();
+        lbl_maintenace = new javax.swing.JLabel();
         lbl_view_request = new javax.swing.JLabel();
         pri_CardLayout = new javax.swing.JPanel();
-        Tablecard2 = new javax.swing.JPanel();
+        pri_Card1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_requests = new javax.swing.JTable();
         refresh = new javax.swing.JButton();
-        Formcard1 = new javax.swing.JPanel();
+        pri_Card2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        lbl_proj_id = new javax.swing.JLabel();
         lbl_proj_id1 = new javax.swing.JLabel();
         lbl_proj_name = new javax.swing.JLabel();
-        lbl_proj_completion_date = new javax.swing.JLabel();
-        lbl_proj_dept_name = new javax.swing.JLabel();
         txt_proj_name = new javax.swing.JTextField();
         txt_projID = new javax.swing.JTextField();
-        txt_completion_date = new javax.swing.JTextField();
-        txt_dept_name = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txt_remarks = new javax.swing.JTextArea();
-        txt_recieved_date = new javax.swing.JTextField();
-        lbl_proj_completion_date1 = new javax.swing.JLabel();
-        lbl_proj_completion_date2 = new javax.swing.JLabel();
-        txt_starting_date = new javax.swing.JTextField();
-        lbl_proj_completion_date3 = new javax.swing.JLabel();
-        combo_proj_status = new javax.swing.JComboBox<>();
         lbl_current_date = new javax.swing.JLabel();
         btn_submit1 = new javax.swing.JButton();
         btn_clear1 = new javax.swing.JButton();
-        lbl_proj_dept_name1 = new javax.swing.JLabel();
-        lbl_proj_dept_name2 = new javax.swing.JLabel();
-        txt_branch_name = new javax.swing.JTextField();
-        combo_developers = new javax.swing.JComboBox<>();
-        lbl_proj_dept_name3 = new javax.swing.JLabel();
-        txt_developer_id = new javax.swing.JTextField();
-        card5 = new javax.swing.JPanel();
+        btn_clear4 = new javax.swing.JButton();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        pri_Card3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        lbl_proj_id4 = new javax.swing.JLabel();
         lbl_proj_id5 = new javax.swing.JLabel();
         lbl_proj_name2 = new javax.swing.JLabel();
+        lbl_proj_completion_date8 = new javax.swing.JLabel();
+        lbl_proj_dept_name8 = new javax.swing.JLabel();
         txt_proj_name2 = new javax.swing.JTextField();
         txt_projID2 = new javax.swing.JTextField();
+        txt_completion_date2 = new javax.swing.JTextField();
+        txt_dept_name2 = new javax.swing.JTextField();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        txt_remarks2 = new javax.swing.JTextArea();
+        txt_recieved_date2 = new javax.swing.JTextField();
+        lbl_proj_completion_date9 = new javax.swing.JLabel();
+        lbl_proj_completion_date10 = new javax.swing.JLabel();
+        txt_starting_date2 = new javax.swing.JTextField();
+        lbl_proj_completion_date11 = new javax.swing.JLabel();
+        combo_proj_status2 = new javax.swing.JComboBox<>();
         lbl_current_date2 = new javax.swing.JLabel();
         btn_submit3 = new javax.swing.JButton();
         btn_clear3 = new javax.swing.JButton();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        btn_clear4 = new javax.swing.JButton();
+        lbl_proj_dept_name9 = new javax.swing.JLabel();
+        lbl_proj_dept_name10 = new javax.swing.JLabel();
+        txt_branch_name2 = new javax.swing.JTextField();
+        combo_developers2 = new javax.swing.JComboBox<>();
+        lbl_proj_dept_name11 = new javax.swing.JLabel();
+        txt_developer_id2 = new javax.swing.JTextField();
 
         jTextField2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -820,6 +822,33 @@ public class DashBoard extends javax.swing.JFrame {
             }
         });
 
+        lbl_maintenace.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_maintenace.setFont(new java.awt.Font("Dialog", 1, 34)); // NOI18N
+        lbl_maintenace.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_maintenace.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_maintenace.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/settings.png"))); // NOI18N
+        lbl_maintenace.setText("Maintenance");
+        lbl_maintenace.setOpaque(true);
+        lbl_maintenace.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_maintenaceMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbl_maintenaceMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbl_maintenaceMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lbl_maintenaceMousePressed(evt);
+            }
+        });
+        lbl_maintenace.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                lbl_maintenaceKeyPressed(evt);
+            }
+        });
+
         lbl_view_request.setBackground(new java.awt.Color(255, 255, 255));
         lbl_view_request.setFont(new java.awt.Font("Dialog", 1, 34)); // NOI18N
         lbl_view_request.setForeground(new java.awt.Color(0, 0, 0));
@@ -833,6 +862,9 @@ public class DashBoard extends javax.swing.JFrame {
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lbl_view_requestMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbl_view_requestMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 lbl_view_requestMousePressed(evt);
@@ -852,6 +884,7 @@ public class DashBoard extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(menu_barLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lbl_create_request1, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+                    .addComponent(lbl_maintenace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbl_view_request, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         menu_barLayout.setVerticalGroup(
@@ -861,7 +894,9 @@ public class DashBoard extends javax.swing.JFrame {
                 .addComponent(lbl_create_request1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_view_request, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_maintenace, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(546, Short.MAX_VALUE))
         );
 
         jSplitPane_menu.setLeftComponent(menu_bar);
@@ -869,8 +904,8 @@ public class DashBoard extends javax.swing.JFrame {
         pri_CardLayout.setBackground(new java.awt.Color(255, 255, 255));
         pri_CardLayout.setLayout(new java.awt.CardLayout());
 
-        Tablecard2.setBackground(new java.awt.Color(255, 255, 255));
-        Tablecard2.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        pri_Card1.setBackground(new java.awt.Color(255, 255, 255));
+        pri_Card1.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
 
         tbl_requests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -903,55 +938,43 @@ public class DashBoard extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout Tablecard2Layout = new javax.swing.GroupLayout(Tablecard2);
-        Tablecard2.setLayout(Tablecard2Layout);
-        Tablecard2Layout.setHorizontalGroup(
-            Tablecard2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pri_Card1Layout = new javax.swing.GroupLayout(pri_Card1);
+        pri_Card1.setLayout(pri_Card1Layout);
+        pri_Card1Layout.setHorizontalGroup(
+            pri_Card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1115, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Tablecard2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pri_Card1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        Tablecard2Layout.setVerticalGroup(
-            Tablecard2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Tablecard2Layout.createSequentialGroup()
+        pri_Card1Layout.setVerticalGroup(
+            pri_Card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pri_Card1Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        pri_CardLayout.add(Tablecard2, "card2");
+        pri_CardLayout.add(pri_Card1, "card2");
 
-        Formcard1.setBackground(new java.awt.Color(255, 255, 255));
-        Formcard1.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        pri_Card2.setBackground(new java.awt.Color(255, 255, 255));
+        pri_Card2.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
 
         jLabel2.setBackground(new java.awt.Color(255, 153, 0));
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("                                            Report Request Form");
+        jLabel2.setText("                                        Manage Branch details");
         jLabel2.setOpaque(true);
-
-        lbl_proj_id.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lbl_proj_id.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_proj_id.setText("Remarks :");
 
         lbl_proj_id1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lbl_proj_id1.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_proj_id1.setText("Project ID :");
+        lbl_proj_id1.setText("Branch Name :");
 
         lbl_proj_name.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lbl_proj_name.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_proj_name.setText("Project Name :");
-
-        lbl_proj_completion_date.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lbl_proj_completion_date.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_proj_completion_date.setText("Completion Date :");
-
-        lbl_proj_dept_name.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lbl_proj_dept_name.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_proj_dept_name.setText("Department :");
+        lbl_proj_name.setText("Branch Code :");
 
         txt_proj_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -964,48 +987,6 @@ public class DashBoard extends javax.swing.JFrame {
                 txt_projIDActionPerformed(evt);
             }
         });
-
-        txt_completion_date.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_completion_dateActionPerformed(evt);
-            }
-        });
-
-        txt_dept_name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_dept_nameActionPerformed(evt);
-            }
-        });
-
-        txt_remarks.setColumns(20);
-        txt_remarks.setRows(5);
-        jScrollPane2.setViewportView(txt_remarks);
-
-        txt_recieved_date.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_recieved_dateActionPerformed(evt);
-            }
-        });
-
-        lbl_proj_completion_date1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lbl_proj_completion_date1.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_proj_completion_date1.setText("Recieved Date :");
-
-        lbl_proj_completion_date2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lbl_proj_completion_date2.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_proj_completion_date2.setText("Starting  Date :");
-
-        txt_starting_date.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_starting_dateActionPerformed(evt);
-            }
-        });
-
-        lbl_proj_completion_date3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lbl_proj_completion_date3.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_proj_completion_date3.setText(" Project Status");
-
-        combo_proj_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "Ongoing", "Done", "Blocked" }));
 
         lbl_current_date.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lbl_current_date.setForeground(new java.awt.Color(0, 0, 0));
@@ -1026,190 +1007,115 @@ public class DashBoard extends javax.swing.JFrame {
             }
         });
 
-        lbl_proj_dept_name1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lbl_proj_dept_name1.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_proj_dept_name1.setText("Developer Name");
-
-        lbl_proj_dept_name2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lbl_proj_dept_name2.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_proj_dept_name2.setText("Branch Name");
-
-        txt_branch_name.addActionListener(new java.awt.event.ActionListener() {
+        btn_clear4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btn_clear4.setText("Clear");
+        btn_clear4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_branch_nameActionPerformed(evt);
+                btn_clear4ActionPerformed(evt);
             }
         });
 
-        combo_developers.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                combo_developersItemStateChanged(evt);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Branch Name", "Branch ID"
             }
-        });
-        combo_developers.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combo_developersActionPerformed(evt);
-            }
-        });
+        ));
+        jScrollPane7.setViewportView(jTable1);
 
-        lbl_proj_dept_name3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lbl_proj_dept_name3.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_proj_dept_name3.setText("Developer Id");
-
-        txt_developer_id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_developer_idActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout Formcard1Layout = new javax.swing.GroupLayout(Formcard1);
-        Formcard1.setLayout(Formcard1Layout);
-        Formcard1Layout.setHorizontalGroup(
-            Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Formcard1Layout.createSequentialGroup()
-                .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Formcard1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(lbl_current_date))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Formcard1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Formcard1Layout.createSequentialGroup()
-                                .addComponent(lbl_proj_id, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(Formcard1Layout.createSequentialGroup()
-                                        .addGap(45, 45, 45)
-                                        .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(Formcard1Layout.createSequentialGroup()
-                                                .addComponent(lbl_proj_dept_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(txt_branch_name, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(Formcard1Layout.createSequentialGroup()
-                                                .addComponent(lbl_proj_dept_name3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(txt_developer_id, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(Formcard1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(txt_starting_date, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
-                                                .addComponent(txt_recieved_date))
-                                            .addGroup(Formcard1Layout.createSequentialGroup()
-                                                .addComponent(btn_submit1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(42, 42, 42)
-                                                .addComponent(btn_clear1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addGap(0, 17, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Formcard1Layout.createSequentialGroup()
-                                .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(Formcard1Layout.createSequentialGroup()
-                                            .addComponent(lbl_proj_id1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txt_projID, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(Formcard1Layout.createSequentialGroup()
-                                            .addComponent(lbl_proj_name, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txt_proj_name, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(Formcard1Layout.createSequentialGroup()
-                                        .addComponent(lbl_proj_completion_date, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txt_completion_date, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(Formcard1Layout.createSequentialGroup()
-                                        .addComponent(lbl_proj_dept_name, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txt_dept_name, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(113, 113, 113)
-                                .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(Formcard1Layout.createSequentialGroup()
-                                        .addComponent(lbl_proj_completion_date3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(combo_proj_status, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(lbl_proj_completion_date1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbl_proj_completion_date2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(Formcard1Layout.createSequentialGroup()
-                                        .addComponent(lbl_proj_dept_name1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(combo_developers, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap(8, Short.MAX_VALUE))
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout pri_Card2Layout = new javax.swing.GroupLayout(pri_Card2);
+        pri_Card2.setLayout(pri_Card2Layout);
+        pri_Card2Layout.setHorizontalGroup(
+            pri_Card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pri_Card2Layout.createSequentialGroup()
+                .addContainerGap(502, Short.MAX_VALUE)
+                .addComponent(lbl_current_date)
+                .addContainerGap(613, Short.MAX_VALUE))
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1115, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pri_Card2Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(btn_submit1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(pri_Card2Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(pri_Card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbl_proj_name, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_proj_id1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pri_Card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txt_proj_name, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_projID, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pri_Card2Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(btn_clear1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_clear4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(pri_Card2Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 1047, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        Formcard1Layout.setVerticalGroup(
-            Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Formcard1Layout.createSequentialGroup()
+        pri_Card2Layout.setVerticalGroup(
+            pri_Card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pri_Card2Layout.createSequentialGroup()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_current_date)
-                .addGap(37, 37, 37)
-                .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_recieved_date, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_proj_completion_date1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(pri_Card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_projID, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_proj_id1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pri_Card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_proj_name, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_proj_name, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_starting_date, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_proj_completion_date2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_completion_date, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_proj_completion_date, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(combo_proj_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_proj_completion_date3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Formcard1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_dept_name, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_proj_dept_name, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(Formcard1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_proj_dept_name1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(combo_developers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Formcard1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_developer_id, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_proj_dept_name3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(14, 14, 14)
-                        .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_branch_name, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_proj_dept_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(41, 41, 41)
-                        .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_clear1)
-                            .addComponent(btn_submit1)))
-                    .addGroup(Formcard1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(Formcard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_proj_id, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(251, Short.MAX_VALUE))
+                    .addComponent(txt_proj_name, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53)
+                .addGroup(pri_Card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_submit1)
+                    .addGroup(pri_Card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_clear4)
+                        .addComponent(btn_clear1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(80, 80, 80))
         );
 
-        pri_CardLayout.add(Formcard1, "card1");
+        pri_CardLayout.add(pri_Card2, "card1");
 
-        card5.setBackground(new java.awt.Color(255, 255, 255));
-        card5.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        pri_Card3.setBackground(new java.awt.Color(255, 255, 255));
+        pri_Card3.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
 
         jLabel5.setBackground(new java.awt.Color(255, 153, 0));
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("                                            Manage Branches");
+        jLabel5.setText("                                         Report Request Form");
         jLabel5.setOpaque(true);
+
+        lbl_proj_id4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lbl_proj_id4.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_proj_id4.setText("Remarks :");
 
         lbl_proj_id5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lbl_proj_id5.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_proj_id5.setText("Branch Name");
+        lbl_proj_id5.setText("Project ID :");
 
         lbl_proj_name2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lbl_proj_name2.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_proj_name2.setText("Branch ID");
+        lbl_proj_name2.setText("Project Name :");
+
+        lbl_proj_completion_date8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lbl_proj_completion_date8.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_proj_completion_date8.setText("Completion Date :");
+
+        lbl_proj_dept_name8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lbl_proj_dept_name8.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_proj_dept_name8.setText("Department :");
 
         txt_proj_name2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1223,6 +1129,48 @@ public class DashBoard extends javax.swing.JFrame {
             }
         });
 
+        txt_completion_date2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_completion_date2ActionPerformed(evt);
+            }
+        });
+
+        txt_dept_name2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_dept_name2ActionPerformed(evt);
+            }
+        });
+
+        txt_remarks2.setColumns(20);
+        txt_remarks2.setRows(5);
+        jScrollPane6.setViewportView(txt_remarks2);
+
+        txt_recieved_date2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_recieved_date2ActionPerformed(evt);
+            }
+        });
+
+        lbl_proj_completion_date9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lbl_proj_completion_date9.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_proj_completion_date9.setText("Recieved Date :");
+
+        lbl_proj_completion_date10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lbl_proj_completion_date10.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_proj_completion_date10.setText("Starting  Date :");
+
+        txt_starting_date2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_starting_date2ActionPerformed(evt);
+            }
+        });
+
+        lbl_proj_completion_date11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lbl_proj_completion_date11.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_proj_completion_date11.setText(" Project Status");
+
+        combo_proj_status2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "Ongoing", "Done", "Blocked" }));
+
         lbl_current_date2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lbl_current_date2.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -1235,91 +1183,180 @@ public class DashBoard extends javax.swing.JFrame {
         });
 
         btn_clear3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btn_clear3.setText("Search");
+        btn_clear3.setText("Clear");
         btn_clear3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_clear3ActionPerformed(evt);
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Branch Name", "Branch Code"
-            }
-        ));
-        jScrollPane7.setViewportView(jTable1);
+        lbl_proj_dept_name9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lbl_proj_dept_name9.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_proj_dept_name9.setText("Developer Name");
 
-        btn_clear4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btn_clear4.setText("Clear");
-        btn_clear4.addActionListener(new java.awt.event.ActionListener() {
+        lbl_proj_dept_name10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lbl_proj_dept_name10.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_proj_dept_name10.setText("Branch Name");
+
+        txt_branch_name2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_clear4ActionPerformed(evt);
+                txt_branch_name2ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout card5Layout = new javax.swing.GroupLayout(card5);
-        card5.setLayout(card5Layout);
-        card5Layout.setHorizontalGroup(
-            card5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        combo_developers2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                combo_developers2ItemStateChanged(evt);
+            }
+        });
+        combo_developers2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_developers2ActionPerformed(evt);
+            }
+        });
+
+        lbl_proj_dept_name11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lbl_proj_dept_name11.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_proj_dept_name11.setText("Developer Id");
+
+        txt_developer_id2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_developer_id2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pri_Card3Layout = new javax.swing.GroupLayout(pri_Card3);
+        pri_Card3.setLayout(pri_Card3Layout);
+        pri_Card3Layout.setHorizontalGroup(
+            pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pri_Card3Layout.createSequentialGroup()
+                .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pri_Card3Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(lbl_current_date2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pri_Card3Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pri_Card3Layout.createSequentialGroup()
+                                .addComponent(lbl_proj_id4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pri_Card3Layout.createSequentialGroup()
+                                        .addGap(45, 45, 45)
+                                        .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(pri_Card3Layout.createSequentialGroup()
+                                                .addComponent(lbl_proj_dept_name10, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txt_branch_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(pri_Card3Layout.createSequentialGroup()
+                                                .addComponent(lbl_proj_dept_name11, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txt_developer_id2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(pri_Card3Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(txt_starting_date2, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                                                .addComponent(txt_recieved_date2))
+                                            .addGroup(pri_Card3Layout.createSequentialGroup()
+                                                .addComponent(btn_submit3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(42, 42, 42)
+                                                .addComponent(btn_clear3, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(0, 17, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pri_Card3Layout.createSequentialGroup()
+                                .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pri_Card3Layout.createSequentialGroup()
+                                            .addComponent(lbl_proj_id5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txt_projID2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(pri_Card3Layout.createSequentialGroup()
+                                            .addComponent(lbl_proj_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txt_proj_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(pri_Card3Layout.createSequentialGroup()
+                                        .addComponent(lbl_proj_completion_date8, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txt_completion_date2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(pri_Card3Layout.createSequentialGroup()
+                                        .addComponent(lbl_proj_dept_name8, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txt_dept_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(113, 113, 113)
+                                .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pri_Card3Layout.createSequentialGroup()
+                                        .addComponent(lbl_proj_completion_date11, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(combo_proj_status2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lbl_proj_completion_date9, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbl_proj_completion_date10, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(pri_Card3Layout.createSequentialGroup()
+                                        .addComponent(lbl_proj_dept_name9, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(combo_developers2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap(8, Short.MAX_VALUE))
             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, card5Layout.createSequentialGroup()
-                .addContainerGap(94, Short.MAX_VALUE)
-                .addGroup(card5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, card5Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(card5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(card5Layout.createSequentialGroup()
-                                .addComponent(lbl_proj_id5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_projID2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(card5Layout.createSequentialGroup()
-                                .addComponent(lbl_proj_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_proj_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(card5Layout.createSequentialGroup()
-                                .addComponent(btn_submit3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(80, 80, 80)
-                                .addComponent(btn_clear4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(72, 72, 72)
-                                .addComponent(btn_clear3, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbl_current_date2)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, card5Layout.createSequentialGroup()
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 935, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(86, 86, 86))))
         );
-        card5Layout.setVerticalGroup(
-            card5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(card5Layout.createSequentialGroup()
+        pri_Card3Layout.setVerticalGroup(
+            pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pri_Card3Layout.createSequentialGroup()
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(card5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lbl_current_date2)
+                .addGap(37, 37, 37)
+                .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_recieved_date2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_proj_completion_date9, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_projID2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_proj_id5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(card5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_proj_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_proj_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbl_current_date2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addGroup(card5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_submit3)
-                    .addComponent(btn_clear3)
-                    .addComponent(btn_clear4))
-                .addGap(141, 141, 141))
+                    .addComponent(txt_proj_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_starting_date2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_proj_completion_date10, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_completion_date2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_proj_completion_date8, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(combo_proj_status2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_proj_completion_date11, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pri_Card3Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_dept_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_proj_dept_name8, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pri_Card3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_proj_dept_name9, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(combo_developers2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pri_Card3Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_developer_id2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_proj_dept_name11, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(14, 14, 14)
+                        .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_branch_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_proj_dept_name10, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(41, 41, 41)
+                        .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_clear3)
+                            .addComponent(btn_submit3)))
+                    .addGroup(pri_Card3Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_proj_id4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(251, Short.MAX_VALUE))
         );
 
-        pri_CardLayout.add(card5, "card1");
+        pri_CardLayout.add(pri_Card3, "card3");
 
         jSplitPane_menu.setRightComponent(pri_CardLayout);
 
@@ -1347,71 +1384,47 @@ public class DashBoard extends javax.swing.JFrame {
 
     private void lbl_create_request1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_create_request1MouseClicked
         lbl_create_request1.setBackground(ClickedColor);
-        lbl_view_request.setBackground(DefaultColor);
-        cardLayout.show(pri_CardLayout, "card1");
+        lbl_maintenace.setBackground(DefaultColor);
+        cardLayout.show(pri_CardLayout, "card3");
     }//GEN-LAST:event_lbl_create_request1MouseClicked
 
-    private void lbl_view_requestMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_view_requestMousePressed
+    private void lbl_maintenaceMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_maintenaceMousePressed
         // TODO add your handling code here:
         lbl_create_request1.setBackground(DefaultColor);
-        lbl_view_request.setBackground(ClickedColor);
-    }//GEN-LAST:event_lbl_view_requestMousePressed
+        lbl_maintenace.setBackground(ClickedColor);
+    }//GEN-LAST:event_lbl_maintenaceMousePressed
 
     private void lbl_create_request1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_create_request1MouseEntered
         // TODO add your handling code here:
         lbl_create_request1.setBackground(HoveredColor);
-        lbl_view_request.setBackground(DefaultColor);
+        lbl_maintenace.setBackground(DefaultColor);
     }//GEN-LAST:event_lbl_create_request1MouseEntered
 
     private void lbl_create_request1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_create_request1MouseExited
         // TODO add your handling code here:
         lbl_create_request1.setBackground(DefaultColor);
-        lbl_view_request.setBackground(DefaultColor);
+        lbl_maintenace.setBackground(DefaultColor);
     }//GEN-LAST:event_lbl_create_request1MouseExited
 
-    private void lbl_view_requestMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_view_requestMouseEntered
+    private void lbl_maintenaceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_maintenaceMouseEntered
         // TODO add your handling code here:
         lbl_create_request1.setBackground(DefaultColor);
-        lbl_view_request.setBackground(HoveredColor);
-    }//GEN-LAST:event_lbl_view_requestMouseEntered
+        lbl_maintenace.setBackground(HoveredColor);
+    }//GEN-LAST:event_lbl_maintenaceMouseEntered
 
-    private void lbl_view_requestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_view_requestMouseClicked
+    private void lbl_maintenaceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_maintenaceMouseClicked
         // TODO add your handling code here:
-        cardLayout.show(pri_CardLayout, "card2");
-    }//GEN-LAST:event_lbl_view_requestMouseClicked
+        cardLayout.show(pri_CardLayout, "card1");
+    }//GEN-LAST:event_lbl_maintenaceMouseClicked
 
-    private void lbl_view_requestKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lbl_view_requestKeyPressed
+    private void lbl_maintenaceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lbl_maintenaceKeyPressed
         // TODO add your handling code here:
-        cardLayout.show(pri_CardLayout, "card2");
-    }//GEN-LAST:event_lbl_view_requestKeyPressed
+        cardLayout.show(pri_CardLayout, "card1");
+    }//GEN-LAST:event_lbl_maintenaceKeyPressed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void txt_proj_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_proj_nameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_proj_nameActionPerformed
-
-    private void txt_projIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_projIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_projIDActionPerformed
-
-    private void txt_completion_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_completion_dateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_completion_dateActionPerformed
-
-    private void txt_dept_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_dept_nameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_dept_nameActionPerformed
-
-    private void txt_recieved_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_recieved_dateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_recieved_dateActionPerformed
-
-    private void txt_starting_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_starting_dateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_starting_dateActionPerformed
 
     private void tbl_requestsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_requestsMouseClicked
 
@@ -1451,12 +1464,8 @@ public class DashBoard extends javax.swing.JFrame {
         raw_data.txt_starting_date.setText(start_date);
         raw_data.txt_developer_id.setText(developer_id);
         raw_data.txt_department.setText(department_name);
-        combo_proj_status.getModel().setSelectedItem(current_status);
+        combo_proj_status2.getModel().setSelectedItem(current_status);
     }//GEN-LAST:event_tbl_requestsMouseClicked
-
-    private void txt_branch_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_branch_nameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_branch_nameActionPerformed
     
     private boolean validate_fields(String ProjId,String ProjName, String 
     recieved_date, String created_date, String starting_date, String proj_status, 
@@ -1475,99 +1484,6 @@ public class DashBoard extends javax.swing.JFrame {
         System.out.println("Error all the mandotory fields must be filled");
         return false;
     }
-    private void btn_submit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submit1ActionPerformed
-            
-            if(txt_projID.getText().isEmpty()||txt_proj_name.getText().isEmpty()||
-               lbl_current_date.getText().isEmpty()||txt_dept_name.getText().isEmpty()||
-               txt_starting_date.getText().isEmpty()||
-               combo_proj_status.getSelectedItem().toString().isEmpty()
-               ||txt_remarks.getText().isEmpty()||txt_dept_name.getText().isEmpty()
-               ||txt_branch_name.getText().isEmpty()||txt_developer_id.getText().isEmpty())
-            {
-                   JOptionPane.showMessageDialog(this, "Error all the mandatory fields must be filled"); 
-            }
-            
-            String ProjId = txt_projID.getText();
-            String ProjName = txt_proj_name.getText();
-            String completion_date =  txt_completion_date.getText();
-            String created_date = lbl_current_date.getText();
-            String department = txt_dept_name.getText();
-            String remarks = txt_remarks.getText();
-            String recieved_date = txt_recieved_date.getText();
-            String starting_date = txt_starting_date.getText();
-            String proj_status = (String) combo_proj_status.getSelectedItem();
-            String developers = (String) combo_developers.getSelectedItem();
-            String branch_name = txt_branch_name.getText();
-            String task_details = "";
-            String dev_Id = txt_developer_id.getText();
-
-            if( txt_completion_date.getText().isEmpty()){
-                
-                Report_Requests_Model request = new Report_Requests_Model(ProjId,ProjName,recieved_date,created_date,starting_date,proj_status,remarks,task_details,department,branch_name,developers,dev_Id);
-                Report_Requests_Controller controller= new Report_Requests_Controller();
-
-                try {
-
-                    if(controller.saveReportRequestWithoutCompletion(request)){
-
-                        JOptionPane.showMessageDialog(this, "The record inserted");
-                        clearAll();
-                    }
-                    
-                    } catch (SQLException ex) {
-                        Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            
-                Report_Requests_Model request = new  Report_Requests_Model(
-                ProjId,ProjName,recieved_date,created_date,starting_date,
-                completion_date,proj_status,remarks,task_details,department,
-                branch_name,developers,dev_Id);
-                
-                Report_Requests_Controller controller= new Report_Requests_Controller();
-
-                try {
-                    if(controller.saveReportRequest(request)){
-
-                        JOptionPane.showMessageDialog(this, "The record inserted");
-                        clearAll();
-                    }
-                } catch (SQLException ex) {
-                    Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-
-            
-        
-    }//GEN-LAST:event_btn_submit1ActionPerformed
-
-    private void txt_developer_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_developer_idActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_developer_idActionPerformed
-
-    private void combo_developersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_developersActionPerformed
-      /* try {
-            
-            String developer_Name = combo_developers.getSelectedItem().toString();
-            PreparedStatement pst = DBConnection.getInstance().getConnection().prepareStatement("select * from projects_tbl where developer_name= ?");
-            pst.setObject(1,developer_Name);
-            ResultSet rst= pst.executeQuery();
-            
-            if(rst.next()){
-                txt_developer_id.setText(String.valueOf(rst.getObject("developer_id")));
-            }
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-    }//GEN-LAST:event_combo_developersActionPerformed
-
     private void lbl_create_request2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_create_request2MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_lbl_create_request2MouseClicked
@@ -1648,13 +1564,13 @@ public class DashBoard extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             
-            String developer_Name = combo_developers.getSelectedItem().toString();
+            String developer_Name = combo_developers2.getSelectedItem().toString();
             PreparedStatement pst = con.prepareStatement("select * from projects_tbl where developer_name= ?");
             pst.setObject(1,developer_Name);
             ResultSet rst= pst.executeQuery();
             if(rst.next()){
                 
-                txt_developer_id.setText(String.valueOf(rst.getObject("developer_id")));
+                txt_developer_id2.setText(String.valueOf(rst.getObject("developer_id")));
             }
         } catch (SQLException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
@@ -1665,29 +1581,18 @@ public class DashBoard extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             
-            String developer_Name = combo_developers.getSelectedItem().toString();
+            String developer_Name = combo_developers2.getSelectedItem().toString();
             PreparedStatement pst = con.prepareStatement("select * from projects_tbl where developer_name= ?");
             pst.setObject(1,developer_Name);
             ResultSet rst= pst.executeQuery();
             if(rst.next()){
                 
-                txt_developer_id.setText(String.valueOf(rst.getObject("developer_id")));
+                txt_developer_id2.setText(String.valueOf(rst.getObject("developer_id")));
             }
         } catch (SQLException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_tbl_requestsKeyPressed
-
-    private void btn_clear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clear1ActionPerformed
-        txt_projID.setText("");
-        txt_proj_name.setText("");
-        txt_completion_date.setText("");
-        lbl_current_date.setText("");
-        txt_dept_name.setText("");
-        txt_remarks.setText("");
-        txt_recieved_date.setText("");
-        txt_starting_date.setText("");
-    }//GEN-LAST:event_btn_clear1ActionPerformed
 
     private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
         try {
@@ -1704,22 +1609,6 @@ public class DashBoard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lbl_logoMouseClicked
 
-    private void combo_developersItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combo_developersItemStateChanged
-        // TODO add your handling code here:
-        try {
-            
-            String developer_Name = combo_developers.getSelectedItem().toString();
-            PreparedStatement pst = con.prepareStatement("select * from users where user_name= ?");
-            pst.setObject(1,developer_Name);
-            ResultSet rst= pst.executeQuery();
-            if(rst.next()){
-                txt_developer_id.setText(String.valueOf(rst.getObject("user_id")));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_combo_developersItemStateChanged
-
     private void btn_clear3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clear3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_clear3ActionPerformed
@@ -1735,6 +1624,165 @@ public class DashBoard extends javax.swing.JFrame {
     private void txt_proj_name2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_proj_name2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_proj_name2ActionPerformed
+
+    private void txt_branch_name2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_branch_name2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_branch_name2ActionPerformed
+
+    private void txt_developer_id2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_developer_id2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_developer_id2ActionPerformed
+
+    private void txt_dept_name2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_dept_name2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_dept_name2ActionPerformed
+
+    private void combo_developers2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_developers2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combo_developers2ActionPerformed
+
+    private void combo_developers2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combo_developers2ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combo_developers2ItemStateChanged
+
+    private void txt_completion_date2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_completion_date2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_completion_date2ActionPerformed
+
+    private void txt_starting_date2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_starting_date2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_starting_date2ActionPerformed
+
+    private void txt_recieved_date2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_recieved_date2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_recieved_date2ActionPerformed
+
+    private void lbl_view_requestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_view_requestMouseClicked
+        // TODO add your handling code here:
+        lbl_view_request.setBackground(ClickedColor);
+        lbl_create_request1.setBackground(DefaultColor);
+        lbl_maintenace.setBackground(DefaultColor);
+        cardLayout.show(pri_CardLayout, "card2");
+        
+    }//GEN-LAST:event_lbl_view_requestMouseClicked
+
+    private void lbl_view_requestMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_view_requestMouseEntered
+        // TODO add your handling code here:
+        lbl_view_request.setBackground(HoveredColor);
+        lbl_create_request1.setBackground(DefaultColor);
+        lbl_maintenace.setBackground(DefaultColor);
+    }//GEN-LAST:event_lbl_view_requestMouseEntered
+
+    private void lbl_view_requestMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_view_requestMousePressed
+        // TODO add your handling code here:
+        lbl_view_request.setBackground(ClickedColor);
+        lbl_create_request1.setBackground(DefaultColor);
+        lbl_maintenace.setBackground(DefaultColor);
+    }//GEN-LAST:event_lbl_view_requestMousePressed
+
+    private void lbl_view_requestKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lbl_view_requestKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbl_view_requestKeyPressed
+
+    private void lbl_view_requestMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_view_requestMouseExited
+        // TODO add your handling code here:
+        lbl_view_request.setBackground(DefaultColor);
+        lbl_create_request1.setBackground(DefaultColor);
+        lbl_maintenace.setBackground(DefaultColor);
+    }//GEN-LAST:event_lbl_view_requestMouseExited
+
+    private void lbl_maintenaceMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_maintenaceMouseExited
+        // TODO add your handling code here:
+        lbl_view_request.setBackground(DefaultColor);
+        lbl_create_request1.setBackground(DefaultColor);
+        lbl_maintenace.setBackground(DefaultColor);
+    }//GEN-LAST:event_lbl_maintenaceMouseExited
+
+    private void btn_clear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clear1ActionPerformed
+        txt_projID.setText("");
+        txt_proj_name.setText("");
+        txt_completion_date2.setText("");
+        lbl_current_date.setText("");
+        txt_dept_name2.setText("");
+        txt_remarks2.setText("");
+        txt_recieved_date2.setText("");
+        txt_starting_date2.setText("");
+    }//GEN-LAST:event_btn_clear1ActionPerformed
+
+    private void btn_submit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submit1ActionPerformed
+
+        if(txt_projID.getText().isEmpty()||txt_proj_name.getText().isEmpty()||
+            lbl_current_date.getText().isEmpty()||txt_dept_name2.getText().isEmpty()||
+            txt_starting_date2.getText().isEmpty()||
+            combo_proj_status2.getSelectedItem().toString().isEmpty()
+            ||txt_remarks2.getText().isEmpty()||txt_dept_name2.getText().isEmpty()
+            ||txt_branch_name2.getText().isEmpty()||txt_developer_id2.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Error all the mandatory fields must be filled");
+        }
+
+        String ProjId = txt_projID.getText();
+        String ProjName = txt_proj_name.getText();
+        String completion_date =  txt_completion_date2.getText();
+        String created_date = lbl_current_date.getText();
+        String department = txt_dept_name2.getText();
+        String remarks = txt_remarks2.getText();
+        String recieved_date = txt_recieved_date2.getText();
+        String starting_date = txt_starting_date2.getText();
+        String proj_status = (String) combo_proj_status2.getSelectedItem();
+        String developers = (String) combo_developers2.getSelectedItem();
+        String branch_name = txt_branch_name2.getText();
+        String task_details = "";
+        String dev_Id = txt_developer_id2.getText();
+
+        if( txt_completion_date2.getText().isEmpty()){
+
+            Report_Requests_Model request = new Report_Requests_Model(ProjId,ProjName,recieved_date,created_date,starting_date,proj_status,remarks,task_details,department,branch_name,developers,dev_Id);
+            Report_Requests_Controller controller= new Report_Requests_Controller();
+
+            try {
+
+                if(controller.saveReportRequestWithoutCompletion(request)){
+
+                    JOptionPane.showMessageDialog(this, "The record inserted");
+                    clearAll();
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        Report_Requests_Model request = new  Report_Requests_Model(
+            ProjId,ProjName,recieved_date,created_date,starting_date,
+            completion_date,proj_status,remarks,task_details,department,
+            branch_name,developers,dev_Id);
+
+        Report_Requests_Controller controller= new Report_Requests_Controller();
+
+        try {
+            if(controller.saveReportRequest(request)){
+
+                JOptionPane.showMessageDialog(this, "The record inserted");
+                clearAll();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_btn_submit1ActionPerformed
+
+    private void txt_projIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_projIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_projIDActionPerformed
+
+    private void txt_proj_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_proj_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_proj_nameActionPerformed
 
     private void btn_clear4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clear4ActionPerformed
         // TODO add your handling code here:
@@ -1777,8 +1825,6 @@ public class DashBoard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Formcard1;
-    private javax.swing.JPanel Tablecard2;
     private javax.swing.JButton btn_clear1;
     private javax.swing.JButton btn_clear2;
     private javax.swing.JButton btn_clear3;
@@ -1789,11 +1835,11 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JButton btn_update1;
     private javax.swing.JPanel card3;
     private javax.swing.JPanel card4;
-    private javax.swing.JPanel card5;
-    private javax.swing.JComboBox<String> combo_developers;
     private javax.swing.JComboBox<String> combo_developers1;
-    private javax.swing.JComboBox<String> combo_proj_status;
+    private javax.swing.JComboBox<String> combo_developers2;
     private javax.swing.JComboBox<String> combo_proj_status1;
+    private javax.swing.JComboBox<String> combo_proj_status2;
+    private javax.swing.Box.Filler filler1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JFrame jFrame1;
@@ -1806,10 +1852,10 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_main;
     private javax.swing.JPanel jPanel_main1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSplitPane jSplitPane_menu;
     private javax.swing.JSplitPane jSplitPane_menu1;
@@ -1823,26 +1869,27 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_current_date2;
     private javax.swing.JLabel lbl_logo;
     private javax.swing.JLabel lbl_logo1;
-    private javax.swing.JLabel lbl_proj_completion_date;
-    private javax.swing.JLabel lbl_proj_completion_date1;
-    private javax.swing.JLabel lbl_proj_completion_date2;
-    private javax.swing.JLabel lbl_proj_completion_date3;
+    private javax.swing.JLabel lbl_maintenace;
+    private javax.swing.JLabel lbl_proj_completion_date10;
+    private javax.swing.JLabel lbl_proj_completion_date11;
     private javax.swing.JLabel lbl_proj_completion_date4;
     private javax.swing.JLabel lbl_proj_completion_date5;
     private javax.swing.JLabel lbl_proj_completion_date6;
     private javax.swing.JLabel lbl_proj_completion_date7;
-    private javax.swing.JLabel lbl_proj_dept_name;
-    private javax.swing.JLabel lbl_proj_dept_name1;
-    private javax.swing.JLabel lbl_proj_dept_name2;
-    private javax.swing.JLabel lbl_proj_dept_name3;
+    private javax.swing.JLabel lbl_proj_completion_date8;
+    private javax.swing.JLabel lbl_proj_completion_date9;
+    private javax.swing.JLabel lbl_proj_dept_name10;
+    private javax.swing.JLabel lbl_proj_dept_name11;
     private javax.swing.JLabel lbl_proj_dept_name4;
     private javax.swing.JLabel lbl_proj_dept_name5;
     private javax.swing.JLabel lbl_proj_dept_name6;
     private javax.swing.JLabel lbl_proj_dept_name7;
-    private javax.swing.JLabel lbl_proj_id;
+    private javax.swing.JLabel lbl_proj_dept_name8;
+    private javax.swing.JLabel lbl_proj_dept_name9;
     private javax.swing.JLabel lbl_proj_id1;
     private javax.swing.JLabel lbl_proj_id2;
     private javax.swing.JLabel lbl_proj_id3;
+    private javax.swing.JLabel lbl_proj_id4;
     private javax.swing.JLabel lbl_proj_id5;
     private javax.swing.JLabel lbl_proj_name;
     private javax.swing.JLabel lbl_proj_name1;
@@ -1853,6 +1900,9 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JPanel menu_bar1;
     private javax.swing.JPanel menu_header;
     private javax.swing.JPanel menu_header1;
+    private javax.swing.JPanel pri_Card1;
+    private javax.swing.JPanel pri_Card2;
+    private javax.swing.JPanel pri_Card3;
     private javax.swing.JPanel pri_CardLayout;
     private javax.swing.JPanel pri_CardLayout1;
     private javax.swing.JPanel red_line;
@@ -1860,25 +1910,25 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JButton refresh;
     private javax.swing.JTable tbl_requests;
     private javax.swing.JTable tbl_requests1;
-    private javax.swing.JTextField txt_branch_name;
     private javax.swing.JTextField txt_branch_name1;
-    private javax.swing.JTextField txt_completion_date;
+    private javax.swing.JTextField txt_branch_name2;
     private javax.swing.JTextField txt_completion_date1;
-    private javax.swing.JTextField txt_dept_name;
+    private javax.swing.JTextField txt_completion_date2;
     private javax.swing.JTextField txt_dept_name1;
-    private javax.swing.JTextField txt_developer_id;
+    private javax.swing.JTextField txt_dept_name2;
     private javax.swing.JTextField txt_developer_id1;
+    private javax.swing.JTextField txt_developer_id2;
     private javax.swing.JTextField txt_projID;
     private javax.swing.JTextField txt_projID1;
     private javax.swing.JTextField txt_projID2;
     private javax.swing.JTextField txt_proj_name;
     private javax.swing.JTextField txt_proj_name1;
     private javax.swing.JTextField txt_proj_name2;
-    private javax.swing.JTextField txt_recieved_date;
     private javax.swing.JTextField txt_recieved_date1;
-    private javax.swing.JTextArea txt_remarks;
+    private javax.swing.JTextField txt_recieved_date2;
     private javax.swing.JTextArea txt_remarks1;
-    private javax.swing.JTextField txt_starting_date;
+    private javax.swing.JTextArea txt_remarks2;
     private javax.swing.JTextField txt_starting_date1;
+    private javax.swing.JTextField txt_starting_date2;
     // End of variables declaration//GEN-END:variables
 }
