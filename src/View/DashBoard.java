@@ -255,7 +255,6 @@ public class DashBoard extends javax.swing.JFrame {
         lbl_proj_completion_date3 = new javax.swing.JLabel();
         combo_proj_status = new javax.swing.JComboBox<>();
         lbl_current_date = new javax.swing.JLabel();
-        btn_update = new javax.swing.JButton();
         btn_submit1 = new javax.swing.JButton();
         btn_clear1 = new javax.swing.JButton();
         lbl_proj_dept_name1 = new javax.swing.JLabel();
@@ -737,11 +736,11 @@ public class DashBoard extends javax.swing.JFrame {
         red_line.setLayout(red_lineLayout);
         red_lineLayout.setHorizontalGroup(
             red_lineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1407, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         red_lineLayout.setVerticalGroup(
             red_lineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 14, Short.MAX_VALUE)
+            .addGap(0, 15, Short.MAX_VALUE)
         );
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
@@ -759,13 +758,11 @@ public class DashBoard extends javax.swing.JFrame {
         menu_headerLayout.setHorizontalGroup(
             menu_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu_headerLayout.createSequentialGroup()
-                .addComponent(red_line, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(menu_headerLayout.createSequentialGroup()
                 .addComponent(lbl_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 270, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(227, 227, 227))
+            .addComponent(red_line, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         menu_headerLayout.setVerticalGroup(
             menu_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -778,17 +775,22 @@ public class DashBoard extends javax.swing.JFrame {
                         .addGap(19, 19, 19)
                         .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(red_line, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(red_line, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel_main.add(menu_header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1410, 100));
+        jPanel_main.add(menu_header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 100));
+
+        jSplitPane_menu.setBorder(null);
+        jSplitPane_menu.setDividerSize(3);
 
         menu_bar.setBackground(new java.awt.Color(255, 153, 0));
+        menu_bar.setPreferredSize(new java.awt.Dimension(305, 184));
 
         lbl_create_request1.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_create_request1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        lbl_create_request1.setFont(new java.awt.Font("Dialog", 1, 34)); // NOI18N
         lbl_create_request1.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_create_request1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_create_request1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/request (2).png"))); // NOI18N
         lbl_create_request1.setText("Create Request");
         lbl_create_request1.setOpaque(true);
         lbl_create_request1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -807,8 +809,10 @@ public class DashBoard extends javax.swing.JFrame {
         });
 
         lbl_view_request.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_view_request.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        lbl_view_request.setFont(new java.awt.Font("Dialog", 1, 34)); // NOI18N
         lbl_view_request.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_view_request.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_view_request.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/interview (3).png"))); // NOI18N
         lbl_view_request.setText(" View Requests");
         lbl_view_request.setOpaque(true);
         lbl_view_request.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -832,11 +836,11 @@ public class DashBoard extends javax.swing.JFrame {
         menu_bar.setLayout(menu_barLayout);
         menu_barLayout.setHorizontalGroup(
             menu_barLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menu_barLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_barLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(menu_barLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbl_view_request, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_create_request1, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbl_create_request1, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+                    .addComponent(lbl_view_request, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         menu_barLayout.setVerticalGroup(
             menu_barLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -891,21 +895,19 @@ public class DashBoard extends javax.swing.JFrame {
         card2.setLayout(card2Layout);
         card2Layout.setHorizontalGroup(
             card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1115, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, card2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(147, 147, 147))
-            .addGroup(card2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 91, Short.MAX_VALUE))
+                .addContainerGap())
         );
         card2Layout.setVerticalGroup(
             card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(card2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pri_CardLayout.add(card2, "card2");
@@ -996,14 +998,6 @@ public class DashBoard extends javax.swing.JFrame {
         lbl_current_date.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lbl_current_date.setForeground(new java.awt.Color(0, 0, 0));
 
-        btn_update.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btn_update.setText("Update");
-        btn_update.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_updateActionPerformed(evt);
-            }
-        });
-
         btn_submit1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btn_submit1.setText("Submit");
         btn_submit1.addActionListener(new java.awt.event.ActionListener() {
@@ -1073,18 +1067,6 @@ public class DashBoard extends javax.swing.JFrame {
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(card1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btn_submit1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(txt_starting_date, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
-                                                .addComponent(txt_recieved_date))
-                                            .addGroup(card1Layout.createSequentialGroup()
-                                                .addComponent(btn_clear1)
-                                                .addGap(69, 69, 69)
-                                                .addComponent(btn_update))))
-                                    .addGroup(card1Layout.createSequentialGroup()
                                         .addGap(45, 45, 45)
                                         .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(card1Layout.createSequentialGroup()
@@ -1094,8 +1076,18 @@ public class DashBoard extends javax.swing.JFrame {
                                             .addGroup(card1Layout.createSequentialGroup()
                                                 .addComponent(lbl_proj_dept_name3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(txt_developer_id, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(0, 0, Short.MAX_VALUE))))
+                                                .addComponent(txt_developer_id, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(card1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(txt_starting_date, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                                                .addComponent(txt_recieved_date))
+                                            .addGroup(card1Layout.createSequentialGroup()
+                                                .addComponent(btn_submit1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(42, 42, 42)
+                                                .addComponent(btn_clear1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(0, 17, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, card1Layout.createSequentialGroup()
                                 .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1128,7 +1120,7 @@ public class DashBoard extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(combo_developers, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         card1Layout.setVerticalGroup(
@@ -1178,7 +1170,6 @@ public class DashBoard extends javax.swing.JFrame {
                             .addComponent(lbl_proj_dept_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(41, 41, 41)
                         .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_update)
                             .addComponent(btn_clear1)
                             .addComponent(btn_submit1)))
                     .addGroup(card1Layout.createSequentialGroup()
@@ -1186,22 +1177,22 @@ public class DashBoard extends javax.swing.JFrame {
                         .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_proj_id, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(249, Short.MAX_VALUE))
+                .addContainerGap(251, Short.MAX_VALUE))
         );
 
         pri_CardLayout.add(card1, "card1");
 
         jSplitPane_menu.setRightComponent(pri_CardLayout);
 
-        jPanel_main.add(jSplitPane_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1500, 810));
+        jPanel_main.add(jSplitPane_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1440, 810));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel_main, javax.swing.GroupLayout.PREFERRED_SIZE, 1407, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel_main, javax.swing.GroupLayout.PREFERRED_SIZE, 1435, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1341,7 +1332,7 @@ public class DashBoard extends javax.swing.JFrame {
             return true;
         }
         System.out.println("Error all the mandotory fields must be filled");
-        JOptionPane.showMessageDialog(this, "Error all the mandotory fields must be filled");
+        JOptionPane.showMessageDialog(this, "Error all the mandatory fields must be filled");
         System.out.println("Error all the mandotory fields must be filled");
         return false;
     }
@@ -1354,7 +1345,7 @@ public class DashBoard extends javax.swing.JFrame {
                ||txt_remarks.getText().isEmpty()||txt_dept_name.getText().isEmpty()
                ||txt_branch_name.getText().isEmpty()||txt_developer_id.getText().isEmpty())
             {
-                   JOptionPane.showMessageDialog(this, "Error all the mandotory fields must be filled"); 
+                   JOptionPane.showMessageDialog(this, "Error all the mandatory fields must be filled"); 
             }
             
             String ProjId = txt_projID.getText();
@@ -1559,38 +1550,6 @@ public class DashBoard extends javax.swing.JFrame {
         txt_starting_date.setText("");
     }//GEN-LAST:event_btn_clear1ActionPerformed
 
-    private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
-            String ProjId = txt_projID.getText();
-            String ProjName = txt_proj_name.getText();
-            String completion_date =  txt_completion_date.getText();
-            String created_date = lbl_current_date.getText();
-            String department = txt_dept_name.getText();
-            String remarks = txt_remarks.getText();
-            String recieved_date = txt_recieved_date.getText();
-            String starting_date = txt_starting_date.getText();
-            String proj_status = (String) combo_proj_status.getSelectedItem();
-            String developers = (String) combo_developers.getSelectedItem();
-            String branch_name = txt_branch_name.getText();
-            String task_details = "";
-            String dev_Id = txt_developer_id.getText();
-            
-        Report_Requests_Model Model = new Report_Requests_Model (ProjId,ProjName,recieved_date,created_date,starting_date,completion_date,proj_status,remarks,task_details,department,branch_name,developers,dev_Id);
-        Report_Requests_Controller controller= new Report_Requests_Controller();
-     
-            
-        try {
-            if(controller.updateReport_requests(Model)){
-                
-                JOptionPane.showMessageDialog(this, "The record updated");
-                clearAll();
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btn_updateActionPerformed
-
     private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
         try {
             clearTable();
@@ -1663,7 +1622,6 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JButton btn_clear2;
     private javax.swing.JButton btn_submit1;
     private javax.swing.JButton btn_submit2;
-    private javax.swing.JButton btn_update;
     private javax.swing.JButton btn_update1;
     private javax.swing.JPanel card1;
     private javax.swing.JPanel card2;
