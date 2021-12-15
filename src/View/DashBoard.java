@@ -58,7 +58,7 @@ public class DashBoard extends javax.swing.JFrame {
         }
         setResizable(false);
         load_date();
-        jTable1.getColumnModel().getColumn(1).setPreferredWidth(5);
+        tbl_requests.getColumnModel().getColumn(1).setPreferredWidth(5);
         lbl_create_request1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         lbl_view_request.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         lbl_maintenace.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -73,7 +73,7 @@ public class DashBoard extends javax.swing.JFrame {
            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
            LocalDateTime now = LocalDateTime.now();  
            String format = dtf.format(now);  
-           lbl_current_date.setText(format);
+           jLabel2.setText(format);
     }
     
     public void clearTable(){
@@ -242,13 +242,6 @@ public class DashBoard extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_requests = new javax.swing.JTable();
         refresh = new javax.swing.JButton();
-        pri_Card2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        lbl_proj_id1 = new javax.swing.JLabel();
-        lbl_proj_name = new javax.swing.JLabel();
-        lbl_current_date = new javax.swing.JLabel();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         pri_Card3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         lbl_proj_id4 = new javax.swing.JLabel();
@@ -277,6 +270,31 @@ public class DashBoard extends javax.swing.JFrame {
         combo_developers2 = new javax.swing.JComboBox<>();
         lbl_proj_dept_name11 = new javax.swing.JLabel();
         txt_developer_id2 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        mng_branch_card = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        lbl_proj_id9 = new javax.swing.JLabel();
+        lbl_proj_name6 = new javax.swing.JLabel();
+        lbl_current_date6 = new javax.swing.JLabel();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jTable5 = new javax.swing.JTable();
+        txtBranchName2 = new javax.swing.JTextField();
+        txtBranchCode2 = new javax.swing.JTextField();
+        btnDelete2 = new javax.swing.JButton();
+        btnAdd3 = new javax.swing.JButton();
+        btnUpdate2 = new javax.swing.JButton();
+        mng_branch_card1 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        lbl_proj_id10 = new javax.swing.JLabel();
+        lbl_proj_name7 = new javax.swing.JLabel();
+        lbl_current_date7 = new javax.swing.JLabel();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        tblRegion = new javax.swing.JTable();
+        txtBranchName3 = new javax.swing.JTextField();
+        txtBranchCode3 = new javax.swing.JTextField();
+        btnDelete3 = new javax.swing.JButton();
+        btnAdd4 = new javax.swing.JButton();
+        btnUpdate3 = new javax.swing.JButton();
 
         jTextField2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -1027,7 +1045,7 @@ public class DashBoard extends javax.swing.JFrame {
         pri_Card1.setLayout(pri_Card1Layout);
         pri_Card1Layout.setHorizontalGroup(
             pri_Card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1115, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pri_Card1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1039,79 +1057,10 @@ public class DashBoard extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pri_CardLayout.add(pri_Card1, "card2");
-
-        pri_Card2.setBackground(new java.awt.Color(255, 255, 255));
-        pri_Card2.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-
-        jLabel2.setBackground(new java.awt.Color(255, 153, 0));
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("                                        Manage Branch details");
-        jLabel2.setOpaque(true);
-
-        lbl_proj_id1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lbl_proj_id1.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_proj_id1.setText("Branch Name :");
-
-        lbl_proj_name.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lbl_proj_name.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_proj_name.setText("Branch Code :");
-
-        lbl_current_date.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        lbl_current_date.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_current_date.setText("         ");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Branch Name", "Branch ID"
-            }
-        ));
-        jScrollPane7.setViewportView(jTable1);
-
-        javax.swing.GroupLayout pri_Card2Layout = new javax.swing.GroupLayout(pri_Card2);
-        pri_Card2.setLayout(pri_Card2Layout);
-        pri_Card2Layout.setHorizontalGroup(
-            pri_Card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1115, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pri_Card2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_current_date)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pri_Card2Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(pri_Card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pri_Card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(lbl_proj_name, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbl_proj_id1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 1047, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pri_Card2Layout.setVerticalGroup(
-            pri_Card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pri_Card2Layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbl_current_date, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addComponent(lbl_proj_id1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_proj_name, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(168, 168, 168))
-        );
-
-        pri_CardLayout.add(pri_Card2, "card1");
 
         pri_Card3.setBackground(new java.awt.Color(255, 255, 255));
         pri_Card3.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
@@ -1250,6 +1199,8 @@ public class DashBoard extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("jLabel2");
+
         javax.swing.GroupLayout pri_Card3Layout = new javax.swing.GroupLayout(pri_Card3);
         pri_Card3.setLayout(pri_Card3Layout);
         pri_Card3Layout.setHorizontalGroup(
@@ -1321,8 +1272,12 @@ public class DashBoard extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(combo_developers2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pri_Card3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(107, 107, 107))
         );
         pri_Card3Layout.setVerticalGroup(
             pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1330,7 +1285,9 @@ public class DashBoard extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_current_date2)
-                .addGap(37, 37, 37)
+                .addGap(9, 9, 9)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_recieved_date2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_proj_completion_date9, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1378,10 +1335,208 @@ public class DashBoard extends javax.swing.JFrame {
                         .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_proj_id4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pri_CardLayout.add(pri_Card3, "card3");
+
+        mng_branch_card.setBackground(new java.awt.Color(255, 255, 255));
+        mng_branch_card.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+
+        jLabel13.setBackground(new java.awt.Color(255, 153, 0));
+        jLabel13.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setText("                                        Manage Branch Details");
+        jLabel13.setOpaque(true);
+
+        lbl_proj_id9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lbl_proj_id9.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_proj_id9.setText("Branch Name :");
+
+        lbl_proj_name6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lbl_proj_name6.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_proj_name6.setText("Branch Code :");
+
+        lbl_current_date6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lbl_current_date6.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_current_date6.setText("         ");
+
+        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Branch Name", "Branch  ID"
+            }
+        ));
+        jScrollPane11.setViewportView(jTable5);
+
+        btnDelete2.setText("Delete");
+
+        btnAdd3.setText("Add");
+
+        btnUpdate2.setText("Update");
+
+        javax.swing.GroupLayout mng_branch_cardLayout = new javax.swing.GroupLayout(mng_branch_card);
+        mng_branch_card.setLayout(mng_branch_cardLayout);
+        mng_branch_cardLayout.setHorizontalGroup(
+            mng_branch_cardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(mng_branch_cardLayout.createSequentialGroup()
+                .addGroup(mng_branch_cardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mng_branch_cardLayout.createSequentialGroup()
+                        .addGroup(mng_branch_cardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(mng_branch_cardLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lbl_current_date6))
+                            .addGroup(mng_branch_cardLayout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addGroup(mng_branch_cardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lbl_proj_name6, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbl_proj_id9, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(mng_branch_cardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtBranchCode2, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtBranchName2, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mng_branch_cardLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnAdd3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(btnUpdate2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(btnDelete2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
+        );
+        mng_branch_cardLayout.setVerticalGroup(
+            mng_branch_cardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mng_branch_cardLayout.createSequentialGroup()
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbl_current_date6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(mng_branch_cardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_proj_id9, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBranchName2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(mng_branch_cardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBranchCode2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_proj_name6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(mng_branch_cardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDelete2)
+                    .addComponent(btnAdd3)
+                    .addComponent(btnUpdate2))
+                .addGap(162, 162, 162))
+        );
+
+        pri_CardLayout.add(mng_branch_card, "card3");
+
+        mng_branch_card1.setBackground(new java.awt.Color(255, 255, 255));
+        mng_branch_card1.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+
+        jLabel14.setBackground(new java.awt.Color(255, 153, 0));
+        jLabel14.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setText("                                        Manage Branch Details");
+        jLabel14.setOpaque(true);
+
+        lbl_proj_id10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lbl_proj_id10.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_proj_id10.setText("Branch Name :");
+
+        lbl_proj_name7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lbl_proj_name7.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_proj_name7.setText("Branch Code :");
+
+        lbl_current_date7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lbl_current_date7.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_current_date7.setText("         ");
+
+        tblRegion.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Branch Name", "Branch  ID"
+            }
+        ));
+        jScrollPane12.setViewportView(tblRegion);
+
+        btnDelete3.setText("Delete");
+
+        btnAdd4.setText("Add");
+
+        btnUpdate3.setText("Update");
+
+        javax.swing.GroupLayout mng_branch_card1Layout = new javax.swing.GroupLayout(mng_branch_card1);
+        mng_branch_card1.setLayout(mng_branch_card1Layout);
+        mng_branch_card1Layout.setHorizontalGroup(
+            mng_branch_card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(mng_branch_card1Layout.createSequentialGroup()
+                .addGroup(mng_branch_card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mng_branch_card1Layout.createSequentialGroup()
+                        .addGroup(mng_branch_card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(mng_branch_card1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lbl_current_date7))
+                            .addGroup(mng_branch_card1Layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addGroup(mng_branch_card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lbl_proj_name7, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbl_proj_id10, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(mng_branch_card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtBranchCode3, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtBranchName3, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane12, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mng_branch_card1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnAdd4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(btnUpdate3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(btnDelete3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
+        );
+        mng_branch_card1Layout.setVerticalGroup(
+            mng_branch_card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mng_branch_card1Layout.createSequentialGroup()
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbl_current_date7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(mng_branch_card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_proj_id10, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBranchName3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(mng_branch_card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBranchCode3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_proj_name7, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(mng_branch_card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDelete3)
+                    .addComponent(btnAdd4)
+                    .addComponent(btnUpdate3))
+                .addGap(162, 162, 162))
+        );
+
+        pri_CardLayout.add(mng_branch_card1, "card4");
 
         jSplitPane_menu.setRightComponent(pri_CardLayout);
 
@@ -1730,6 +1885,8 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel7.setBackground(ClickedColor);
         jLabel9.setBackground(DefaultColor);
         jLabel6.setBackground(DefaultColor);
+        cardLayout.show(pri_CardLayout, "card2");
+        //MenuBar.setVisible(false);
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
@@ -1776,6 +1933,8 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel7.setBackground(DefaultColor);
         jLabel9.setBackground(DefaultColor);
         jLabel6.setBackground(ClickedColor);
+        cardLayout.show(pri_CardLayout, "card1");
+        //MenuBar.setVisible(false);
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
@@ -1830,6 +1989,12 @@ public class DashBoard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MenuBar;
+    private javax.swing.JButton btnAdd3;
+    private javax.swing.JButton btnAdd4;
+    private javax.swing.JButton btnDelete2;
+    private javax.swing.JButton btnDelete3;
+    private javax.swing.JButton btnUpdate2;
+    private javax.swing.JButton btnUpdate3;
     private javax.swing.JButton btn_clear2;
     private javax.swing.JButton btn_clear3;
     private javax.swing.JButton btn_submit2;
@@ -1846,6 +2011,8 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1857,21 +2024,23 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_main;
     private javax.swing.JPanel jPanel_main1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSplitPane jSplitPane_menu;
     private javax.swing.JSplitPane jSplitPane_menu1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable5;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lbl_create_request1;
     private javax.swing.JLabel lbl_create_request2;
-    private javax.swing.JLabel lbl_current_date;
     private javax.swing.JLabel lbl_current_date1;
     private javax.swing.JLabel lbl_current_date2;
+    private javax.swing.JLabel lbl_current_date6;
+    private javax.swing.JLabel lbl_current_date7;
     private javax.swing.JLabel lbl_logo;
     private javax.swing.JLabel lbl_logo1;
     private javax.swing.JLabel lbl_maintenace;
@@ -1891,30 +2060,38 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_proj_dept_name7;
     private javax.swing.JLabel lbl_proj_dept_name8;
     private javax.swing.JLabel lbl_proj_dept_name9;
-    private javax.swing.JLabel lbl_proj_id1;
+    private javax.swing.JLabel lbl_proj_id10;
     private javax.swing.JLabel lbl_proj_id2;
     private javax.swing.JLabel lbl_proj_id3;
     private javax.swing.JLabel lbl_proj_id4;
     private javax.swing.JLabel lbl_proj_id5;
-    private javax.swing.JLabel lbl_proj_name;
+    private javax.swing.JLabel lbl_proj_id9;
     private javax.swing.JLabel lbl_proj_name1;
     private javax.swing.JLabel lbl_proj_name2;
+    private javax.swing.JLabel lbl_proj_name6;
+    private javax.swing.JLabel lbl_proj_name7;
     private javax.swing.JLabel lbl_view_request;
     private javax.swing.JLabel lbl_view_request1;
     private javax.swing.JPanel menu_bar;
     private javax.swing.JPanel menu_bar1;
     private javax.swing.JPanel menu_header;
     private javax.swing.JPanel menu_header1;
+    private javax.swing.JPanel mng_branch_card;
+    private javax.swing.JPanel mng_branch_card1;
     private javax.swing.JPanel pri_Card1;
-    private javax.swing.JPanel pri_Card2;
     private javax.swing.JPanel pri_Card3;
     private javax.swing.JPanel pri_CardLayout;
     private javax.swing.JPanel pri_CardLayout1;
     private javax.swing.JPanel red_line;
     private javax.swing.JPanel red_line1;
     private javax.swing.JButton refresh;
+    private javax.swing.JTable tblRegion;
     private javax.swing.JTable tbl_requests;
     private javax.swing.JTable tbl_requests1;
+    private javax.swing.JTextField txtBranchCode2;
+    private javax.swing.JTextField txtBranchCode3;
+    private javax.swing.JTextField txtBranchName2;
+    private javax.swing.JTextField txtBranchName3;
     private javax.swing.JTextField txt_branch_name1;
     private javax.swing.JTextField txt_branch_name2;
     private javax.swing.JTextField txt_completion_date1;
