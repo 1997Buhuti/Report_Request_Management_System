@@ -58,7 +58,7 @@ public class DashBoard extends javax.swing.JFrame {
         }
         setResizable(false);
         load_date();
-        jTable1.getColumnModel().getColumn(1).setPreferredWidth(5);
+        //jTable1.getColumnModel().getColumn(1).setPreferredWidth(5);
         lbl_create_request1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         lbl_view_request.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         lbl_maintenace.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -73,7 +73,7 @@ public class DashBoard extends javax.swing.JFrame {
            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
            LocalDateTime now = LocalDateTime.now();  
            String format = dtf.format(now);  
-           lbl_current_date.setText(format);
+           //lbl_current_date.setText(format);
     }
     
     public void clearTable(){
@@ -242,13 +242,6 @@ public class DashBoard extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_requests = new javax.swing.JTable();
         refresh = new javax.swing.JButton();
-        pri_Card2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        lbl_proj_id1 = new javax.swing.JLabel();
-        lbl_proj_name = new javax.swing.JLabel();
-        lbl_current_date = new javax.swing.JLabel();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         pri_Card3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         lbl_proj_id4 = new javax.swing.JLabel();
@@ -277,6 +270,28 @@ public class DashBoard extends javax.swing.JFrame {
         combo_developers2 = new javax.swing.JComboBox<>();
         lbl_proj_dept_name11 = new javax.swing.JLabel();
         txt_developer_id2 = new javax.swing.JTextField();
+        mng_dept_Card = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblDept = new javax.swing.JTable();
+        lbl_proj_id6 = new javax.swing.JLabel();
+        lbl_proj_name3 = new javax.swing.JLabel();
+        txtDeptCode = new javax.swing.JTextField();
+        txtDeptName = new javax.swing.JTextField();
+        btnAdd = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        mng_region_Card = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtRegionName = new javax.swing.JTextField();
+        txtRegion = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         jTextField2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -923,7 +938,7 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel9.setText("                 Manage Branch Details");
+        jLabel9.setText("                 Manage Region Details");
         jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel9.setOpaque(true);
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1043,75 +1058,6 @@ public class DashBoard extends javax.swing.JFrame {
         );
 
         pri_CardLayout.add(pri_Card1, "card2");
-
-        pri_Card2.setBackground(new java.awt.Color(255, 255, 255));
-        pri_Card2.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-
-        jLabel2.setBackground(new java.awt.Color(255, 153, 0));
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("                                        Manage Branch details");
-        jLabel2.setOpaque(true);
-
-        lbl_proj_id1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lbl_proj_id1.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_proj_id1.setText("Branch Name :");
-
-        lbl_proj_name.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lbl_proj_name.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_proj_name.setText("Branch Code :");
-
-        lbl_current_date.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        lbl_current_date.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_current_date.setText("         ");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Branch Name", "Branch ID"
-            }
-        ));
-        jScrollPane7.setViewportView(jTable1);
-
-        javax.swing.GroupLayout pri_Card2Layout = new javax.swing.GroupLayout(pri_Card2);
-        pri_Card2.setLayout(pri_Card2Layout);
-        pri_Card2Layout.setHorizontalGroup(
-            pri_Card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1115, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pri_Card2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_current_date)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pri_Card2Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(pri_Card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pri_Card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(lbl_proj_name, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbl_proj_id1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 1047, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pri_Card2Layout.setVerticalGroup(
-            pri_Card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pri_Card2Layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbl_current_date, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addComponent(lbl_proj_id1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_proj_name, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(168, 168, 168))
-        );
-
-        pri_CardLayout.add(pri_Card2, "card1");
 
         pri_Card3.setBackground(new java.awt.Color(255, 255, 255));
         pri_Card3.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
@@ -1382,6 +1328,181 @@ public class DashBoard extends javax.swing.JFrame {
         );
 
         pri_CardLayout.add(pri_Card3, "card3");
+
+        jLabel10.setBackground(new java.awt.Color(255, 153, 0));
+        jLabel10.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setText("                                 Manage Department details");
+        jLabel10.setOpaque(true);
+
+        tblDept.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Department Name", "Department ID"
+            }
+        ));
+        jScrollPane2.setViewportView(tblDept);
+
+        lbl_proj_id6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lbl_proj_id6.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_proj_id6.setText("Department Name :");
+
+        lbl_proj_name3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lbl_proj_name3.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_proj_name3.setText("Department Code :");
+
+        btnAdd.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnAdd.setText("Add");
+
+        btnUpdate.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnUpdate.setText("Update");
+
+        btnDelete.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnDelete.setText("Delete");
+
+        javax.swing.GroupLayout mng_dept_CardLayout = new javax.swing.GroupLayout(mng_dept_Card);
+        mng_dept_Card.setLayout(mng_dept_CardLayout);
+        mng_dept_CardLayout.setHorizontalGroup(
+            mng_dept_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 1115, Short.MAX_VALUE)
+            .addComponent(jScrollPane2)
+            .addGroup(mng_dept_CardLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(mng_dept_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mng_dept_CardLayout.createSequentialGroup()
+                        .addGroup(mng_dept_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(mng_dept_CardLayout.createSequentialGroup()
+                                .addComponent(lbl_proj_id6, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtDeptName, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(mng_dept_CardLayout.createSequentialGroup()
+                                .addComponent(lbl_proj_name3, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtDeptCode, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mng_dept_CardLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAdd)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnUpdate)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDelete)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        mng_dept_CardLayout.setVerticalGroup(
+            mng_dept_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mng_dept_CardLayout.createSequentialGroup()
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addGroup(mng_dept_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_proj_id6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDeptName, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(mng_dept_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_proj_name3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDeptCode, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(mng_dept_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAdd)
+                    .addComponent(btnUpdate)
+                    .addComponent(btnDelete))
+                .addGap(135, 135, 135))
+        );
+
+        pri_CardLayout.add(mng_dept_Card, "card5");
+
+        jLabel11.setBackground(new java.awt.Color(255, 153, 0));
+        jLabel11.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setText("                                     Manage Region details");
+        jLabel11.setOpaque(true);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Region Name", "Region Code"
+            }
+        ));
+        jScrollPane8.setViewportView(jTable2);
+
+        jLabel12.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel12.setText("Region Name:");
+
+        jLabel13.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel13.setText("Region Code:");
+
+        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton1.setText("Update");
+
+        jButton2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton2.setText("Add");
+
+        jButton4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton4.setText("Delete");
+
+        javax.swing.GroupLayout mng_region_CardLayout = new javax.swing.GroupLayout(mng_region_Card);
+        mng_region_Card.setLayout(mng_region_CardLayout);
+        mng_region_CardLayout.setHorizontalGroup(
+            mng_region_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mng_region_CardLayout.createSequentialGroup()
+                .addGroup(mng_region_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 1109, Short.MAX_VALUE)
+                    .addComponent(jScrollPane8))
+                .addContainerGap())
+            .addGroup(mng_region_CardLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(mng_region_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel13))
+                .addGap(32, 32, 32)
+                .addGroup(mng_region_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtRegionName, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
+                    .addComponent(txtRegion))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mng_region_CardLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(38, 38, 38)
+                .addComponent(jButton1)
+                .addGap(44, 44, 44)
+                .addComponent(jButton4)
+                .addGap(183, 183, 183))
+        );
+        mng_region_CardLayout.setVerticalGroup(
+            mng_region_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mng_region_CardLayout.createSequentialGroup()
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(108, 108, 108)
+                .addGroup(mng_region_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtRegionName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(mng_region_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(txtRegion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addGroup(mng_region_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton4))
+                .addGap(47, 47, 47))
+        );
+
+        pri_CardLayout.add(mng_region_Card, "card6");
 
         jSplitPane_menu.setRightComponent(pri_CardLayout);
 
@@ -1730,6 +1851,7 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel7.setBackground(ClickedColor);
         jLabel9.setBackground(DefaultColor);
         jLabel6.setBackground(DefaultColor);
+        cardLayout.show(pri_CardLayout, "card1");
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
@@ -1755,6 +1877,7 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel7.setBackground(DefaultColor);
         jLabel9.setBackground(ClickedColor);
         jLabel6.setBackground(DefaultColor);
+        cardLayout.show(pri_CardLayout, "card5");
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
@@ -1769,6 +1892,7 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel7.setBackground(DefaultColor);
         jLabel9.setBackground(DefaultColor);
         jLabel6.setBackground(DefaultColor);
+        
     }//GEN-LAST:event_jLabel9MouseExited
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
@@ -1776,6 +1900,8 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel7.setBackground(DefaultColor);
         jLabel9.setBackground(DefaultColor);
         jLabel6.setBackground(ClickedColor);
+        cardLayout.show(pri_CardLayout, "card6");
+        
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
@@ -1830,6 +1956,9 @@ public class DashBoard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MenuBar;
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btn_clear2;
     private javax.swing.JButton btn_clear3;
     private javax.swing.JButton btn_submit2;
@@ -1842,11 +1971,17 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> combo_proj_status1;
     private javax.swing.JComboBox<String> combo_proj_status2;
     private javax.swing.Box.Filler filler1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1857,19 +1992,19 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_main;
     private javax.swing.JPanel jPanel_main1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSplitPane jSplitPane_menu;
     private javax.swing.JSplitPane jSplitPane_menu1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lbl_create_request1;
     private javax.swing.JLabel lbl_create_request2;
-    private javax.swing.JLabel lbl_current_date;
     private javax.swing.JLabel lbl_current_date1;
     private javax.swing.JLabel lbl_current_date2;
     private javax.swing.JLabel lbl_logo;
@@ -1891,30 +2026,36 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_proj_dept_name7;
     private javax.swing.JLabel lbl_proj_dept_name8;
     private javax.swing.JLabel lbl_proj_dept_name9;
-    private javax.swing.JLabel lbl_proj_id1;
     private javax.swing.JLabel lbl_proj_id2;
     private javax.swing.JLabel lbl_proj_id3;
     private javax.swing.JLabel lbl_proj_id4;
     private javax.swing.JLabel lbl_proj_id5;
-    private javax.swing.JLabel lbl_proj_name;
+    private javax.swing.JLabel lbl_proj_id6;
     private javax.swing.JLabel lbl_proj_name1;
     private javax.swing.JLabel lbl_proj_name2;
+    private javax.swing.JLabel lbl_proj_name3;
     private javax.swing.JLabel lbl_view_request;
     private javax.swing.JLabel lbl_view_request1;
     private javax.swing.JPanel menu_bar;
     private javax.swing.JPanel menu_bar1;
     private javax.swing.JPanel menu_header;
     private javax.swing.JPanel menu_header1;
+    private javax.swing.JPanel mng_dept_Card;
+    private javax.swing.JPanel mng_region_Card;
     private javax.swing.JPanel pri_Card1;
-    private javax.swing.JPanel pri_Card2;
     private javax.swing.JPanel pri_Card3;
     private javax.swing.JPanel pri_CardLayout;
     private javax.swing.JPanel pri_CardLayout1;
     private javax.swing.JPanel red_line;
     private javax.swing.JPanel red_line1;
     private javax.swing.JButton refresh;
+    private javax.swing.JTable tblDept;
     private javax.swing.JTable tbl_requests;
     private javax.swing.JTable tbl_requests1;
+    private javax.swing.JTextField txtDeptCode;
+    private javax.swing.JTextField txtDeptName;
+    private javax.swing.JTextField txtRegion;
+    private javax.swing.JTextField txtRegionName;
     private javax.swing.JTextField txt_branch_name1;
     private javax.swing.JTextField txt_branch_name2;
     private javax.swing.JTextField txt_completion_date1;
