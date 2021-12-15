@@ -163,6 +163,51 @@ public class DashBoard extends javax.swing.JFrame {
            }
     }
     
+     public void loadDepartmentTable() throws ClassNotFoundException, SQLException{
+        
+           Report_Requests_Controller controller= new Report_Requests_Controller();
+           DefaultTableModel dtm= (DefaultTableModel)tbl_requests.getModel();
+           ArrayList<Report_Requests_Model> report_requests = controller.getAllReportRequests();
+           
+           for(Report_Requests_Model i: report_requests){
+               
+                Object arr[]={i.getProject_id(),i.getProject_name(),i.getRecieved_date(),
+                i.getCreated_date(),i.getStart_date(), i.getCompletion_date(),i.getCurent_status(),
+                i.getRemarks(),i.getTask_details(),i.getDepartment_name(),i.getBranch_name(),i.getDeveloper_name(),i.getDeveloper_id()};
+                dtm.addRow(arr);
+           }
+    }
+     
+    public void loadBranchTable() throws ClassNotFoundException, SQLException{
+        
+           Report_Requests_Controller controller= new Report_Requests_Controller();
+           DefaultTableModel dtm= (DefaultTableModel)tbl_requests.getModel();
+           ArrayList<Report_Requests_Model> report_requests = controller.getAllReportRequests();
+           
+           for(Report_Requests_Model i: report_requests){
+               
+                Object arr[]={i.getProject_id(),i.getProject_name(),i.getRecieved_date(),
+                i.getCreated_date(),i.getStart_date(), i.getCompletion_date(),i.getCurent_status(),
+                i.getRemarks(),i.getTask_details(),i.getDepartment_name(),i.getBranch_name(),i.getDeveloper_name(),i.getDeveloper_id()};
+                dtm.addRow(arr);
+           }
+    }
+    
+    public void loadRegionTable() throws ClassNotFoundException, SQLException{
+        
+           Report_Requests_Controller controller= new Report_Requests_Controller();
+           DefaultTableModel dtm= (DefaultTableModel)tbl_requests.getModel();
+           ArrayList<Report_Requests_Model> report_requests = controller.getAllReportRequests();
+           
+           for(Report_Requests_Model i: report_requests){
+               
+                Object arr[]={i.getProject_id(),i.getProject_name(),i.getRecieved_date(),
+                i.getCreated_date(),i.getStart_date(), i.getCompletion_date(),i.getCurent_status(),
+                i.getRemarks(),i.getTask_details(),i.getDepartment_name(),i.getBranch_name(),i.getDeveloper_name(),i.getDeveloper_id()};
+                dtm.addRow(arr);
+           }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -292,6 +337,17 @@ public class DashBoard extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        mng_branches_Card = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel15 = new javax.swing.JLabel();
+        txtRegionName1 = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        txtRegion1 = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         jTextField2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -921,6 +977,7 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(204, 0, 0));
         jLabel7.setText("                 Manage Branch Details");
+        jLabel7.setToolTipText("");
         jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel7.setOpaque(true);
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1504,6 +1561,91 @@ public class DashBoard extends javax.swing.JFrame {
 
         pri_CardLayout.add(mng_region_Card, "card6");
 
+        jLabel14.setBackground(new java.awt.Color(255, 153, 0));
+        jLabel14.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setText("                                   Manage Branch details");
+        jLabel14.setOpaque(true);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Branch Code", "Branch Name"
+            }
+        ));
+        jScrollPane7.setViewportView(jTable1);
+
+        jLabel15.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel15.setText("Branch Name:");
+
+        jLabel16.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel16.setText("Branch Code:");
+
+        jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton3.setText("Add");
+
+        jButton5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton5.setText("Update");
+
+        jButton6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton6.setText("Delete");
+
+        javax.swing.GroupLayout mng_branches_CardLayout = new javax.swing.GroupLayout(mng_branches_Card);
+        mng_branches_Card.setLayout(mng_branches_CardLayout);
+        mng_branches_CardLayout.setHorizontalGroup(
+            mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 1115, Short.MAX_VALUE)
+            .addGroup(mng_branches_CardLayout.createSequentialGroup()
+                .addComponent(jScrollPane7)
+                .addContainerGap())
+            .addGroup(mng_branches_CardLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel16))
+                .addGap(32, 32, 32)
+                .addGroup(mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtRegionName1)
+                    .addComponent(txtRegion1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mng_branches_CardLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(38, 38, 38)
+                .addComponent(jButton5)
+                .addGap(44, 44, 44)
+                .addComponent(jButton6)
+                .addGap(197, 197, 197))
+        );
+        mng_branches_CardLayout.setVerticalGroup(
+            mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mng_branches_CardLayout.createSequentialGroup()
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62)
+                .addGroup(mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(txtRegionName1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(txtRegion1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addGroup(mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5)
+                    .addComponent(jButton3)
+                    .addComponent(jButton6))
+                .addGap(78, 78, 78))
+        );
+
+        pri_CardLayout.add(mng_branches_Card, "card7");
+
         jSplitPane_menu.setRightComponent(pri_CardLayout);
 
         jPanel_main.add(jSplitPane_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1440, 810));
@@ -1851,7 +1993,7 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel7.setBackground(ClickedColor);
         jLabel9.setBackground(DefaultColor);
         jLabel6.setBackground(DefaultColor);
-        cardLayout.show(pri_CardLayout, "card1");
+        cardLayout.show(pri_CardLayout, "card7");
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
@@ -1877,7 +2019,8 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel7.setBackground(DefaultColor);
         jLabel9.setBackground(ClickedColor);
         jLabel6.setBackground(DefaultColor);
-        cardLayout.show(pri_CardLayout, "card5");
+        cardLayout.show(pri_CardLayout, "card6");
+        
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
@@ -1900,7 +2043,8 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel7.setBackground(DefaultColor);
         jLabel9.setBackground(DefaultColor);
         jLabel6.setBackground(ClickedColor);
-        cardLayout.show(pri_CardLayout, "card6");
+        cardLayout.show(pri_CardLayout, "card5");
+        
         
     }//GEN-LAST:event_jLabel6MouseClicked
 
@@ -1973,7 +2117,10 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JFrame jFrame1;
@@ -1982,6 +2129,9 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1997,9 +2147,11 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSplitPane jSplitPane_menu;
     private javax.swing.JSplitPane jSplitPane_menu1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField2;
@@ -2040,6 +2192,7 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JPanel menu_bar1;
     private javax.swing.JPanel menu_header;
     private javax.swing.JPanel menu_header1;
+    private javax.swing.JPanel mng_branches_Card;
     private javax.swing.JPanel mng_dept_Card;
     private javax.swing.JPanel mng_region_Card;
     private javax.swing.JPanel pri_Card1;
@@ -2055,7 +2208,9 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JTextField txtDeptCode;
     private javax.swing.JTextField txtDeptName;
     private javax.swing.JTextField txtRegion;
+    private javax.swing.JTextField txtRegion1;
     private javax.swing.JTextField txtRegionName;
+    private javax.swing.JTextField txtRegionName1;
     private javax.swing.JTextField txt_branch_name1;
     private javax.swing.JTextField txt_branch_name2;
     private javax.swing.JTextField txt_completion_date1;
