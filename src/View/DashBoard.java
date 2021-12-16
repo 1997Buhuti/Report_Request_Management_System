@@ -5,8 +5,10 @@
  */
 package View;
 
+import Controller.BranchController;
 import Controller.Report_Requests_Controller;
 import DB.DBConnection;
+import Model.BranchModel;
 import Model.Report_Requests_Model;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -51,6 +53,7 @@ public class DashBoard extends javax.swing.JFrame {
         scaleImage();
         try {
             loadTable();
+            loadBranchTable();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -73,7 +76,7 @@ public class DashBoard extends javax.swing.JFrame {
            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
            LocalDateTime now = LocalDateTime.now();  
            String format = dtf.format(now);  
-           //lbl_current_date.setText(format);
+           lbl_current_date2.setText(format);
     }
     
     public void clearTable(){
@@ -163,10 +166,11 @@ public class DashBoard extends javax.swing.JFrame {
            }
     }
     
+
      public void loadDepartmentTable() throws ClassNotFoundException, SQLException{
         
            Report_Requests_Controller controller= new Report_Requests_Controller();
-           DefaultTableModel dtm= (DefaultTableModel)tbl_requests.getModel();
+           DefaultTableModel dtm= (DefaultTableModel)tblBranch.getModel();
            ArrayList<Report_Requests_Model> report_requests = controller.getAllReportRequests();
            
            for(Report_Requests_Model i: report_requests){
@@ -180,15 +184,13 @@ public class DashBoard extends javax.swing.JFrame {
      
     public void loadBranchTable() throws ClassNotFoundException, SQLException{
         
-           Report_Requests_Controller controller= new Report_Requests_Controller();
-           DefaultTableModel dtm= (DefaultTableModel)tbl_requests.getModel();
-           ArrayList<Report_Requests_Model> report_requests = controller.getAllReportRequests();
+           BranchController controller= new BranchController();
+           DefaultTableModel dtm= (DefaultTableModel) tblBranch.getModel();
+           ArrayList<BranchModel> brancheDetails =controller.getAllBranchDetails() ;
            
-           for(Report_Requests_Model i: report_requests){
+           for(BranchModel b: brancheDetails){
                
-                Object arr[]={i.getProject_id(),i.getProject_name(),i.getRecieved_date(),
-                i.getCreated_date(),i.getStart_date(), i.getCompletion_date(),i.getCurent_status(),
-                i.getRemarks(),i.getTask_details(),i.getDepartment_name(),i.getBranch_name(),i.getDeveloper_name(),i.getDeveloper_id()};
+                Object arr[]={b.getBranchCode(),b.getBranchName()};
                 dtm.addRow(arr);
            }
     }
@@ -196,7 +198,7 @@ public class DashBoard extends javax.swing.JFrame {
     public void loadRegionTable() throws ClassNotFoundException, SQLException{
         
            Report_Requests_Controller controller= new Report_Requests_Controller();
-           DefaultTableModel dtm= (DefaultTableModel)tbl_requests.getModel();
+           DefaultTableModel dtm= (DefaultTableModel)tblBranch.getModel();
            ArrayList<Report_Requests_Model> report_requests = controller.getAllReportRequests();
            
            for(Report_Requests_Model i: report_requests){
@@ -340,9 +342,9 @@ public class DashBoard extends javax.swing.JFrame {
         mng_branches_Card = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblBranch = new javax.swing.JTable();
         jLabel15 = new javax.swing.JLabel();
-        txtRegionName1 = new javax.swing.JTextField();
+        txtBranchName = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         txtRegion1 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
@@ -825,7 +827,7 @@ public class DashBoard extends javax.swing.JFrame {
         );
         red_lineLayout.setVerticalGroup(
             red_lineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 15, Short.MAX_VALUE)
+            .addGap(0, 3, Short.MAX_VALUE)
         );
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
@@ -844,22 +846,19 @@ public class DashBoard extends javax.swing.JFrame {
             menu_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu_headerLayout.createSequentialGroup()
                 .addComponent(lbl_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 325, Short.MAX_VALUE)
+                .addGap(219, 219, 219)
                 .addComponent(jLabel1)
-                .addGap(172, 172, 172))
+                .addContainerGap(278, Short.MAX_VALUE))
             .addComponent(red_line, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         menu_headerLayout.setVerticalGroup(
             menu_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu_headerLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(menu_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menu_headerLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lbl_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(menu_headerLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lbl_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
                 .addComponent(red_line, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1564,21 +1563,18 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel14.setBackground(new java.awt.Color(255, 153, 0));
         jLabel14.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel14.setText("                                   Manage Branch details");
+        jLabel14.setText("                                     Manage Branch details");
         jLabel14.setOpaque(true);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblBranch.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Branch Code", "Branch Name"
             }
         ));
-        jScrollPane7.setViewportView(jTable1);
+        jScrollPane7.setViewportView(tblBranch);
 
         jLabel15.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel15.setText("Branch Name:");
@@ -1588,6 +1584,11 @@ public class DashBoard extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton3.setText("Add");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton5.setText("Update");
@@ -1610,7 +1611,7 @@ public class DashBoard extends javax.swing.JFrame {
                     .addComponent(jLabel16))
                 .addGap(32, 32, 32)
                 .addGroup(mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtRegionName1)
+                    .addComponent(txtBranchName)
                     .addComponent(txtRegion1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mng_branches_CardLayout.createSequentialGroup()
@@ -1631,7 +1632,7 @@ public class DashBoard extends javax.swing.JFrame {
                 .addGap(62, 62, 62)
                 .addGroup(mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(txtRegionName1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBranchName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
                 .addGroup(mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
@@ -1901,10 +1902,84 @@ public class DashBoard extends javax.swing.JFrame {
 
     private void btn_clear3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clear3ActionPerformed
         // TODO add your handling code here:
+        txt_projID2.setText("");
+        txt_proj_name2.setText("");
+        txt_completion_date2.setText("");
+        lbl_current_date2.setText("");
+        txt_dept_name2.setText("");
+        txt_remarks2.setText("");
+        txt_recieved_date2.setText("");
+        txt_starting_date2.setText("");
     }//GEN-LAST:event_btn_clear3ActionPerformed
-
+    /*
+        Creating New Report request
+    */
     private void btn_submit3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submit3ActionPerformed
         // TODO add your handling code here:
+        
+         if(txt_projID2.getText().isEmpty()||txt_proj_name2.getText().isEmpty()||
+               lbl_current_date2.getText().isEmpty()||txt_dept_name2.getText().isEmpty()||
+               txt_starting_date2.getText().isEmpty()||
+               combo_proj_status2.getSelectedItem().toString().isEmpty()
+               ||txt_remarks2.getText().isEmpty()||txt_dept_name2.getText().isEmpty()
+               ||txt_branch_name2.getText().isEmpty()||txt_developer_id2.getText().isEmpty())
+            {
+                   JOptionPane.showMessageDialog(this, "Error all the mandotory fields must be filled"); 
+            }
+            
+            String ProjId = txt_projID2.getText();
+            String ProjName = txt_proj_name2.getText();
+            String completion_date =  txt_completion_date2.getText();
+            String created_date = lbl_current_date2.getText();
+            String department = txt_dept_name2.getText();
+            String remarks = txt_remarks2.getText();
+            String recieved_date = txt_recieved_date2.getText();
+            String starting_date = txt_starting_date2.getText();
+            String proj_status = (String) combo_proj_status2.getSelectedItem();
+            String developers = (String) combo_developers2.getSelectedItem();
+            String branch_name = txt_branch_name2.getText();
+            String task_details = "";
+            String dev_Id = txt_developer_id2.getText();
+
+            if( txt_completion_date2.getText().isEmpty()){
+                
+                Report_Requests_Model request = new Report_Requests_Model(ProjId,ProjName,recieved_date,created_date,starting_date,proj_status,remarks,task_details,department,branch_name,developers,dev_Id);
+                Report_Requests_Controller controller= new Report_Requests_Controller();
+
+                try {
+
+                    if(controller.saveReportRequestWithoutCompletion(request)){
+
+                        JOptionPane.showMessageDialog(this, "The record inserted");
+                        clearAll();
+                    }
+                    
+                    } catch (SQLException ex) {
+                        Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            
+                Report_Requests_Model request = new  Report_Requests_Model(
+                ProjId,ProjName,recieved_date,created_date,starting_date,
+                completion_date,proj_status,remarks,task_details,department,
+                branch_name,developers,dev_Id);
+                
+                Report_Requests_Controller controller= new Report_Requests_Controller();
+
+                try {
+                    if(controller.saveReportRequest(request)){
+
+                        JOptionPane.showMessageDialog(this, "The record inserted");
+                        clearAll();
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
     }//GEN-LAST:event_btn_submit3ActionPerformed
 
     private void txt_projID2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_projID2ActionPerformed
@@ -1929,10 +2004,40 @@ public class DashBoard extends javax.swing.JFrame {
 
     private void combo_developers2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_developers2ActionPerformed
         // TODO add your handling code here:
+        /*
+        try {
+            
+            String userName = combo_developers2.getSelectedItem().toString();
+            PreparedStatement pst = con.prepareStatement("select * from projects_tbl where developer_name= ?");
+            pst.setObject(1,userName);
+            ResultSet rst= pst.executeQuery();
+            if(rst.next()){
+                
+                txt_developer_id2.setText(String.valueOf(rst.getObject("developer_id")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+        
     }//GEN-LAST:event_combo_developers2ActionPerformed
 
     private void combo_developers2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combo_developers2ItemStateChanged
         // TODO add your handling code here:
+        try {
+            
+            String userName = combo_developers2.getSelectedItem().toString();
+            System.out.println(userName);
+            PreparedStatement pst = con.prepareStatement("select * from projects_tbl where developer_name= ?");
+            pst.setObject(1,userName);
+            ResultSet rst= pst.executeQuery();
+            if(rst.next()){
+                System.out.println(rst.getObject("developer_id"));
+                txt_developer_id2.setText(String.valueOf(rst.getObject("developer_id")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_combo_developers2ItemStateChanged
 
     private void txt_completion_date2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_completion_date2ActionPerformed
@@ -2062,6 +2167,12 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel6.setBackground(DefaultColor);
     }//GEN-LAST:event_jLabel6MouseExited
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2151,7 +2262,6 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSplitPane jSplitPane_menu;
     private javax.swing.JSplitPane jSplitPane_menu1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField2;
@@ -2202,15 +2312,16 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JPanel red_line;
     private javax.swing.JPanel red_line1;
     private javax.swing.JButton refresh;
+    private javax.swing.JTable tblBranch;
     private javax.swing.JTable tblDept;
     private javax.swing.JTable tbl_requests;
     private javax.swing.JTable tbl_requests1;
+    private javax.swing.JTextField txtBranchName;
     private javax.swing.JTextField txtDeptCode;
     private javax.swing.JTextField txtDeptName;
     private javax.swing.JTextField txtRegion;
     private javax.swing.JTextField txtRegion1;
     private javax.swing.JTextField txtRegionName;
-    private javax.swing.JTextField txtRegionName1;
     private javax.swing.JTextField txt_branch_name1;
     private javax.swing.JTextField txt_branch_name2;
     private javax.swing.JTextField txt_completion_date1;

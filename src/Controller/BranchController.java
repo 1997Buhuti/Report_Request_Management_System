@@ -23,6 +23,25 @@ import java.util.ArrayList;
 public class BranchController {
     Connection con = DBConnection.getConnection();
     
+        /*
+            Code for getting all branch details
+        */
+        public ArrayList<BranchModel> getAllBranchDetails() 
+            throws ClassNotFoundException, SQLException{
+            
+            String sql="SELECT * FROM branch_table;";
+            PreparedStatement pst= con.prepareStatement(sql);
+            ResultSet rst= pst.executeQuery(sql);
+            
+            ArrayList<BranchModel> BranchDetails= new ArrayList<>();
+                while(rst.next()){
+                    BranchDetails.add(new BranchModel(rst.getString(1),
+                    rst.getString(2)));
+                }
+            return BranchDetails;
+        
+        }
+    
     public boolean addBranch(BranchModel branch) throws ClassNotFoundException, SQLException{
         
                 PreparedStatement pst= con.prepareStatement("insert into branch_table (branch_Code,branch_Name) values(? ,?);");

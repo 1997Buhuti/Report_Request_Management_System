@@ -6,6 +6,7 @@
 package Controller;
 
 import DB.DBConnection;
+import Model.BranchModel;
 import Model.Report_Requests_Model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,6 +20,10 @@ import java.util.ArrayList;
  */
 public class Report_Requests_Controller {
         Connection con = DBConnection.getConnection();
+        
+        /*
+            Code for getting all the report requests
+        */
         public ArrayList<Report_Requests_Model> getAllReportRequests() 
             throws ClassNotFoundException, SQLException{
             
@@ -36,7 +41,7 @@ public class Report_Requests_Controller {
             return Report_Requests;
         
         }
-        
+
             public boolean saveReportRequest(Report_Requests_Model request) throws ClassNotFoundException, SQLException{
         
                 String sql="insert into projects_tbl(project_id, project_name, department_name, branch_name, Remarks, task_details, recieved_date, created_date, start_date, developer_name, developer_id, request_date, completion_date, CurrentStatus) values(?, ? , ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?)";
