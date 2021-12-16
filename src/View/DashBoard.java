@@ -31,6 +31,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import static jdk.nashorn.internal.runtime.JSType.isNumber;
+//import static jdk.nashorn.internal.runtime.JSType.isNumber;
 
 /**
  *
@@ -79,6 +81,10 @@ public class DashBoard extends javax.swing.JFrame {
            lbl_current_date2.setText(format);
     }
     
+    /*
+        Clearing all the details in request table.
+    */
+
     public void clearTable(){
         
         tbl_requests.setModel(new DefaultTableModel(null,new String[]
@@ -86,6 +92,27 @@ public class DashBoard extends javax.swing.JFrame {
          "Start Date","Completion Date", "Current Status", "Remarks","Task Details",
          "Department Name" ,"Branch Name" ,"Developer Name","Developer_Id"}));
     }
+    
+    
+    public void clearBranchTable(){
+        
+        tblBranch.setModel(new DefaultTableModel(null,new String[]
+        {"branch_Code","branch_Name"}));
+    }
+    
+    public void clearDepartmentTable(){
+        
+        tbl_requests.setModel(new DefaultTableModel(null,new String[]
+        {"Department Id","Department Name"}));
+    }
+    
+    public void clearRegionTable(){
+        
+        tbl_requests.setModel(new DefaultTableModel(null,new String[]
+        {"Region IDe","Region Name"}));
+    }
+    
+    
     
     /*    This is used to clear all the data in form*/
     
@@ -346,10 +373,10 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         txtBranchName = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        txtRegion1 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        txtBranchCode = new javax.swing.JTextField();
+        btnAddBranch = new javax.swing.JButton();
+        btnUpdateBranch = new javax.swing.JButton();
+        btnAddDelete = new javax.swing.JButton();
 
         jTextField2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -846,9 +873,9 @@ public class DashBoard extends javax.swing.JFrame {
             menu_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu_headerLayout.createSequentialGroup()
                 .addComponent(lbl_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(219, 219, 219)
+                .addGap(238, 238, 238)
                 .addComponent(jLabel1)
-                .addContainerGap(278, Short.MAX_VALUE))
+                .addContainerGap(259, Short.MAX_VALUE))
             .addComponent(red_line, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         menu_headerLayout.setVerticalGroup(
@@ -857,7 +884,7 @@ public class DashBoard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(menu_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addComponent(red_line, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1121,7 +1148,7 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel5.setBackground(new java.awt.Color(255, 153, 0));
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("                                         Report Request Form");
+        jLabel5.setText("                                    Report Request Form");
         jLabel5.setOpaque(true);
 
         lbl_proj_id4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -1579,22 +1606,44 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel15.setText("Branch Name:");
 
-        jLabel16.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel16.setText("Branch Code:");
-
-        jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton3.setText("Add");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+        txtBranchName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBranchNameKeyTyped(evt);
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton5.setText("Update");
+        jLabel16.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel16.setText("Branch Code:");
 
-        jButton6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton6.setText("Delete");
+        txtBranchCode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBranchCodeKeyTyped(evt);
+            }
+        });
+
+        btnAddBranch.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnAddBranch.setText("Add");
+        btnAddBranch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddBranchActionPerformed(evt);
+            }
+        });
+
+        btnUpdateBranch.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnUpdateBranch.setText("Update");
+        btnUpdateBranch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateBranchActionPerformed(evt);
+            }
+        });
+
+        btnAddDelete.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnAddDelete.setText("Delete");
+        btnAddDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout mng_branches_CardLayout = new javax.swing.GroupLayout(mng_branches_Card);
         mng_branches_Card.setLayout(mng_branches_CardLayout);
@@ -1612,15 +1661,15 @@ public class DashBoard extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtBranchName)
-                    .addComponent(txtRegion1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBranchCode, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mng_branches_CardLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(btnAddBranch)
                 .addGap(38, 38, 38)
-                .addComponent(jButton5)
+                .addComponent(btnUpdateBranch)
                 .addGap(44, 44, 44)
-                .addComponent(jButton6)
+                .addComponent(btnAddDelete)
                 .addGap(197, 197, 197))
         );
         mng_branches_CardLayout.setVerticalGroup(
@@ -1636,12 +1685,12 @@ public class DashBoard extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(txtRegion1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBranchCode, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton3)
-                    .addComponent(jButton6))
+                    .addComponent(btnUpdateBranch)
+                    .addComponent(btnAddBranch)
+                    .addComponent(btnAddDelete))
                 .addGap(78, 78, 78))
         );
 
@@ -2166,12 +2215,119 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel9.setBackground(DefaultColor);
         jLabel6.setBackground(DefaultColor);
     }//GEN-LAST:event_jLabel6MouseExited
+    /*
+        Adding A new Branch
+    */
+    private void btnAddBranchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddBranchActionPerformed
+        // TODO add your handling code here:
+        if(txtBranchName.getText().isEmpty()||txtBranchCode.getText().isEmpty())
+            {
+                   JOptionPane.showMessageDialog(this, "Error all the mandotory fields must be filled"); 
+            }
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+            String BranchId = txtBranchCode.getText();
+            String BranchName = txtBranchName.getText();
+            System.out.println(isNumber(BranchId));
+
+            if (!isNumber(Integer.parseInt(BranchId))){
+                JOptionPane.showMessageDialog(this, "Error BranchCode should be a number");
+            } 
+            else{
+                
+                BranchModel newBranch = new BranchModel(BranchId,BranchName);
+                BranchController controller= new BranchController();
+
+                try {
+                    if(controller.addBranch(newBranch)){
+
+                        JOptionPane.showMessageDialog(this, "The record inserted");
+                        clearAll();
+                        clearBranchTable();
+                        loadBranchTable();
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            //JOptionPane.showMessageDialog(this, "The branch ID should be a number");*/
+
+    }//GEN-LAST:event_btnAddBranchActionPerformed
+
+    private void btnAddDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDeleteActionPerformed
+        try {
+            // TODO add your handling code here:
+            String BranchId = txtBranchCode.getText();
+            String BranchName = txtBranchName.getText();
+            BranchController controller= new BranchController();
+            
+            if(txtBranchName.getText().isEmpty() && txtBranchCode.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "Branch ID or Branch Name should be enterd");
+            }
+            else if(txtBranchName.getText().isEmpty() && !txtBranchCode.getText().isEmpty())
+            { 
+                 if(controller.deleteBranch(BranchId)){
+                    JOptionPane.showMessageDialog(this, "Branch Deleted Successfully");
+                    clearBranchTable();
+                    loadBranchTable();
+                 }
+                 
+            }
+            else{
+                if (controller.deleteBranch(BranchName)){
+                    JOptionPane.showMessageDialog(this, "Branch Deleted Successfully");
+                    clearBranchTable();
+                    loadBranchTable();
+                 }
+            }
+            
+            
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnAddDeleteActionPerformed
+
+    private void btnUpdateBranchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateBranchActionPerformed
+        // TODO add your handling code here:
+        
+        String BranchId = txtBranchCode.getText();
+        String BranchName = txtBranchName.getText();
+        BranchModel Model = new BranchModel(BranchId,BranchName); 
+        BranchController controller= new BranchController();
+
+        try {
+            if(controller.updateaddBranch(Model)){
+                
+                JOptionPane.showMessageDialog(this, "The record updated");
+                clearBranchTable();
+                loadBranchTable();
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnUpdateBranchActionPerformed
+
+    private void txtBranchNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBranchNameKeyTyped
         // TODO add your handling code here:
         
         
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_txtBranchNameKeyTyped
+
+    private void txtBranchCodeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBranchCodeKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if(!Character.isDigit(c)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtBranchCodeKeyTyped
 
     /**
      * @param args the command line arguments
@@ -2212,8 +2368,11 @@ public class DashBoard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MenuBar;
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnAddBranch;
+    private javax.swing.JButton btnAddDelete;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton btnUpdateBranch;
     private javax.swing.JButton btn_clear2;
     private javax.swing.JButton btn_clear3;
     private javax.swing.JButton btn_submit2;
@@ -2228,10 +2387,7 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JFrame jFrame1;
@@ -2316,11 +2472,11 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JTable tblDept;
     private javax.swing.JTable tbl_requests;
     private javax.swing.JTable tbl_requests1;
+    private javax.swing.JTextField txtBranchCode;
     private javax.swing.JTextField txtBranchName;
     private javax.swing.JTextField txtDeptCode;
     private javax.swing.JTextField txtDeptName;
     private javax.swing.JTextField txtRegion;
-    private javax.swing.JTextField txtRegion1;
     private javax.swing.JTextField txtRegionName;
     private javax.swing.JTextField txt_branch_name1;
     private javax.swing.JTextField txt_branch_name2;

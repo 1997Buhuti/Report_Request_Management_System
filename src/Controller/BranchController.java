@@ -15,6 +15,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import static jdk.nashorn.internal.runtime.JSType.isNumber;
+import utility.TypeCheck;
 
 /**
  *
@@ -52,18 +54,24 @@ public class BranchController {
 
     public boolean updateaddBranch (BranchModel branch) throws SQLException, ClassNotFoundException{
         
-                PreparedStatement pst = con.prepareStatement("update branch_table set Department Id=?, branch_Name=? where  branch_Code=? ");
-                pst.setString(1, branch.getBranchCode());
-                pst.setString(2, branch.getBranchName());
-                pst.setString(3, branch.getBranchCode());
+                PreparedStatement pst = con.prepareStatement("update branch_table set branch_Name=? where  branch_Code=? ");
+                pst.setString(1, branch.getBranchName());
+                pst.setString(2, branch.getBranchCode());
                 return pst.executeUpdate()>0;
     }
     
-    public boolean deleteBranch (BranchModel branch) throws SQLException, ClassNotFoundException{
-        
-                PreparedStatement pst = con.prepareStatement("delete from branch_table where  branch_Code=? ");
-                pst.setString(1, branch.getBranchCode());
-                return pst.executeUpdate()>0;
+    public boolean deleteBranch (String input) throws SQLException, ClassNotFoundException{
+        if(TypeCheck.isNumeric(input)){
+            PreparedStatement pst = con.prepareStatement("delete from branch_table where  branch_Code=? ");
+            pst.setString(1, input);
+            return pst.executeUpdate()>0;
+        }
+        else{
+            PreparedStatement pst = con.prepareStatement("delete from branch_table where  branch_Name=? ");
+            pst.setString(1, input);
+            return pst.executeUpdate()>0;
+        }
+                
     }
     
     public ArrayList <String> loadBranchNames() throws ClassNotFoundException, SQLException{
