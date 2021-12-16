@@ -16,6 +16,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import utility.TypeCheck;
 
 /**
  *
@@ -24,27 +25,52 @@ import java.util.ArrayList;
 public class RegionController {
     Connection con = DBConnection.getConnection();
     
-    public boolean addRegion(RegionModel region) throws ClassNotFoundException, SQLException{
+     public ArrayList<RegionModel> getAllRegionDetails() 
+            throws ClassNotFoundException, SQLException{
+            
+            String sql="SELECT * FROM region_table;";
+            PreparedStatement pst= con.prepareStatement(sql);
+            ResultSet rst= pst.executeQuery(sql);
+            
+            ArrayList<RegionModel> RegionDetails= new ArrayList<>();
+                while(rst.next()){
+                    RegionDetails.add(new RegionModel(rst.getString(1),
+                    rst.getString(2)));
+                }
+            return RegionDetails;
         
-                PreparedStatement pst= con.prepareStatement("insert into region_table (region_Code,region_Name) values(? ,?);");
-                pst.setString(1, region.getRegionCode());
-                pst.setString(2, region.getRegionName());
-                return pst.executeUpdate()>0;
+    }
+    
+     /*
+        This Code is to add a new region
+     */
+    public boolean addRegion(RegionModel region) throws ClassNotFoundException, SQLException{
+        PreparedStatement pst = con.prepareStatement("insert into region_table (Region_Id,Region_Name) values(? ,?);");
+        pst.setString(1, region.getRegionCode());
+        pst.setString(2, region.getRegionName());
+        return pst.executeUpdate()>0;
     }
 
     public boolean updateRegion (RegionModel region) throws SQLException, ClassNotFoundException{
-        
-                PreparedStatement pst = con.prepareStatement("update region_table set Region ID=?, Region Name=? where  Region Name=? ");
-                pst.setString(1, region.getRegionCode());
-                pst.setString(2, region.getRegionName());
-                return pst.executeUpdate()>0;
+        System.out.println("inside controller");
+        PreparedStatement pst = con.prepareStatement("update region_table set Region_Name=? where  Region_ID=? ");
+        pst.setString(1, region.getRegionCode());
+        pst.setString(2, region.getRegionName());
+        return pst.executeUpdate()>0;
     }
     
-    public boolean deleteRegion (RegionModel region) throws SQLException, ClassNotFoundException{
+    public boolean deleteRegion (String input) throws SQLException, ClassNotFoundException{
         
-                PreparedStatement pst = con.prepareStatement("delete from region_table where  Region ID=? ");
-                pst.setString(1, region.getRegionCode());
-                return pst.executeUpdate()>0;
+        if(TypeCheck.isNumeric(input)){
+            PreparedStatement pst = con.prepareStatement("delete from region_table where  Region_ID=?");
+            pst.setString(1, input);
+            return pst.executeUpdate()>0;
+        }
+        else{
+            PreparedStatement pst = con.prepareStatement("delete from region_table where  Region_Name=?");
+            pst.setString(1, input);
+            return pst.executeUpdate()>0;
+        }
     }
     
     public ArrayList <String> loadRegionNames() throws ClassNotFoundException, SQLException{

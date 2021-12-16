@@ -6,9 +6,13 @@
 package View;
 
 import Controller.BranchController;
+import Controller.DeaprtmentController;
+import Controller.RegionController;
 import Controller.Report_Requests_Controller;
 import DB.DBConnection;
 import Model.BranchModel;
+import Model.DepartmentModel;
+import Model.RegionModel;
 import Model.Report_Requests_Model;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -56,6 +60,8 @@ public class DashBoard extends javax.swing.JFrame {
         try {
             loadTable();
             loadBranchTable();
+            loadRegionTable();
+            loadDepartmentTable();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -102,13 +108,13 @@ public class DashBoard extends javax.swing.JFrame {
     
     public void clearDepartmentTable(){
         
-        tbl_requests.setModel(new DefaultTableModel(null,new String[]
+        tblDept.setModel(new DefaultTableModel(null,new String[]
         {"Department Id","Department Name"}));
     }
     
     public void clearRegionTable(){
         
-        tbl_requests.setModel(new DefaultTableModel(null,new String[]
+        tblRegion.setModel(new DefaultTableModel(null,new String[]
         {"Region IDe","Region Name"}));
     }
     
@@ -196,15 +202,13 @@ public class DashBoard extends javax.swing.JFrame {
 
      public void loadDepartmentTable() throws ClassNotFoundException, SQLException{
         
-           Report_Requests_Controller controller= new Report_Requests_Controller();
-           DefaultTableModel dtm= (DefaultTableModel)tblBranch.getModel();
-           ArrayList<Report_Requests_Model> report_requests = controller.getAllReportRequests();
+           DeaprtmentController controller= new  DeaprtmentController();
+           DefaultTableModel dtm= (DefaultTableModel)tblDept.getModel();
+           ArrayList<DepartmentModel> DepartmentDetails = controller.getAllDepartmentDetails();
            
-           for(Report_Requests_Model i: report_requests){
+           for(DepartmentModel i: DepartmentDetails){
                
-                Object arr[]={i.getProject_id(),i.getProject_name(),i.getRecieved_date(),
-                i.getCreated_date(),i.getStart_date(), i.getCompletion_date(),i.getCurent_status(),
-                i.getRemarks(),i.getTask_details(),i.getDepartment_name(),i.getBranch_name(),i.getDeveloper_name(),i.getDeveloper_id()};
+                Object arr[]={i.getDeparmentCode(),i.getDeparmentName()};
                 dtm.addRow(arr);
            }
     }
@@ -224,15 +228,13 @@ public class DashBoard extends javax.swing.JFrame {
     
     public void loadRegionTable() throws ClassNotFoundException, SQLException{
         
-           Report_Requests_Controller controller= new Report_Requests_Controller();
-           DefaultTableModel dtm= (DefaultTableModel)tblBranch.getModel();
-           ArrayList<Report_Requests_Model> report_requests = controller.getAllReportRequests();
+           RegionController controller= new RegionController();
+           DefaultTableModel dtm= (DefaultTableModel)tblRegion.getModel();
+           ArrayList<RegionModel> regions = controller.getAllRegionDetails();
            
-           for(Report_Requests_Model i: report_requests){
+           for(RegionModel i: regions){
                
-                Object arr[]={i.getProject_id(),i.getProject_name(),i.getRecieved_date(),
-                i.getCreated_date(),i.getStart_date(), i.getCompletion_date(),i.getCurent_status(),
-                i.getRemarks(),i.getTask_details(),i.getDepartment_name(),i.getBranch_name(),i.getDeveloper_name(),i.getDeveloper_id()};
+                Object arr[]={i.getRegionCode(),i.getRegionName()};
                 dtm.addRow(arr);
            }
     }
@@ -352,20 +354,20 @@ public class DashBoard extends javax.swing.JFrame {
         lbl_proj_name3 = new javax.swing.JLabel();
         txtDeptCode = new javax.swing.JTextField();
         txtDeptName = new javax.swing.JTextField();
-        btnAdd = new javax.swing.JButton();
-        btnUpdate = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
+        btnAddDepartment = new javax.swing.JButton();
+        btnUpdateDepartment = new javax.swing.JButton();
+        btnDeleteDepartment = new javax.swing.JButton();
         mng_region_Card = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblRegion = new javax.swing.JTable();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         txtRegionName = new javax.swing.JTextField();
         txtRegion = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnUpdateRegions = new javax.swing.JButton();
+        btnAddRegion = new javax.swing.JButton();
+        btnDeleteRegion = new javax.swing.JButton();
         mng_branches_Card = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -1420,10 +1422,7 @@ public class DashBoard extends javax.swing.JFrame {
 
         tblDept.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Department Name", "Department ID"
@@ -1439,14 +1438,29 @@ public class DashBoard extends javax.swing.JFrame {
         lbl_proj_name3.setForeground(new java.awt.Color(0, 0, 0));
         lbl_proj_name3.setText("Department Code :");
 
-        btnAdd.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnAdd.setText("Add");
+        btnAddDepartment.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnAddDepartment.setText("Add");
+        btnAddDepartment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddDepartmentActionPerformed(evt);
+            }
+        });
 
-        btnUpdate.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnUpdate.setText("Update");
+        btnUpdateDepartment.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnUpdateDepartment.setText("Update");
+        btnUpdateDepartment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateDepartmentActionPerformed(evt);
+            }
+        });
 
-        btnDelete.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnDelete.setText("Delete");
+        btnDeleteDepartment.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnDeleteDepartment.setText("Delete");
+        btnDeleteDepartment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteDepartmentActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout mng_dept_CardLayout = new javax.swing.GroupLayout(mng_dept_Card);
         mng_dept_Card.setLayout(mng_dept_CardLayout);
@@ -1455,9 +1469,16 @@ public class DashBoard extends javax.swing.JFrame {
             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 1115, Short.MAX_VALUE)
             .addComponent(jScrollPane2)
             .addGroup(mng_dept_CardLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(mng_dept_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mng_dept_CardLayout.createSequentialGroup()
+                        .addGap(607, 607, 607)
+                        .addComponent(btnAddDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnUpdateDepartment)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDeleteDepartment))
+                    .addGroup(mng_dept_CardLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addGroup(mng_dept_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(mng_dept_CardLayout.createSequentialGroup()
                                 .addComponent(lbl_proj_id6, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1466,15 +1487,7 @@ public class DashBoard extends javax.swing.JFrame {
                             .addGroup(mng_dept_CardLayout.createSequentialGroup()
                                 .addComponent(lbl_proj_name3, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDeptCode, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mng_dept_CardLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnAdd)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnUpdate)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDelete)))
+                                .addComponent(txtDeptCode, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         mng_dept_CardLayout.setVerticalGroup(
@@ -1493,9 +1506,9 @@ public class DashBoard extends javax.swing.JFrame {
                     .addComponent(txtDeptCode, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(mng_dept_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdd)
-                    .addComponent(btnUpdate)
-                    .addComponent(btnDelete))
+                    .addComponent(btnAddDepartment)
+                    .addComponent(btnUpdateDepartment)
+                    .addComponent(btnDeleteDepartment))
                 .addGap(135, 135, 135))
         );
 
@@ -1507,18 +1520,15 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel11.setText("                                     Manage Region details");
         jLabel11.setOpaque(true);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblRegion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Region Name", "Region Code"
             }
         ));
-        jScrollPane8.setViewportView(jTable2);
+        jScrollPane8.setViewportView(tblRegion);
 
         jLabel12.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel12.setText("Region Name:");
@@ -1526,14 +1536,29 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel13.setText("Region Code:");
 
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton1.setText("Update");
+        btnUpdateRegions.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnUpdateRegions.setText("Update");
+        btnUpdateRegions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateRegionsActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton2.setText("Add");
+        btnAddRegion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnAddRegion.setText("Add");
+        btnAddRegion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddRegionActionPerformed(evt);
+            }
+        });
 
-        jButton4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton4.setText("Delete");
+        btnDeleteRegion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnDeleteRegion.setText("Delete");
+        btnDeleteRegion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteRegionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout mng_region_CardLayout = new javax.swing.GroupLayout(mng_region_Card);
         mng_region_Card.setLayout(mng_region_CardLayout);
@@ -1545,23 +1570,25 @@ public class DashBoard extends javax.swing.JFrame {
                     .addComponent(jScrollPane8))
                 .addContainerGap())
             .addGroup(mng_region_CardLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(21, 21, 21)
                 .addGroup(mng_region_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel13))
-                .addGap(32, 32, 32)
-                .addGroup(mng_region_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtRegionName, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
-                    .addComponent(txtRegion))
+                    .addGroup(mng_region_CardLayout.createSequentialGroup()
+                        .addGroup(mng_region_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13))
+                        .addGap(32, 32, 32)
+                        .addGroup(mng_region_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtRegionName)
+                            .addComponent(txtRegion, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mng_region_CardLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAddRegion)
+                        .addGap(38, 38, 38)
+                        .addComponent(btnUpdateRegions)
+                        .addGap(44, 44, 44)
+                        .addComponent(btnDeleteRegion)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mng_region_CardLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(38, 38, 38)
-                .addComponent(jButton1)
-                .addGap(44, 44, 44)
-                .addComponent(jButton4)
-                .addGap(183, 183, 183))
         );
         mng_region_CardLayout.setVerticalGroup(
             mng_region_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1569,7 +1596,7 @@ public class DashBoard extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(108, 108, 108)
+                .addGap(37, 37, 37)
                 .addGroup(mng_region_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(txtRegionName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1579,10 +1606,10 @@ public class DashBoard extends javax.swing.JFrame {
                     .addComponent(txtRegion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(mng_region_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4))
-                .addGap(47, 47, 47))
+                    .addComponent(btnUpdateRegions)
+                    .addComponent(btnAddRegion)
+                    .addComponent(btnDeleteRegion))
+                .addGap(118, 118, 118))
         );
 
         pri_CardLayout.add(mng_region_Card, "card6");
@@ -1654,23 +1681,25 @@ public class DashBoard extends javax.swing.JFrame {
                 .addComponent(jScrollPane7)
                 .addContainerGap())
             .addGroup(mng_branches_CardLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(27, 27, 27)
                 .addGroup(mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel16))
-                .addGap(32, 32, 32)
-                .addGroup(mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtBranchName)
-                    .addComponent(txtBranchCode, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(mng_branches_CardLayout.createSequentialGroup()
+                        .addGroup(mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel16))
+                        .addGap(32, 32, 32)
+                        .addGroup(mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtBranchName)
+                            .addComponent(txtBranchCode, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 381, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mng_branches_CardLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 594, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAddBranch)
+                        .addGap(38, 38, 38)
+                        .addComponent(btnUpdateBranch)
+                        .addGap(44, 44, 44)
+                        .addComponent(btnAddDelete)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mng_branches_CardLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAddBranch)
-                .addGap(38, 38, 38)
-                .addComponent(btnUpdateBranch)
-                .addGap(44, 44, 44)
-                .addComponent(btnAddDelete)
-                .addGap(197, 197, 197))
         );
         mng_branches_CardLayout.setVerticalGroup(
             mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1678,7 +1707,7 @@ public class DashBoard extends javax.swing.JFrame {
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
+                .addGap(46, 46, 46)
                 .addGroup(mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(txtBranchName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1691,7 +1720,7 @@ public class DashBoard extends javax.swing.JFrame {
                     .addComponent(btnUpdateBranch)
                     .addComponent(btnAddBranch)
                     .addComponent(btnAddDelete))
-                .addGap(78, 78, 78))
+                .addGap(94, 94, 94))
         );
 
         pri_CardLayout.add(mng_branches_Card, "card7");
@@ -2329,6 +2358,193 @@ public class DashBoard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtBranchCodeKeyTyped
 
+    private void btnAddRegionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRegionActionPerformed
+        // TODO add your handling code here:
+        String RegionId = txtRegion.getText();
+        String RegionName = txtRegionName.getText();
+         if(txtRegionName.getText().isEmpty()||txtRegion.getText().isEmpty())
+            {
+                   JOptionPane.showMessageDialog(this, "Error all the mandotory fields must be filled"); 
+            }
+
+            if (!isNumber(Integer.parseInt(RegionId))){
+                JOptionPane.showMessageDialog(this, "Error Region should be a number");
+            } 
+            else{
+                
+                RegionModel newRegion = new RegionModel(RegionId,RegionName);
+                RegionController controller= new RegionController();
+
+                try {
+                    if(controller.addRegion(newRegion)){
+
+                        JOptionPane.showMessageDialog(this, "The record inserted");
+                        clearAll();
+                        clearRegionTable();
+                        loadRegionTable();
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        
+    }//GEN-LAST:event_btnAddRegionActionPerformed
+    /*
+        This is the code to update the regions
+    */
+    private void btnUpdateRegionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateRegionsActionPerformed
+        // TODO add your handling code here:
+        String RegionId = txtRegion.getText();
+        String RegionName = txtRegionName.getText();
+        RegionModel Model = new RegionModel(RegionId,RegionName); 
+        RegionController controller= new RegionController();
+
+        try {
+            if(controller.updateRegion(Model)){
+                
+                JOptionPane.showMessageDialog(this, "The record updated");
+                clearRegionTable();
+                loadRegionTable();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnUpdateRegionsActionPerformed
+
+    private void btnDeleteRegionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRegionActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            String RegionId = txtRegion.getText();
+            String RegionName = txtRegionName.getText();
+            RegionController controller= new RegionController();
+            
+            if( txtRegionName.getText().isEmpty() && txtRegion.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "Region ID or Region Name should be enterd");
+            }
+            else if(txtBranchName.getText().isEmpty() && !txtBranchCode.getText().isEmpty())
+            { 
+                 if(controller.deleteRegion(RegionId)){
+                    JOptionPane.showMessageDialog(this, "Region Deleted Successfully");
+                    clearRegionTable();
+                    loadRegionTable();
+                 }
+                 
+            }
+            else{
+                if (controller.deleteRegion(RegionName)){
+                    JOptionPane.showMessageDialog(this, "Region Deleted Successfully");
+                    clearRegionTable();
+                    loadRegionTable();
+                 }
+            }
+            
+            
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnDeleteRegionActionPerformed
+
+    private void btnAddDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDepartmentActionPerformed
+        // TODO add your handling code here:
+        String DepartmentId = txtDeptCode.getText();
+        String DepartmentName = txtDeptName.getText();
+         if(txtDeptName.getText().isEmpty()||txtDeptCode.getText().isEmpty())
+            {
+                   JOptionPane.showMessageDialog(this, "Error all the mandotory fields must be filled"); 
+            }
+
+            if (!isNumber(Integer.parseInt(DepartmentId))){
+                JOptionPane.showMessageDialog(this, "Error DepartmentID should be a number");
+            } 
+            else{
+                
+                DepartmentModel newDepartment = new DepartmentModel(DepartmentId,DepartmentName);
+                DeaprtmentController controller= new DeaprtmentController();
+
+                try {
+                    if(controller.addDepartment(newDepartment)){
+
+                        JOptionPane.showMessageDialog(this, "The record inserted");
+                        clearAll();
+                        clearDepartmentTable();
+                        loadDepartmentTable();
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+    }//GEN-LAST:event_btnAddDepartmentActionPerformed
+
+    private void btnUpdateDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateDepartmentActionPerformed
+        // TODO add your handling code here:
+        
+        String DepartmentId = txtDeptCode.getText();
+        String DepartmentName = txtDeptName.getText();
+        DepartmentModel Model = new DepartmentModel(DepartmentId,DepartmentName); 
+        DeaprtmentController controller= new DeaprtmentController();
+
+        try {
+            if(controller.updateDepartment(Model)){
+                
+                JOptionPane.showMessageDialog(this, "The record updated");
+                clearDepartmentTable();
+                loadDepartmentTable();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnUpdateDepartmentActionPerformed
+    /* 
+        This is the code to delete a branch
+    */
+    private void btnDeleteDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteDepartmentActionPerformed
+        try {
+            // TODO add your handling code here:
+            String DepartmentId = txtDeptCode.getText();
+            String DepartmentName = txtDeptName.getText();
+            DeaprtmentController controller= new DeaprtmentController();
+            
+            if( txtDeptName.getText().isEmpty() && txtDeptCode.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "Department ID or Department Name should be enterd");
+            }
+            else if(txtBranchName.getText().isEmpty() && !txtDeptCode.getText().isEmpty())
+            { 
+                 if(controller.deleteDepartment(DepartmentId)){
+                    JOptionPane.showMessageDialog(this, "Department Deleted Successfully");
+                    clearDepartmentTable();
+                    loadDepartmentTable();
+                 }
+                 
+            }
+            else{
+                if (controller.deleteDepartment(DepartmentName)){
+                    JOptionPane.showMessageDialog(this, "Department Deleted Successfully");
+                    clearDepartmentTable();
+                    loadDepartmentTable();
+                 }
+            }
+            
+            
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnDeleteDepartmentActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2367,12 +2583,15 @@ public class DashBoard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MenuBar;
-    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnAddBranch;
     private javax.swing.JButton btnAddDelete;
-    private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton btnAddDepartment;
+    private javax.swing.JButton btnAddRegion;
+    private javax.swing.JButton btnDeleteDepartment;
+    private javax.swing.JButton btnDeleteRegion;
     private javax.swing.JButton btnUpdateBranch;
+    private javax.swing.JButton btnUpdateDepartment;
+    private javax.swing.JButton btnUpdateRegions;
     private javax.swing.JButton btn_clear2;
     private javax.swing.JButton btn_clear3;
     private javax.swing.JButton btn_submit2;
@@ -2385,9 +2604,6 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> combo_proj_status1;
     private javax.swing.JComboBox<String> combo_proj_status2;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JFrame jFrame1;
@@ -2418,7 +2634,6 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSplitPane jSplitPane_menu;
     private javax.swing.JSplitPane jSplitPane_menu1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lbl_create_request1;
@@ -2470,6 +2685,7 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JButton refresh;
     private javax.swing.JTable tblBranch;
     private javax.swing.JTable tblDept;
+    private javax.swing.JTable tblRegion;
     private javax.swing.JTable tbl_requests;
     private javax.swing.JTable tbl_requests1;
     private javax.swing.JTextField txtBranchCode;
