@@ -913,10 +913,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel_main" min="-2" pref="1435" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="jPanel_main" min="-2" pref="1435" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -1335,8 +1332,8 @@
                                 <Column editable="true" title="Current Status" type="java.lang.Object"/>
                                 <Column editable="true" title="Remarks" type="java.lang.Object"/>
                                 <Column editable="true" title="Task Details" type="java.lang.Object"/>
-                                <Column editable="true" title="Department Name" type="java.lang.Object"/>
-                                <Column editable="true" title="Branch Name" type="java.lang.Object"/>
+                                <Column editable="true" title="Organization Type" type="java.lang.Object"/>
+                                <Column editable="true" title="Organization Name" type="java.lang.Object"/>
                                 <Column editable="true" title="Developer Name" type="java.lang.Object"/>
                                 <Column editable="true" title="Developer_Id" type="java.lang.Object"/>
                               </Table>
@@ -1453,100 +1450,93 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                                      <Component id="lbl_current_date2" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace pref="11" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="lbl_proj_id4" min="-2" pref="159" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="jScrollPane6" min="-2" pref="367" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <EmptySpace min="45" pref="45" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="lbl_proj_dept_name10" min="-2" pref="159" max="-2" attributes="0"/>
-                                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                              <Component id="txt_branch_name2" min="-2" pref="299" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="lbl_proj_dept_name11" min="-2" pref="159" max="-2" attributes="0"/>
-                                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                              <Component id="txt_developer_id2" min="-2" pref="299" max="-2" attributes="0"/>
-                                                          </Group>
-                                                      </Group>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <EmptySpace max="32767" attributes="0"/>
-                                                      <Group type="103" groupAlignment="1" attributes="0">
-                                                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                                              <Component id="txt_starting_date2" alignment="0" pref="299" max="32767" attributes="0"/>
-                                                              <Component id="txt_recieved_date2" alignment="0" max="32767" attributes="0"/>
-                                                          </Group>
-                                                          <Group type="102" alignment="1" attributes="0">
-                                                              <Component id="btn_submit3" min="-2" pref="100" max="-2" attributes="0"/>
-                                                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                                                              <Component id="btn_clear3" min="-2" pref="106" max="-2" attributes="0"/>
-                                                          </Group>
-                                                      </Group>
-                                                  </Group>
-                                              </Group>
-                                              <EmptySpace min="0" pref="17" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="lbl_proj_name2" min="-2" pref="159" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="txt_proj_name2" min="-2" pref="299" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="lbl_proj_id5" min="-2" pref="160" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="txt_projID2" min="-2" pref="299" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="lbl_proj_name2" min="-2" pref="159" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="txt_proj_name2" min="-2" pref="299" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                                  <Group type="102" alignment="1" attributes="0">
-                                                      <Component id="lbl_proj_completion_date8" min="-2" pref="159" max="-2" attributes="0"/>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Component id="txt_completion_date2" min="-2" pref="299" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="1" attributes="0">
-                                                      <Component id="lbl_proj_dept_name8" min="-2" pref="159" max="-2" attributes="0"/>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Component id="txt_dept_name2" min="-2" pref="299" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                                              <Component id="lbl_proj_id5" min="-2" pref="160" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="txt_projID2" min="-2" pref="299" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="lbl_proj_completion_date9" min="-2" pref="159" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="txt_recieved_date2" min="-2" pref="299" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="lbl_proj_completion_date11" min="-2" pref="159" max="-2" attributes="0"/>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="combo_proj_status2" min="-2" pref="299" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="lbl_proj_completion_date9" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
                                                   <Component id="lbl_proj_completion_date10" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
                                                   <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="lbl_proj_dept_name9" min="-2" pref="159" max="-2" attributes="0"/>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="combo_developers2" min="-2" pref="299" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                                      <Component id="lbl_current_date2" min="-2" max="-2" attributes="0"/>
                                                   </Group>
+                                              </Group>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="txt_starting_date2" min="-2" pref="299" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace pref="8" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lbl_proj_completion_date8" min="-2" pref="159" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="txt_completion_date2" min="-2" pref="299" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="lbl_proj_dept_name9" min="-2" pref="159" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="combo_developers2" min="-2" pref="299" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="lbl_proj_completion_date11" min="-2" pref="159" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="combo_proj_status2" min="-2" pref="299" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="lbl_proj_dept_name12" min="-2" pref="159" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="cmbTypes" min="-2" pref="299" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="lbl_proj_dept_name11" min="-2" pref="159" max="-2" attributes="0"/>
+                                          <Component id="lbl_proj_dept_name10" min="-2" pref="159" max="-2" attributes="0"/>
+                                          <Component id="lbl_proj_id4" alignment="1" min="-2" pref="159" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="btn_submit3" min="-2" pref="100" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="btn_clear3" min="-2" pref="106" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jScrollPane6" max="32767" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txt_OrgName" min="-2" pref="299" max="-2" attributes="0"/>
+                                                  <Component id="txt_developer_id2" min="-2" pref="299" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="8" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -1557,68 +1547,64 @@
                               <Component id="lbl_current_date2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txt_recieved_date2" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                                  <Component id="lbl_proj_completion_date9" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
                                   <Component id="txt_projID2" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                                   <Component id="lbl_proj_id5" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lbl_proj_name2" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
-                                  <Component id="txt_proj_name2" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                                  <Component id="txt_starting_date2" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                                  <Component id="lbl_proj_completion_date10" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txt_completion_date2" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                                  <Component id="lbl_proj_completion_date8" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
-                                  <Component id="combo_proj_status2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbl_proj_completion_date11" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
+                                  <Component id="combo_proj_status2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txt_proj_name2" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                                  <Component id="lbl_proj_name2" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
+                                  <Component id="lbl_proj_dept_name9" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
+                                  <Component id="combo_developers2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lbl_proj_completion_date8" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
+                                  <Component id="txt_completion_date2" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                                  <Component id="lbl_proj_dept_name11" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
+                                  <Component id="txt_developer_id2" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txt_recieved_date2" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                                  <Component id="lbl_proj_completion_date9" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
+                                  <Component id="lbl_proj_dept_name12" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
+                                  <Component id="cmbTypes" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="txt_dept_name2" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                                          <Component id="lbl_proj_dept_name8" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
+                                          <Component id="lbl_proj_completion_date10" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
+                                          <Component id="txt_starting_date2" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lbl_proj_dept_name9" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
-                                          <Component id="combo_developers2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="txt_developer_id2" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                                          <Component id="lbl_proj_dept_name11" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="txt_branch_name2" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                                          <Component id="txt_OrgName" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                                           <Component id="lbl_proj_dept_name10" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lbl_proj_id4" min="-2" pref="54" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jScrollPane6" min="-2" pref="158" max="-2" attributes="0"/>
+                                      <EmptySpace pref="64" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="btn_clear3" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="btn_submit3" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jScrollPane6" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                          <Component id="lbl_proj_id4" alignment="0" min="-2" pref="54" max="-2" attributes="0"/>
-                                      </Group>
+                                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="251" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1683,17 +1669,6 @@
                         <Property name="text" type="java.lang.String" value="Completion Date :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lbl_proj_dept_name8">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Dialog" size="18" style="1"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Department :"/>
-                      </Properties>
-                    </Component>
                     <Component class="javax.swing.JTextField" name="txt_proj_name2">
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_proj_name2ActionPerformed"/>
@@ -1707,11 +1682,6 @@
                     <Component class="javax.swing.JTextField" name="txt_completion_date2">
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_completion_date2ActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="txt_dept_name2">
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_dept_name2ActionPerformed"/>
                       </Events>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="jScrollPane6">
@@ -1769,7 +1739,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value=" Project Status"/>
+                        <Property name="text" type="java.lang.String" value=" Project Status:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="combo_proj_status2">
@@ -1827,7 +1797,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Developer Name"/>
+                        <Property name="text" type="java.lang.String" value="Developer Name:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lbl_proj_dept_name10">
@@ -1838,12 +1808,12 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Branch Name"/>
+                        <Property name="text" type="java.lang.String" value="Branch Name:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txt_branch_name2">
+                    <Component class="javax.swing.JTextField" name="txt_OrgName">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_branch_name2ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_OrgNameActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="combo_developers2">
@@ -1868,13 +1838,42 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Developer Id"/>
+                        <Property name="text" type="java.lang.String" value="Developer Id:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txt_developer_id2">
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_developer_id2ActionPerformed"/>
                       </Events>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="cmbTypes">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="3">
+                            <StringItem index="0" value="Branch"/>
+                            <StringItem index="1" value="Department"/>
+                            <StringItem index="2" value="Region"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbTypesItemStateChanged"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbTypesActionPerformed"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lbl_proj_dept_name12">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Dialog" size="18" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Type:"/>
+                      </Properties>
                     </Component>
                   </SubComponents>
                 </Container>

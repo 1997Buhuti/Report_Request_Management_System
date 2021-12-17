@@ -5,6 +5,8 @@
  */
 package Model;
 
+import utility.Organization;
+
 /**
  *
  * @author dpman
@@ -22,55 +24,43 @@ public class Report_Requests_Model {
     private String task_details;
     private String department_name;
     private String branch_name;
+    //private String region_name;
     private String developer_name;
     private String developer_id;
+    private Organization organization;
 
-    public Report_Requests_Model(String project_id, String project_name, String recieved_date, String created_date, String start_date, String completion_date, String curent_status, String remarks, String task_details, String department_name, String branch_name, String developer_name, String developer_id) {
-        this.project_id = project_id;
-        this.project_name = project_name;
-        this.recieved_date = recieved_date;
-        this.created_date = created_date;
-        this.start_date = start_date;
-        this.completion_date = completion_date;
-        this.curent_status = curent_status;
-        this.remarks = remarks;
-        this.task_details = task_details;
-        this.department_name = department_name;
-        this.branch_name = branch_name;
-        this.developer_name = developer_name;
-        this.developer_id = developer_id;
-    }
-    
-    public Report_Requests_Model(String project_id, String project_name, String recieved_date, String created_date, String start_date, String curent_status, String remarks, String task_details, String department_name, String branch_name, String developer_name, String developer_id) {
-        this.project_id = project_id;
-        this.project_name = project_name;
-        this.recieved_date = recieved_date;
-        this.created_date = created_date;
-        this.start_date = start_date;
-        this.curent_status = curent_status;
-        this.remarks = remarks;
-        this.task_details = task_details;
-        this.department_name = department_name;
-        this.branch_name = branch_name;
-        this.developer_name = developer_name;
-        this.developer_id = developer_id;
-    }
-    
-     public Report_Requests_Model (String ProjId, String ProjName, String recieved_date, String starting_date, String completion_date, String proj_status, String remarks, String department, String branch_name, String developers){
-         
+    public Report_Requests_Model(String ProjId, String ProjName, String recieved_date, String created_date, String starting_date, String proj_status, String remarks, String task_details, Organization org, String developers, String dev_Id) {
         this.project_id = ProjId;
         this.project_name = ProjName;
         this.recieved_date = recieved_date;
+        this.created_date = created_date;
         this.start_date = starting_date;
-        this.completion_date = completion_date;
+        //this.completion_date = completion_date;
         this.curent_status = proj_status;
         this.remarks = remarks;
-        this.department_name = department;
-        this.branch_name = branch_name;
+        this.task_details = task_details;
         this.developer_name = developers;
-     }
+        this.developer_id = dev_Id;
+        this.organization = org;
+    }
+    
+    public Report_Requests_Model(String ProjId, String ProjName, String recieved_date, String created_date, String starting_date, String completion_Date ,String proj_status, String remarks, String task_details, Organization org, String developers, String dev_Id) {
+        this.project_id = ProjId;
+        this.project_name = ProjName;
+        this.recieved_date = recieved_date;
+        this.created_date = created_date;
+        this.start_date = starting_date;
+        this.completion_date = completion_Date;
+        this.curent_status = proj_status;
+        this.remarks = remarks;
+        this.task_details = task_details;
+        this.developer_name = developers;
+        this.developer_id = dev_Id;
+        this.organization = org;
+    }
+    
 
-
+     
     public Report_Requests_Model() {
     }
 
@@ -176,6 +166,14 @@ public class Report_Requests_Model {
 
     public void setDeveloper_id(String developer_id) {
         this.developer_id = developer_id;
+    }
+
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
     }
 
    
