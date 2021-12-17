@@ -500,6 +500,11 @@ public class Single_Row extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_developer_idActionPerformed
 
     private void cmbOrgNamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOrgNamesActionPerformed
+        
+    }//GEN-LAST:event_cmbOrgNamesActionPerformed
+
+    private void combo_dev_names1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_dev_names1ActionPerformed
+        // TODO add your handling code here:
         try {
             
             String developer_Name = cmbOrgNames.getSelectedItem().toString();
@@ -514,10 +519,6 @@ public class Single_Row extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_cmbOrgNamesActionPerformed
-
-    private void combo_dev_names1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_dev_names1ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_combo_dev_names1ActionPerformed
 
     private void cmbOrgType1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOrgType1ActionPerformed

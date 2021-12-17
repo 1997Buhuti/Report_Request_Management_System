@@ -24,7 +24,6 @@ public class Report_Requests_Model {
     private String task_details;
     private String department_name;
     private String branch_name;
-    //private String region_name;
     private String developer_name;
     private String developer_id;
     private Organization organization;

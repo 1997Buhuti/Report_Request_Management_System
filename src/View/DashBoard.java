@@ -194,7 +194,9 @@ public class DashBoard extends javax.swing.JFrame {
                
                 Object arr[]={i.getProject_id(),i.getProject_name(),i.getRecieved_date(),
                 i.getCreated_date(),i.getStart_date(), i.getCompletion_date(),i.getCurent_status(),
-                i.getRemarks(),i.getTask_details(),i.getDepartment_name(),i.getBranch_name(),i.getDeveloper_name(),i.getDeveloper_id()};
+                i.getRemarks(),i.getTask_details(),i.getOrganization().getType(),
+                i.getOrganization().getOrgName(),i.getDeveloper_name(),i.getDeveloper_id()};
+                System.out.println(""+i.getProject_id()+""+i.getDeveloper_id());
                 dtm.addRow(arr);
            }
     }
@@ -1529,6 +1531,11 @@ public class DashBoard extends javax.swing.JFrame {
                 "Region Name", "Region Code"
             }
         ));
+        tblRegion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblRegionMouseClicked(evt);
+            }
+        });
         jScrollPane8.setViewportView(tblRegion);
 
         jLabel12.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -1798,7 +1805,6 @@ public class DashBoard extends javax.swing.JFrame {
 
         int index = tbl_requests.getSelectedRow();
         TableModel model = tbl_requests.getModel();
-        
         String project_id = model.getValueAt(index,0).toString();
         String project_name = model.getValueAt(index,1).toString();
         String recieved_date = model.getValueAt(index,2).toString();
@@ -1813,9 +1819,8 @@ public class DashBoard extends javax.swing.JFrame {
         }
         String current_status = model.getValueAt(index,6).toString();
         String remarks = model.getValueAt(index,7).toString();
-        String task_details = model.getValueAt(index,10).toString();
-        String department_name = model.getValueAt(index,9).toString(); 
-        String branch_name = model.getValueAt(index,10).toString();
+        String org_type = model.getValueAt(index,9).toString();
+        String org_name = model.getValueAt(index,10).toString();
         String developer_name = model.getValueAt(index,11).toString();
         String developer_id = model.getValueAt(index,12).toString();
         raw_data.setVisible(true);
@@ -1823,7 +1828,6 @@ public class DashBoard extends javax.swing.JFrame {
         raw_data.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         raw_data.txt_proj_id.setText(project_id);
         raw_data.txt_proj_name.setText(project_name);
-        //raw_data.txt_branch_name.setText(branch_name);
         raw_data.txt_completion_date.setText(completion_date);
         raw_data.txt_remarks.setText(remarks);
         raw_data.txt_recieved_date.setText(recieved_date);
@@ -1831,7 +1835,8 @@ public class DashBoard extends javax.swing.JFrame {
         raw_data.txt_request_date.setText(created_date);
         raw_data.txt_starting_date.setText(start_date);
         raw_data.txt_developer_id.setText(developer_id);
-        raw_data.cmbOrgNames.setSelectedItem(department_name);
+        raw_data.cmbOrgNames.setSelectedItem(org_name);
+        raw_data.cmbOrgType1.setSelectedItem(org_type);
         combo_proj_status2.getModel().setSelectedItem(current_status);
     }//GEN-LAST:event_tbl_requestsMouseClicked
     
@@ -2551,6 +2556,10 @@ public class DashBoard extends javax.swing.JFrame {
     private void cmbTypesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTypesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbTypesActionPerformed
+
+    private void tblRegionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRegionMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblRegionMouseClicked
 
     /**
      * @param args the command line arguments
