@@ -1,4 +1,5 @@
-Dname=com.mysql.jdbc.Driver
+//Dname=com.mysql.jdbc.Driver
+Dname=com.mysql.cj.jdbc.Driver
 URL=jdbc:mysql://localhost:3306/pb_app_data
 Uname=root
 password=Manakal@2021

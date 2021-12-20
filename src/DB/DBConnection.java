@@ -31,7 +31,6 @@ public class DBConnection {
    static{
             
         try{
-               
                 p=new Properties (); 
                 p.load(new FileInputStream("src/DB/db_prop.prop")); 
                 String dname= (String) p.get ("Dname"); 
@@ -53,7 +52,6 @@ public class DBConnection {
         
         if(con==null){
             System.out.println("Connection established succesfull");
-            //JOptionPane.showMessageDialog(this, "The record updated");
         }
         return con;
     }

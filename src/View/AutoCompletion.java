@@ -185,7 +185,7 @@ private boolean startsWithIgnoreCase(String str1, String str2) {
 
 private static void createAndShowGUI() {
     // the combo box (add/modify items if you like to)
-    final JComboBox comboBox = new JComboBox(new Object[] {"Ester", "Jordi", "Jordina", "Jorge", "Sergi"});
+    final JComboBox <String> comboBox = new JComboBox (new Object[] {"Ester", "Jordi", "Jordina", "Jorge", "Sergi"});
     enable(comboBox);
 
     // create and show a window containing the combo box
