@@ -38,6 +38,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import static jdk.nashorn.internal.runtime.JSType.isNumber;
 import utility.Organization;
+import utility.UserCredentials;
 //import static jdk.nashorn.internal.runtime.JSType.isNumber;
 
 /**
@@ -51,14 +52,26 @@ public class DashBoard extends javax.swing.JFrame {
      */
     CardLayout cardLayout;
     Connection con = DBConnection.getConnection();
-    public DashBoard() {
+    public String userName;
+    public static String passWord;
+    public static String userLevel;
+    
+    public DashBoard(String uname) {
         initComponents();
         MenuBar.setVisible(false);
+        username.setText(uname);
         txt_developer_id2.disable();
         load_developers();
         Request_Form_Id_generate();
         this.setLocationRelativeTo(null);
         scaleImage();
+        try {
+            loadMyWorkTable();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        }
         AutoCompletion.enable(cmb_Org_Name);
         //new DashBoard().setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("images/PBCircle.png")));
         //new DashBoard().setIconImage(new ImageIcon(getClass().getResource("inventory/images/image-background-5.jpg")).getImage());
@@ -79,13 +92,24 @@ public class DashBoard extends javax.swing.JFrame {
         lbl_create_request1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         lbl_view_request.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         lbl_maintenace.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        lbl_MyRequests.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         cardLayout = (CardLayout)(pri_CardLayout.getLayout());
+        System.out.println("inside Dashboard Constructor "+userName);
     }
     Single_Row raw_data = new Single_Row();
     Color DefaultColor,ClickedColor,HoveredColor;
     
-        /*    This is used to load the curent dat in the label */
+    /*    This is used to load the curent dat in the label */
     
+    public static void loadCredentials(UserCredentials user){
+        System.out.println(user.userName);
+        //username.setText(""+user.userName);
+        
+    }
+
+    public DashBoard() {
+        
+    }
     public void load_date(){
            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
            LocalDateTime now = LocalDateTime.now();  
@@ -103,7 +127,17 @@ public class DashBoard extends javax.swing.JFrame {
         {"Project_Id","Project_Name" , "Recieve dDate" , "Created_Date",
          "Start Date","Completion Date", "Current Status", "Remarks","Task Details",
          "Department Name" ,"Branch Name" ,"Developer Name","Developer_Id"}));
+
     }
+    
+    public void clearTable2(){
+        
+        tbl_requests2.setModel(new DefaultTableModel(null,new String[]
+        {"Project_Id","Project_Name" , "Recieve dDate" , "Created_Date",
+         "Start Date","Completion Date", "Current Status", "Remarks","Task Details",
+         "Department Name" ,"Branch Name" ,"Developer Name","Developer_Id"}));
+    }
+    
     
     
     public void clearBranchTable(){
@@ -132,7 +166,6 @@ public class DashBoard extends javax.swing.JFrame {
         raw_data.txt_proj_id.setText("");
         raw_data.txt_recieved_date.setText("");
         raw_data.txt_proj_name.setText("");
-        //raw_data.txt_branch_name.setText("");
         raw_data.txt_completion_date.setText("");
         raw_data.txt_remarks.setText("");
         raw_data.txt_recieved_date.setText("");
@@ -204,6 +237,24 @@ public class DashBoard extends javax.swing.JFrame {
                 dtm.addRow(arr);
            }
     }
+    
+    public void loadMyWorkTable() throws ClassNotFoundException, SQLException{
+        
+           Report_Requests_Controller controller= new Report_Requests_Controller();
+           DefaultTableModel dtm= (DefaultTableModel)tbl_requests2.getModel();
+           ArrayList<Report_Requests_Model> report_requests = controller.getMyAllReportRequests(username.getText());
+           
+           for(Report_Requests_Model i: report_requests){
+               
+                Object arr[]={i.getProject_id(),i.getProject_name(),i.getRecieved_date(),
+                i.getCreated_date(),i.getStart_date(), i.getCompletion_date(),i.getCurent_status(),
+                i.getRemarks(),i.getTask_details(),i.getOrganization().getType(),
+                i.getOrganization().getOrgName(),i.getDeveloper_name(),i.getDeveloper_id()};
+                dtm.addRow(arr);
+           }
+    }
+    
+    
     
 
      public void loadDepartmentTable() throws ClassNotFoundException, SQLException{
@@ -311,6 +362,9 @@ public class DashBoard extends javax.swing.JFrame {
         red_line = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lbl_logo = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        UserName = new javax.swing.JLabel();
+        username = new javax.swing.JLabel();
         jSplitPane_menu = new javax.swing.JSplitPane();
         menu_bar = new javax.swing.JPanel();
         lbl_create_request1 = new javax.swing.JLabel();
@@ -320,6 +374,7 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        lbl_MyRequests = new javax.swing.JLabel();
         pri_CardLayout = new javax.swing.JPanel();
         pri_Card1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -386,6 +441,10 @@ public class DashBoard extends javax.swing.JFrame {
         btnAddBranch = new javax.swing.JButton();
         btnUpdateBranch = new javax.swing.JButton();
         btnAddDelete = new javax.swing.JButton();
+        my_request = new javax.swing.JPanel();
+        refresh1 = new javax.swing.JButton();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        tbl_requests2 = new javax.swing.JTable();
 
         jTextField2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -877,7 +936,7 @@ public class DashBoard extends javax.swing.JFrame {
         );
         red_lineLayout.setVerticalGroup(
             red_lineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 3, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
@@ -890,25 +949,53 @@ public class DashBoard extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+
+        username.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        username.setForeground(new java.awt.Color(255, 0, 0));
+        username.setText("User");
+
         javax.swing.GroupLayout menu_headerLayout = new javax.swing.GroupLayout(menu_header);
         menu_header.setLayout(menu_headerLayout);
         menu_headerLayout.setHorizontalGroup(
             menu_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(red_line, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(menu_headerLayout.createSequentialGroup()
                 .addComponent(lbl_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(238, 238, 238)
-                .addComponent(jLabel1)
-                .addContainerGap(259, Short.MAX_VALUE))
-            .addComponent(red_line, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 262, Short.MAX_VALUE)
+                .addGroup(menu_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_headerLayout.createSequentialGroup()
+                        .addGroup(menu_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(UserName, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_headerLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(217, 217, 217)))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_headerLayout.createSequentialGroup()
+                        .addGroup(menu_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(60, 60, 60))))
         );
         menu_headerLayout.setVerticalGroup(
             menu_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu_headerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(menu_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
+                    .addGroup(menu_headerLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(menu_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(username)
+                        .addGap(12, 12, 12))
+                    .addGroup(menu_headerLayout.createSequentialGroup()
+                        .addComponent(lbl_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(UserName)
+                .addGap(34, 34, 34)
                 .addComponent(red_line, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1065,19 +1152,46 @@ public class DashBoard extends javax.swing.JFrame {
             MenuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
         );
         MenuBarLayout.setVerticalGroup(
             MenuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuBarLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(10, 10, 10)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
+
+        lbl_MyRequests.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_MyRequests.setFont(new java.awt.Font("Dialog", 1, 34)); // NOI18N
+        lbl_MyRequests.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_MyRequests.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_MyRequests.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/problem.png"))); // NOI18N
+        lbl_MyRequests.setText("My Requests");
+        lbl_MyRequests.setOpaque(true);
+        lbl_MyRequests.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_MyRequestsMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbl_MyRequestsMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbl_MyRequestsMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lbl_MyRequestsMousePressed(evt);
+            }
+        });
+        lbl_MyRequests.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                lbl_MyRequestsKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout menu_barLayout = new javax.swing.GroupLayout(menu_bar);
         menu_bar.setLayout(menu_barLayout);
@@ -1090,7 +1204,8 @@ public class DashBoard extends javax.swing.JFrame {
                     .addGroup(menu_barLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(lbl_create_request1, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
                         .addComponent(lbl_maintenace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbl_view_request, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(lbl_view_request, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbl_MyRequests, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         menu_barLayout.setVerticalGroup(
             menu_barLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1099,10 +1214,12 @@ public class DashBoard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_view_request, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_MyRequests, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_maintenace, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(MenuBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(422, Short.MAX_VALUE))
+                .addContainerGap(336, Short.MAX_VALUE))
         );
 
         jSplitPane_menu.setLeftComponent(menu_bar);
@@ -1651,7 +1768,7 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel14.setBackground(new java.awt.Color(255, 153, 0));
         jLabel14.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel14.setText("                                     Manage Branch details");
+        jLabel14.setText("                                   Manage Branch details");
         jLabel14.setOpaque(true);
 
         tblBranch.setModel(new javax.swing.table.DefaultTableModel(
@@ -1717,23 +1834,21 @@ public class DashBoard extends javax.swing.JFrame {
             .addGroup(mng_branches_CardLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mng_branches_CardLayout.createSequentialGroup()
-                        .addGroup(mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel16))
-                        .addGap(32, 32, 32)
-                        .addGroup(mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtBranchName)
-                            .addComponent(txtBranchCode, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 381, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mng_branches_CardLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 594, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnAddBranch)
-                        .addGap(38, 38, 38)
-                        .addComponent(btnUpdateBranch)
-                        .addGap(44, 44, 44)
-                        .addComponent(btnAddDelete)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel16))
+                .addGap(32, 32, 32)
+                .addGroup(mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtBranchName)
+                    .addComponent(txtBranchCode, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(580, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mng_branches_CardLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAddBranch)
+                .addGap(38, 38, 38)
+                .addComponent(btnUpdateBranch)
+                .addGap(44, 44, 44)
+                .addComponent(btnAddDelete)
+                .addGap(89, 89, 89))
         );
         mng_branches_CardLayout.setVerticalGroup(
             mng_branches_CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1758,6 +1873,58 @@ public class DashBoard extends javax.swing.JFrame {
         );
 
         pri_CardLayout.add(mng_branches_Card, "card7");
+
+        refresh1.setText("Refresh");
+        refresh1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refresh1ActionPerformed(evt);
+            }
+        });
+
+        tbl_requests2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Project_Id", "Project_Name", "Recieved Date", "Created_Date", "Start Date", "Completion Date", "Current Status", "Remarks", "Task Details", "Organization Type", "Organization Name", "Developer Name", "Developer_Id"
+            }
+        ));
+        tbl_requests2.setMaximumSize(new java.awt.Dimension(32763, 32763));
+        tbl_requests2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_requests2MouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tbl_requests2MousePressed(evt);
+            }
+        });
+        tbl_requests2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbl_requests2KeyPressed(evt);
+            }
+        });
+        jScrollPane9.setViewportView(tbl_requests2);
+
+        javax.swing.GroupLayout my_requestLayout = new javax.swing.GroupLayout(my_request);
+        my_request.setLayout(my_requestLayout);
+        my_requestLayout.setHorizontalGroup(
+            my_requestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, my_requestLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(refresh1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 1115, Short.MAX_VALUE)
+        );
+        my_requestLayout.setVerticalGroup(
+            my_requestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, my_requestLayout.createSequentialGroup()
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(refresh1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
+        );
+
+        pri_CardLayout.add(my_request, "card8");
 
         jSplitPane_menu.setRightComponent(pri_CardLayout);
 
@@ -2297,8 +2464,10 @@ public class DashBoard extends javax.swing.JFrame {
                     }
                 } catch (SQLException ex) {
                     Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(rootPane, ex);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(rootPane, ex);
                 }
             }
             //JOptionPane.showMessageDialog(this, "The branch ID should be a number");*/
@@ -2336,8 +2505,10 @@ public class DashBoard extends javax.swing.JFrame {
            
         } catch (SQLException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane, ex);
         }
     }//GEN-LAST:event_btnAddDeleteActionPerformed
 
@@ -2359,8 +2530,10 @@ public class DashBoard extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane, ex);
         }
     }//GEN-LAST:event_btnUpdateBranchActionPerformed
 
@@ -2406,8 +2579,10 @@ public class DashBoard extends javax.swing.JFrame {
                     }
                 } catch (SQLException ex) {
                     Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(rootPane, ex);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(rootPane, ex);
                 }
             }
         
@@ -2431,8 +2606,10 @@ public class DashBoard extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane, ex);
         }
     }//GEN-LAST:event_btnUpdateRegionsActionPerformed
 
@@ -2468,8 +2645,10 @@ public class DashBoard extends javax.swing.JFrame {
            
         } catch (SQLException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane, ex);
         }
     }//GEN-LAST:event_btnDeleteRegionActionPerformed
 
@@ -2500,7 +2679,9 @@ public class DashBoard extends javax.swing.JFrame {
                     }
                 } catch (SQLException ex) {
                     Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(rootPane, ex);
                 } catch (ClassNotFoundException ex) {
+                    JOptionPane.showMessageDialog(rootPane, ex);
                     Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
@@ -2599,6 +2780,100 @@ public class DashBoard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_combo_developers2MouseClicked
 
+    private void lbl_MyRequestsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_MyRequestsMouseClicked
+        // TODO add your handling code here:
+        lbl_MyRequests.setBackground(ClickedColor);
+        lbl_view_request.setBackground(DefaultColor);
+        lbl_create_request1.setBackground(DefaultColor);
+        cardLayout.show(pri_CardLayout, "card8");
+        MenuBar.setVisible(false);
+    }//GEN-LAST:event_lbl_MyRequestsMouseClicked
+
+    private void lbl_MyRequestsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_MyRequestsMouseEntered
+        lbl_MyRequests.setBackground(HoveredColor);
+        lbl_view_request.setBackground(DefaultColor);
+        lbl_create_request1.setBackground(DefaultColor);
+    }//GEN-LAST:event_lbl_MyRequestsMouseEntered
+
+    private void lbl_MyRequestsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_MyRequestsMouseExited
+        // TODO add your handling code here:
+        lbl_MyRequests.setBackground(DefaultColor);
+        lbl_view_request.setBackground(DefaultColor);
+        lbl_create_request1.setBackground(DefaultColor);
+    }//GEN-LAST:event_lbl_MyRequestsMouseExited
+
+    private void lbl_MyRequestsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_MyRequestsMousePressed
+        // TODO add your handling code here:
+        lbl_MyRequests.setBackground(ClickedColor);
+        lbl_view_request.setBackground(DefaultColor);
+        lbl_create_request1.setBackground(DefaultColor);
+    }//GEN-LAST:event_lbl_MyRequestsMousePressed
+
+    private void lbl_MyRequestsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lbl_MyRequestsKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbl_MyRequestsKeyPressed
+
+    private void refresh1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refresh1ActionPerformed
+        try {
+            clearTable2();
+            loadMyWorkTable();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane, "Error couldnt load the table... No data");
+        } catch (SQLException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane, "Error connecting to the database");
+        }
+    }//GEN-LAST:event_refresh1ActionPerformed
+
+    private void tbl_requests2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_requests2MouseClicked
+        int index = tbl_requests2.getSelectedRow();
+        TableModel model = tbl_requests2.getModel();
+        String project_id = model.getValueAt(index,0).toString();
+        String project_name = model.getValueAt(index,1).toString();
+        String recieved_date = model.getValueAt(index,2).toString();
+        String created_date = model.getValueAt(index,3).toString();
+        String start_date = model.getValueAt(index,4).toString();
+        String completion_date;
+        if(model.getValueAt(index,5)!=null){
+            completion_date = model.getValueAt(index,5).toString();
+        }
+        else{
+            completion_date = "";
+        }
+        String current_status = model.getValueAt(index,6).toString();
+        String remarks = model.getValueAt(index,7).toString();
+        String org_type = model.getValueAt(index,9).toString();
+        String org_name = model.getValueAt(index,10).toString();
+        String developer_name = model.getValueAt(index,11).toString();
+        String developer_id = model.getValueAt(index,12).toString();
+        raw_data.setVisible(true);
+        raw_data.pack();
+        raw_data.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        raw_data.txt_proj_id.setText(project_id);
+        raw_data.txt_proj_name.setText(project_name);
+        raw_data.txt_completion_date.setText(completion_date);
+        raw_data.txt_remarks.setText(remarks);
+        raw_data.txt_recieved_date.setText(recieved_date);
+        raw_data.combo_dev_names1.setSelectedItem(developer_name);
+        raw_data.txt_request_date.setText(created_date);
+        raw_data.txt_starting_date.setText(start_date);
+        raw_data.txt_developer_id.setText(developer_id);
+        //raw_data.jTextField1.setText(org_type);
+        raw_data.cmbOrgNames.setSelectedItem(org_type);
+        raw_data.jComboBox2.setSelectedItem(org_name);
+        System.out.println(org_name);
+        combo_proj_status2.getModel().setSelectedItem(current_status);
+    }//GEN-LAST:event_tbl_requests2MouseClicked
+
+    private void tbl_requests2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_requests2MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbl_requests2MousePressed
+
+    private void tbl_requests2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbl_requests2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbl_requests2KeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -2649,6 +2924,7 @@ public class DashBoard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MenuBar;
+    private javax.swing.JLabel UserName;
     private javax.swing.JButton btnAddBranch;
     private javax.swing.JButton btnAddDelete;
     private javax.swing.JButton btnAddDepartment;
@@ -2684,6 +2960,7 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -2701,10 +2978,12 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSplitPane jSplitPane_menu;
     private javax.swing.JSplitPane jSplitPane_menu1;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lbl_MyRequests;
     private javax.swing.JLabel lbl_create_request1;
     private javax.swing.JLabel lbl_create_request2;
     private javax.swing.JLabel lbl_current_date1;
@@ -2745,6 +3024,7 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JPanel mng_branches_Card;
     private javax.swing.JPanel mng_dept_Card;
     private javax.swing.JPanel mng_region_Card;
+    private javax.swing.JPanel my_request;
     private javax.swing.JPanel pri_Card1;
     private javax.swing.JPanel pri_Card3;
     private javax.swing.JPanel pri_CardLayout;
@@ -2752,11 +3032,13 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JPanel red_line;
     private javax.swing.JPanel red_line1;
     private javax.swing.JButton refresh;
+    private javax.swing.JButton refresh1;
     private javax.swing.JTable tblBranch;
     private javax.swing.JTable tblDept;
     private javax.swing.JTable tblRegion;
     private javax.swing.JTable tbl_requests;
     private javax.swing.JTable tbl_requests1;
+    private javax.swing.JTable tbl_requests2;
     private javax.swing.JTextField txtBranchCode;
     private javax.swing.JTextField txtBranchName;
     private javax.swing.JTextField txtDeptCode;
@@ -2779,5 +3061,6 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JTextArea txt_remarks2;
     private javax.swing.JTextField txt_starting_date1;
     private javax.swing.JTextField txt_starting_date2;
+    private javax.swing.JLabel username;
     // End of variables declaration//GEN-END:variables
 }

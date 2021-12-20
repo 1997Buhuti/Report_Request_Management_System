@@ -240,6 +240,35 @@ public class Report_Requests_Controller {
                 pst.setString(13, request.getCurent_status());
                 return pst.executeUpdate()>0;
     }
+
+    public ArrayList<Report_Requests_Model> getMyAllReportRequests(String name) throws ClassNotFoundException, SQLException {
+            
+            String sql="SELECT * FROM projects_tbl where developer_name='"+name+"';";
+            PreparedStatement pst= con.prepareStatement(sql);
+            ResultSet rst= pst.executeQuery(sql);
+            
+            ArrayList<Report_Requests_Model> Report_Requests= new ArrayList<>();
+                while(rst.next()){
+                    
+                    Report_Requests.add(new Report_Requests_Model(
+                    rst.getString(1),
+                    rst.getString(2),
+                    rst.getString(8),
+                    rst.getString(9),
+                    rst.getString(10),
+                    rst.getString(14),
+                    rst.getString(12),
+                    rst.getString(6),
+                    rst.getString(7),
+                    new Organization(rst.getString(16),rst.getString(17)),
+                    rst.getString(11),
+                    rst.getString(12)
+                    ));
+                }
+            return Report_Requests;
+        }
   
     
 }
+
+

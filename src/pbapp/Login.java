@@ -16,6 +16,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import utility.UserCredentials;
 
 /**
  *
@@ -116,7 +117,7 @@ public class Login extends javax.swing.JFrame {
                 btn_signInKeyPressed(evt);
             }
         });
-        jPanel2.add(btn_signIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, -1, -1));
+        jPanel2.add(btn_signIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, -1, -1));
 
         jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton3.setText("SignUp");
@@ -206,9 +207,9 @@ public class Login extends javax.swing.JFrame {
         String pword= new String (jPasswordField1.getPassword());
         User_Controller User_Controller = new User_Controller();
         Boolean val=User_Controller.checkCredentials(uname, pword);
-        
+        UserCredentials usr = new UserCredentials();
         if(val){
-            new DashBoard().setVisible(true);
+            new DashBoard(uname).setVisible(true);
             dispose();
         }
         
