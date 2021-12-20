@@ -18,6 +18,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -58,11 +59,15 @@ public class DashBoard extends javax.swing.JFrame {
         Request_Form_Id_generate();
         this.setLocationRelativeTo(null);
         scaleImage();
+        AutoCompletion.enable(cmb_Org_Name);
+        //new DashBoard().setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("images/PBCircle.png")));
+        //new DashBoard().setIconImage(new ImageIcon(getClass().getResource("inventory/images/image-background-5.jpg")).getImage());
         try {
             loadTable();
             loadBranchTable();
             loadRegionTable();
             loadDepartmentTable();
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -300,6 +305,7 @@ public class DashBoard extends javax.swing.JFrame {
         lbl_proj_dept_name7 = new javax.swing.JLabel();
         txt_developer_id1 = new javax.swing.JTextField();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
+        jInternalFrame1 = new javax.swing.JInternalFrame();
         jPanel_main = new javax.swing.JPanel();
         menu_header = new javax.swing.JPanel();
         red_line = new javax.swing.JPanel();
@@ -839,7 +845,21 @@ public class DashBoard extends javax.swing.JFrame {
             .addComponent(jPanel_main1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jInternalFrame1.setVisible(true);
+
+        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
+        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
+        jInternalFrame1Layout.setHorizontalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jInternalFrame1Layout.setVerticalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImages(getIconImages());
         setResizable(false);
 
         jPanel_main.setBackground(new java.awt.Color(255, 255, 255));
@@ -1170,18 +1190,21 @@ public class DashBoard extends javax.swing.JFrame {
         lbl_proj_completion_date8.setForeground(new java.awt.Color(0, 0, 0));
         lbl_proj_completion_date8.setText("Completion Date :");
 
+        txt_proj_name2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txt_proj_name2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_proj_name2ActionPerformed(evt);
             }
         });
 
+        txt_projID2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txt_projID2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_projID2ActionPerformed(evt);
             }
         });
 
+        txt_completion_date2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txt_completion_date2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_completion_date2ActionPerformed(evt);
@@ -1189,9 +1212,11 @@ public class DashBoard extends javax.swing.JFrame {
         });
 
         txt_remarks2.setColumns(20);
+        txt_remarks2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txt_remarks2.setRows(5);
         jScrollPane6.setViewportView(txt_remarks2);
 
+        txt_recieved_date2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txt_recieved_date2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_recieved_date2ActionPerformed(evt);
@@ -1206,6 +1231,7 @@ public class DashBoard extends javax.swing.JFrame {
         lbl_proj_completion_date10.setForeground(new java.awt.Color(0, 0, 0));
         lbl_proj_completion_date10.setText("Starting  Date :");
 
+        txt_starting_date2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txt_starting_date2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_starting_date2ActionPerformed(evt);
@@ -1265,6 +1291,7 @@ public class DashBoard extends javax.swing.JFrame {
         lbl_proj_dept_name11.setForeground(new java.awt.Color(0, 0, 0));
         lbl_proj_dept_name11.setText("Developer Id:");
 
+        txt_developer_id2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txt_developer_id2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_developer_id2ActionPerformed(evt);
@@ -2575,6 +2602,8 @@ public class DashBoard extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -2604,8 +2633,18 @@ public class DashBoard extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new DashBoard().setVisible(true);
+                
+                DashBoard db = new DashBoard();
+                db.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("images/PBCircle.png")));
+               
             }
         });
+
+    }
+    
+    public static void run(){
+      
+    
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2636,6 +2675,7 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JFrame jFrame1;
+    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
