@@ -33,7 +33,8 @@ public class DBConnection {
         try{
                
                 p=new Properties (); 
-                p.load(new FileInputStream("src/DB/db_prop.prop")); 
+                //p.load(new FileInputStream("src/DB/db_prop.prop")); C:\Users\dpman\Documents\NetBeansProjects\PBApp\dist
+                p.load(new FileInputStream("src/db_prop.prop"));
                 String dname= (String) p.get ("Dname"); 
                 String url= (String) p.get ("URL"); 
                 String username= (String) p.get ("Uname"); 
