@@ -196,7 +196,6 @@ public class DashBoard extends javax.swing.JFrame {
                 i.getCreated_date(),i.getStart_date(), i.getCompletion_date(),i.getCurent_status(),
                 i.getRemarks(),i.getTask_details(),i.getOrganization().getType(),
                 i.getOrganization().getOrgName(),i.getDeveloper_name(),i.getDeveloper_id()};
-                System.out.println(""+i.getProject_id()+""+i.getDeveloper_id());
                 dtm.addRow(arr);
            }
     }
@@ -342,12 +341,12 @@ public class DashBoard extends javax.swing.JFrame {
         btn_clear3 = new javax.swing.JButton();
         lbl_proj_dept_name9 = new javax.swing.JLabel();
         lbl_proj_dept_name10 = new javax.swing.JLabel();
-        txt_OrgName = new javax.swing.JTextField();
         combo_developers2 = new javax.swing.JComboBox<>();
         lbl_proj_dept_name11 = new javax.swing.JLabel();
         txt_developer_id2 = new javax.swing.JTextField();
         cmbTypes = new javax.swing.JComboBox<>();
         lbl_proj_dept_name12 = new javax.swing.JLabel();
+        cmb_Org_Name = new javax.swing.JComboBox<>();
         mng_dept_Card = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -1246,15 +1245,14 @@ public class DashBoard extends javax.swing.JFrame {
         lbl_proj_dept_name10.setForeground(new java.awt.Color(0, 0, 0));
         lbl_proj_dept_name10.setText("Branch Name:");
 
-        txt_OrgName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_OrgNameActionPerformed(evt);
-            }
-        });
-
         combo_developers2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 combo_developers2ItemStateChanged(evt);
+            }
+        });
+        combo_developers2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                combo_developers2MouseClicked(evt);
             }
         });
         combo_developers2.addActionListener(new java.awt.event.ActionListener() {
@@ -1295,22 +1293,23 @@ public class DashBoard extends javax.swing.JFrame {
             pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pri_Card3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pri_Card3Layout.createSequentialGroup()
-                        .addContainerGap(11, Short.MAX_VALUE)
+                        .addGap(0, 5, Short.MAX_VALUE)
                         .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pri_Card3Layout.createSequentialGroup()
                                 .addComponent(lbl_proj_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txt_proj_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pri_Card3Layout.createSequentialGroup()
                                 .addGap(5, 5, 5)
                                 .addComponent(lbl_proj_id5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txt_projID2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pri_Card3Layout.createSequentialGroup()
                                 .addComponent(lbl_proj_completion_date9, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txt_recieved_date2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pri_Card3Layout.createSequentialGroup()
                                 .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1318,15 +1317,14 @@ public class DashBoard extends javax.swing.JFrame {
                                     .addGroup(pri_Card3Layout.createSequentialGroup()
                                         .addGap(14, 14, 14)
                                         .addComponent(lbl_current_date2)))
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txt_starting_date2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pri_Card3Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE))
+                    .addGroup(pri_Card3Layout.createSequentialGroup()
                         .addComponent(lbl_proj_completion_date8, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txt_completion_date2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(98, 98, 98)
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_completion_date2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pri_Card3Layout.createSequentialGroup()
                         .addComponent(lbl_proj_dept_name9, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1337,27 +1335,28 @@ public class DashBoard extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(combo_proj_status2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pri_Card3Layout.createSequentialGroup()
-                        .addComponent(lbl_proj_dept_name12, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmbTypes, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3))
-                    .addGroup(pri_Card3Layout.createSequentialGroup()
                         .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbl_proj_dept_name11, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_proj_dept_name10, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_proj_id4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pri_Card3Layout.createSequentialGroup()
-                                .addComponent(btn_submit3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_clear3, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane6)
-                            .addGroup(pri_Card3Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pri_Card3Layout.createSequentialGroup()
+                                .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lbl_proj_dept_name11, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbl_proj_dept_name10, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbl_proj_id4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
                                 .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_OrgName, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_developer_id2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                    .addGroup(pri_Card3Layout.createSequentialGroup()
+                                        .addComponent(btn_submit3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btn_clear3, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane6)
+                                    .addGroup(pri_Card3Layout.createSequentialGroup()
+                                        .addComponent(txt_developer_id2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(cmb_Org_Name, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(pri_Card3Layout.createSequentialGroup()
+                                .addComponent(lbl_proj_dept_name12, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cmbTypes, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(3, 3, 3)))
                 .addGap(43, 43, 43))
         );
         pri_Card3Layout.setVerticalGroup(
@@ -1399,8 +1398,8 @@ public class DashBoard extends javax.swing.JFrame {
                     .addGroup(pri_Card3Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_OrgName, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_proj_dept_name10, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lbl_proj_dept_name10, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmb_Org_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(25, 25, 25)
                 .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pri_Card3Layout.createSequentialGroup()
@@ -1831,12 +1830,14 @@ public class DashBoard extends javax.swing.JFrame {
         raw_data.txt_completion_date.setText(completion_date);
         raw_data.txt_remarks.setText(remarks);
         raw_data.txt_recieved_date.setText(recieved_date);
-        raw_data.cmbOrgNames.setSelectedItem(developer_name);
+        raw_data.combo_dev_names1.setSelectedItem(developer_name);
         raw_data.txt_request_date.setText(created_date);
         raw_data.txt_starting_date.setText(start_date);
         raw_data.txt_developer_id.setText(developer_id);
-        raw_data.cmbOrgNames.setSelectedItem(org_name);
-        raw_data.cmbOrgType1.setSelectedItem(org_type);
+        //raw_data.jTextField1.setText(org_type);
+        raw_data.cmbOrgNames.setSelectedItem(org_type);
+        raw_data.jComboBox2.setSelectedItem(org_name);
+        System.out.println(org_name);
         combo_proj_status2.getModel().setSelectedItem(current_status);
     }//GEN-LAST:event_tbl_requestsMouseClicked
     
@@ -1845,16 +1846,13 @@ public class DashBoard extends javax.swing.JFrame {
     String remarks, String department, String branch_name, 
     String developers, String dev_Id){
         
-        System.out.println("inside validate_fields");
         if( (ProjId!=null)||(ProjName!=null)||(recieved_date!=null)||(created_date!=null)||(starting_date!=null)||
         (proj_status!=null)||(remarks!=null)||(department!=null)||(branch_name!=null)||
         (developers!=null)||(dev_Id!=null))
         {
             return true;
         }
-        System.out.println("Error all the mandotory fields must be filled");
         JOptionPane.showMessageDialog(this, "Error all the mandatory fields must be filled");
-        System.out.println("Error all the mandotory fields must be filled");
         return false;
     }
     private void lbl_create_request2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_create_request2MouseClicked
@@ -1944,6 +1942,7 @@ public class DashBoard extends javax.swing.JFrame {
             if(rst.next()){
                 
                 txt_developer_id2.setText(String.valueOf(rst.getObject("developer_id")));
+                
             }
         } catch (SQLException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
@@ -1977,7 +1976,8 @@ public class DashBoard extends javax.swing.JFrame {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_refreshActionPerformed
-
+    
+    
     private void lbl_logoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_logoMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_lbl_logoMouseClicked
@@ -1988,7 +1988,6 @@ public class DashBoard extends javax.swing.JFrame {
         txt_proj_name2.setText("");
         txt_completion_date2.setText("");
         lbl_current_date2.setText("");
-        txt_OrgName.setText("");
         txt_recieved_date2.setText("");
         txt_starting_date2.setText("");
     }//GEN-LAST:event_btn_clear3ActionPerformed
@@ -2002,8 +2001,7 @@ public class DashBoard extends javax.swing.JFrame {
                lbl_current_date2.getText().isEmpty()||
                txt_starting_date2.getText().isEmpty()||
                combo_proj_status2.getSelectedItem().toString().isEmpty()||cmbTypes.getSelectedItem().toString().isEmpty()||
-               txt_remarks2.getText().isEmpty()||txt_OrgName.getText().isEmpty()
-               ||txt_developer_id2.getText().isEmpty())
+               txt_remarks2.getText().isEmpty()||txt_developer_id2.getText().isEmpty())
             {
                    JOptionPane.showMessageDialog(this, "Error all the mandotory fields must be filled"); 
             }
@@ -2018,7 +2016,7 @@ public class DashBoard extends javax.swing.JFrame {
             String proj_status = (String) combo_proj_status2.getSelectedItem();
             String developers = (String) combo_developers2.getSelectedItem();
             String org_type = (String) cmbTypes.getSelectedItem();
-            String org_name = txt_OrgName.getText();
+            String org_name = cmb_Org_Name.getSelectedItem().toString();
             String task_details = "";
             String dev_Id = txt_developer_id2.getText();
 
@@ -2076,17 +2074,12 @@ public class DashBoard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_proj_name2ActionPerformed
 
-    private void txt_OrgNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_OrgNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_OrgNameActionPerformed
-
     private void txt_developer_id2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_developer_id2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_developer_id2ActionPerformed
 
     private void combo_developers2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_developers2ActionPerformed
         // TODO add your handling code here:
-        /*
         try {
             
             String userName = combo_developers2.getSelectedItem().toString();
@@ -2099,7 +2092,7 @@ public class DashBoard extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
         
     }//GEN-LAST:event_combo_developers2ActionPerformed
 
@@ -2108,12 +2101,10 @@ public class DashBoard extends javax.swing.JFrame {
         try {
             
             String userName = combo_developers2.getSelectedItem().toString();
-            System.out.println(userName);
             PreparedStatement pst = con.prepareStatement("select * from projects_tbl where developer_name= ?");
             pst.setObject(1,userName);
             ResultSet rst= pst.executeQuery();
             if(rst.next()){
-                System.out.println(rst.getObject("developer_id"));
                 txt_developer_id2.setText(String.valueOf(rst.getObject("developer_id")));
             }
         } catch (SQLException ex) {
@@ -2260,7 +2251,6 @@ public class DashBoard extends javax.swing.JFrame {
 
             String BranchId = txtBranchCode.getText();
             String BranchName = txtBranchName.getText();
-            System.out.println(isNumber(BranchId));
 
             if (!isNumber(Integer.parseInt(BranchId))){
                 JOptionPane.showMessageDialog(this, "Error BranchCode should be a number");
@@ -2551,15 +2541,36 @@ public class DashBoard extends javax.swing.JFrame {
 
     private void cmbTypesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbTypesItemStateChanged
         // TODO add your handling code here:
+        cmb_Org_Name.removeAllItems();
+         try {
+            
+            String orgType = cmbTypes.getSelectedItem().toString();
+            Report_Requests_Controller controller = new Report_Requests_Controller();
+            ArrayList <String> orgNames =controller.loadOrgNames(orgType);
+            
+            for(String Org:orgNames){
+                    cmb_Org_Name.addItem(Org);
+                }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_cmbTypesItemStateChanged
 
     private void cmbTypesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTypesActionPerformed
-        // TODO add your handling code here:
+         // TODO add your handling code here:
+        
     }//GEN-LAST:event_cmbTypesActionPerformed
 
     private void tblRegionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRegionMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tblRegionMouseClicked
+
+    private void combo_developers2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_combo_developers2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combo_developers2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -2616,6 +2627,7 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JPanel card3;
     private javax.swing.JPanel card4;
     private javax.swing.JComboBox<String> cmbTypes;
+    public javax.swing.JComboBox<String> cmb_Org_Name;
     private javax.swing.JComboBox<String> combo_developers1;
     private javax.swing.JComboBox<String> combo_developers2;
     private javax.swing.JComboBox<String> combo_proj_status1;
@@ -2711,7 +2723,6 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JTextField txtDeptName;
     private javax.swing.JTextField txtRegion;
     private javax.swing.JTextField txtRegionName;
-    private javax.swing.JTextField txt_OrgName;
     private javax.swing.JTextField txt_branch_name1;
     private javax.swing.JTextField txt_completion_date1;
     private javax.swing.JTextField txt_completion_date2;

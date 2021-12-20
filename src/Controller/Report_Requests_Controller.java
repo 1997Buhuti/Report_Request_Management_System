@@ -80,7 +80,7 @@ public class Report_Requests_Controller {
                         + "Orgnization_Name,"
                         +"developer_name, "
                         + "developer_id, request_date) "
-                        + "values(?, ? , ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                        + "values(?, ? , ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement pst= con.prepareStatement(sql);
                 pst.setString(1, request.getProject_id());
                 pst.setString(2, request.getProject_name());
@@ -163,6 +163,62 @@ public class Report_Requests_Controller {
         }
         return userNames;
           
+        }
+        
+        public ArrayList <String> loadOrgNames(String value) throws ClassNotFoundException, SQLException{
+        /*
+        String sql1 = "select * from branch_table";
+        ArrayList <String> orgNames = new ArrayList<>();
+        PreparedStatement pst= con.prepareStatement(sql1);
+        ResultSet rst=pst.executeQuery();
+
+            while(rst.next()){
+
+                orgNames.add(rst.getString(2));
+            }
+        */ 
+        ArrayList <String> orgNames = new ArrayList<>();
+        if(value=="Branch"){
+            String sql = "select * from branch_table";
+            
+            PreparedStatement pst= con.prepareStatement(sql);
+            ResultSet rst=pst.executeQuery();
+
+            while(rst.next()){
+
+                orgNames.add(rst.getString(2));
+            }
+            return orgNames;
+        }
+        else if (value=="Region"){
+            
+            String sql = "select * from region_table";
+            orgNames = new ArrayList<>();
+            PreparedStatement pst= con.prepareStatement(sql);
+            ResultSet rst=pst.executeQuery();
+
+            while(rst.next()){
+
+                orgNames.add(rst.getString(2));
+            }
+            return orgNames;
+        }
+        
+        else if (value=="Department"){
+            
+            String sql = "select * from department_table";
+            orgNames = new ArrayList<>();
+            PreparedStatement pst= con.prepareStatement(sql);
+            ResultSet rst=pst.executeQuery();
+
+            while(rst.next()){
+
+                orgNames.add(rst.getString(2));
+            }
+            return orgNames;
+        }
+        
+          return orgNames;
         }
         
         public boolean updateReport_requests (Report_Requests_Model request) throws SQLException, ClassNotFoundException{

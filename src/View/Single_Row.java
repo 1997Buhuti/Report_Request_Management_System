@@ -38,6 +38,7 @@ public class Single_Row extends javax.swing.JFrame {
          setResizable(false);
          load_date();
          load_developers();
+         load_OrgNames();
     }
     
     public void load_date(){
@@ -54,13 +55,30 @@ public class Single_Row extends javax.swing.JFrame {
                 ArrayList <String> userNames = controller.loadUserNames();
                 for(String name:userNames){
                     
-                    cmbOrgNames.addItem(name);
+                    combo_dev_names1.addItem(name);
                 }
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
                 Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
             }
+    }
+    
+    public void load_OrgNames(){
+    
+        try {
+                
+                Report_Requests_Controller controller = new Report_Requests_Controller();
+                ArrayList <String> orgNames = controller.loadOrgNames(cmbOrgNames.getSelectedItem().toString());
+                for(String name:orgNames){
+                    jComboBox2.addItem(name);
+                }
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    
     }
     
     public void clearAll() {
@@ -74,6 +92,10 @@ public class Single_Row extends javax.swing.JFrame {
         //txt_branch_name.setText("");
         txt_request_date.setText("");
         txt_developer_id.setText("");
+    }
+    
+    public void clearOrgCombo(){
+        jComboBox2.removeAllItems();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -104,15 +126,15 @@ public class Single_Row extends javax.swing.JFrame {
         lbl_proj_completion_date2 = new javax.swing.JLabel();
         txt_request_date = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
-        lbl_proj_dept_name2 = new javax.swing.JLabel();
+        lbl_org_name = new javax.swing.JLabel();
         btn_update = new javax.swing.JButton();
         lbl_proj_dept_name3 = new javax.swing.JLabel();
         lbl_current_date = new javax.swing.JLabel();
         lbl_proj_dept_name4 = new javax.swing.JLabel();
         txt_developer_id = new javax.swing.JTextField();
-        cmbOrgNames = new javax.swing.JComboBox<>();
         combo_dev_names1 = new javax.swing.JComboBox<>();
-        cmbOrgType1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        cmbOrgNames = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -210,9 +232,9 @@ public class Single_Row extends javax.swing.JFrame {
         jComboBox1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "Ongoing", "Done", "Blocked" }));
 
-        lbl_proj_dept_name2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lbl_proj_dept_name2.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_proj_dept_name2.setText("Organization Name :");
+        lbl_org_name.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lbl_org_name.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_org_name.setText("Organization Name :");
 
         btn_update.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         btn_update.setText("Update");
@@ -240,14 +262,6 @@ public class Single_Row extends javax.swing.JFrame {
             }
         });
 
-        cmbOrgNames.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        cmbOrgNames.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Not Assigned" }));
-        cmbOrgNames.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbOrgNamesActionPerformed(evt);
-            }
-        });
-
         combo_dev_names1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         combo_dev_names1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Not Assigned" }));
         combo_dev_names1.addActionListener(new java.awt.event.ActionListener() {
@@ -256,11 +270,21 @@ public class Single_Row extends javax.swing.JFrame {
             }
         });
 
-        cmbOrgType1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        cmbOrgType1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Not Assigned" }));
-        cmbOrgType1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox2ItemStateChanged(evt);
+            }
+        });
+
+        cmbOrgNames.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Branch", "Department", "Region" }));
+        cmbOrgNames.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbOrgNamesItemStateChanged(evt);
+            }
+        });
+        cmbOrgNames.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbOrgType1ActionPerformed(evt);
+                cmbOrgNamesActionPerformed(evt);
             }
         });
 
@@ -307,39 +331,39 @@ public class Single_Row extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(38, 38, 38)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lbl_proj_dept_name4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(lbl_proj_completion_date1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(lbl_proj_completion_date2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(txt_request_date, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(lbl_proj_dept_name3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(combo_dev_names1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(lbl_proj_dept_name4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(txt_developer_id, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(lbl_proj_dept_name3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(lbl_proj_completion_date1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(lbl_proj_completion_date2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(34, 34, 34)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(txt_request_date, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(txt_developer_id, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(combo_dev_names1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(32, 32, 32)
+                                        .addGap(35, 35, 35)
                                         .addComponent(lbl_proj_dept_name, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cmbOrgType1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cmbOrgNames, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lbl_proj_dept_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cmbOrgNames, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(6, 6, 6))
-                                    .addComponent(btn_update, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                                        .addGap(38, 38, 38)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btn_update, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(lbl_org_name, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(3, 3, 3))))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lbl_proj_name1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_starting_date, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -393,11 +417,11 @@ public class Single_Row extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_proj_dept_name, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbOrgType1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmbOrgNames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(19, 19, 19)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_proj_dept_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbOrgNames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbl_org_name, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_update)
                         .addGap(14, 14, 14))))
@@ -453,9 +477,9 @@ public class Single_Row extends javax.swing.JFrame {
         String starting_date = txt_starting_date.getText();
         String requested_date = txt_request_date.getText();
         String proj_status = (String) jComboBox1.getSelectedItem();
-        String developer = cmbOrgNames.getSelectedItem().toString();
+        String developer = combo_dev_names1.getSelectedItem().toString();
         String developer_id = txt_developer_id.getText();
-        String orgName = cmbOrgNames.getSelectedItem().toString();
+        String orgName = jComboBox2.getSelectedItem().toString();
         String task_details="";
 
         Report_Requests_Model Model = new Report_Requests_Model 
@@ -499,21 +523,15 @@ public class Single_Row extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_developer_idActionPerformed
 
-    private void cmbOrgNamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOrgNamesActionPerformed
-        
-    }//GEN-LAST:event_cmbOrgNamesActionPerformed
-
     private void combo_dev_names1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_dev_names1ActionPerformed
         // TODO add your handling code here:
         try {
             
-            String developer_Name = cmbOrgNames.getSelectedItem().toString();
-            System.out.println(developer_Name);
+            String developer_Name = combo_dev_names1.getSelectedItem().toString();
             PreparedStatement pst = con.prepareStatement("select * from users where user_name= ?");
             pst.setObject(1,developer_Name);
             ResultSet rst= pst.executeQuery();
             if(rst.next()){
-                System.out.println(String.valueOf(rst.getObject("user_id")));
                 txt_developer_id.setText(String.valueOf(rst.getObject("user_id")));
             }
         } catch (SQLException ex) {
@@ -521,9 +539,21 @@ public class Single_Row extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_combo_dev_names1ActionPerformed
 
-    private void cmbOrgType1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOrgType1ActionPerformed
+    private void cmbOrgNamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOrgNamesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmbOrgType1ActionPerformed
+    }//GEN-LAST:event_cmbOrgNamesActionPerformed
+
+    private void cmbOrgNamesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbOrgNamesItemStateChanged
+        System.out.println("inside cmbOrgNamesItemStateChanged");
+        lbl_org_name.setText(cmbOrgNames.getSelectedItem().toString()+" Name");
+        clearOrgCombo();
+        load_OrgNames();
+           
+    }//GEN-LAST:event_cmbOrgNamesItemStateChanged
+
+    private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -563,18 +593,18 @@ public class Single_Row extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_update;
     public javax.swing.JComboBox<String> cmbOrgNames;
-    public javax.swing.JComboBox<String> cmbOrgType1;
     public javax.swing.JComboBox<String> combo_dev_names1;
     public javax.swing.JComboBox<String> jComboBox1;
+    public javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     public javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_current_date;
+    private javax.swing.JLabel lbl_org_name;
     private javax.swing.JLabel lbl_proj_completion_date;
     private javax.swing.JLabel lbl_proj_completion_date1;
     private javax.swing.JLabel lbl_proj_completion_date2;
     private javax.swing.JLabel lbl_proj_dept_name;
-    private javax.swing.JLabel lbl_proj_dept_name2;
     private javax.swing.JLabel lbl_proj_dept_name3;
     private javax.swing.JLabel lbl_proj_dept_name4;
     private javax.swing.JLabel lbl_proj_id;
