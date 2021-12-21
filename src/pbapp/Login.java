@@ -8,6 +8,7 @@ package pbapp;
 import Controller.User_Controller;
 import View.DashBoard;
 import View.Create_user;
+import View.RootLogin;
 import java.awt.Image;
 import java.awt.event.WindowEvent;
 import javafx.scene.control.PasswordField;
@@ -64,6 +65,7 @@ public class Login extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jCheckBox1 = new javax.swing.JCheckBox();
         jPasswordField1 = new javax.swing.JPasswordField();
+        jButton4 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         lbl_logo = new javax.swing.JLabel();
@@ -94,7 +96,7 @@ public class Login extends javax.swing.JFrame {
                 txt_uNameActionPerformed(evt);
             }
         });
-        jPanel2.add(txt_uName, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 38, 374, 49));
+        jPanel2.add(txt_uName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 374, 49));
 
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton1.setText("Clear");
@@ -103,7 +105,7 @@ public class Login extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 228, -1, -1));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, -1, -1));
 
         btn_signIn.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btn_signIn.setText("SignIn");
@@ -117,16 +119,16 @@ public class Login extends javax.swing.JFrame {
                 btn_signInKeyPressed(evt);
             }
         });
-        jPanel2.add(btn_signIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, -1, -1));
+        jPanel2.add(btn_signIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, -1, -1));
 
         jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton3.setText("SignUp");
+        jButton3.setText("Change password");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, -1, -1));
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
         jCheckBox1.setText("Show Password");
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +136,7 @@ public class Login extends javax.swing.JFrame {
                 jCheckBox1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 182, -1, -1));
+        jPanel2.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, -1, -1));
 
         jPasswordField1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +144,16 @@ public class Login extends javax.swing.JFrame {
                 jPasswordField1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 105, 374, 49));
+        jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 374, 49));
+
+        jButton4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton4.setText("SignUp");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 550, 300));
 
@@ -242,7 +253,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        new Create_user().setVisible(true);
+        new RootLogin().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -250,6 +261,10 @@ public class Login extends javax.swing.JFrame {
         txt_uName.setText("");
         jPasswordField1.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -290,6 +305,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton btn_signIn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

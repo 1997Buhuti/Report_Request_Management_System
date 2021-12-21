@@ -16,13 +16,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import jdk.nashorn.internal.scripts.JO;
 
 /**
  *
  * @author dpman
  */
 
-public class User_Controller {
+public class RootUser_Controller {
     
     Connection con = DBConnection.getConnection();
     
@@ -37,34 +39,6 @@ public class User_Controller {
                 return pst.executeUpdate()>0;
 
     }
-    
-           public String encrypt_password(String passsword){
-       
-           try {
-  
-            // Static getInstance method is called with hashing MD5
-            MessageDigest md = MessageDigest.getInstance("MD5");
-  
-            // digest() method is called to calculate message digest
-            //  of an input digest() return array of byte
-            byte[] messageDigest = md.digest(passsword.getBytes());
-  
-            // Convert byte array into signum representation
-            BigInteger no = new BigInteger(1, messageDigest);
-  
-            // Convert message digest into hex value
-            String hashtext = no.toString(16);
-            while (hashtext.length() < 32) {
-                hashtext = "0" + hashtext;
-            }
-            return hashtext;
-        } 
-  
-        // For specifying wrong message digest algorithms
-        catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
-       }
     
     public String get_encrypt_password(String passsword){
        
@@ -99,36 +73,20 @@ public class User_Controller {
         
         try {
            
-            String sql="select* from users where user_name=? and password=?";
-            String encryptedPassword = get_encrypt_password(Password);
-            PreparedStatement pst= con.prepareStatement(sql);
+            String sql="select* from root_table where rootuserName=? and root_PW=?";
+            //String encryptedPassword = get_encrypt_password(Password);
+            PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, uname);
-            pst.setString(2, encryptedPassword);
+            pst.setString(2, Password);
             
             ResultSet rs = pst.executeQuery();
             if(rs.next()){
-                System.out.println(rs.getObject("user_name"));
                 return true;
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(User_Controller.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
-    }
-    
-    public boolean changePassword(String userName, String PW){
-        
-        try {
-            encrypt_password(PW);
-            String sql= "Update users set password=? where user_name=?";
-            PreparedStatement pst= con.prepareStatement(sql);
-            pst.setString(1, PW);
-            pst.setString(2, userName);
-            return pst.executeUpdate()>0;
-
-        } catch (SQLException ex) {
-            Logger.getLogger(User_Controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RootUser_Controller.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
         }
         return false;
     }

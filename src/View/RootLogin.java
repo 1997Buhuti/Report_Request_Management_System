@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.RootUser_Controller;
 import Controller.User_Controller;
 import Model.UserModel;
 //import com.sun.xml.internal.ws.util.JAXWSUtils;
@@ -15,21 +16,26 @@ import java.sql.SQLException;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import utility.UserCredentials;
 
 /**
  *
  * @author dpman
  */
-public class Create_user extends javax.swing.JFrame {
+public class RootLogin extends javax.swing.JFrame {
+    
+    public static String rootUname="root";
+    public static String rootPW="root";
     
     public static int number=0;
     /**
      * Creates new form create_user
      */
-    public Create_user() {
+    public RootLogin() {
         initComponents();
-        lbl_id.setText(userId_generate());
         this.setLocationRelativeTo(null);
         setResizable(false);
     }
@@ -44,81 +50,75 @@ public class Create_user extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblLoginLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txt_access_level = new javax.swing.JTextField();
         txtx_user_name = new javax.swing.JTextField();
-        txtx_password = new javax.swing.JTextField();
         btn_clear = new javax.swing.JButton();
-        btn_create_user1 = new javax.swing.JButton();
-        lbl_id = new javax.swing.JLabel();
+        changeBtn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setBackground(new java.awt.Color(255, 153, 0));
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("                         Create User Form");
-        jLabel1.setOpaque(true);
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, -1));
-
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Access_Level :");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("User_Id :");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        lblLoginLabel.setBackground(new java.awt.Color(255, 153, 0));
+        lblLoginLabel.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        lblLoginLabel.setForeground(new java.awt.Color(0, 0, 0));
+        lblLoginLabel.setText("                             Root Login");
+        lblLoginLabel.setOpaque(true);
+        jPanel1.add(lblLoginLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, -1));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("User_Name :");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+        jLabel4.setText("Root User_Name :");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 180, -1));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Password");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
-
-        txt_access_level.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jPanel1.add(txt_access_level, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 330, -1));
+        jLabel5.setText("Root User_Password:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
         txtx_user_name.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jPanel1.add(txtx_user_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 330, -1));
-
-        txtx_password.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jPanel1.add(txtx_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 330, -1));
+        jPanel1.add(txtx_user_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 280, -1));
 
         btn_clear.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_clear.setText("clear");
-        jPanel1.add(btn_clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, -1, -1));
-
-        btn_create_user1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btn_create_user1.setText("Create");
-        btn_create_user1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_create_user1MouseClicked(evt);
-            }
-        });
-        btn_create_user1.addActionListener(new java.awt.event.ActionListener() {
+        btn_clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_create_user1ActionPerformed(evt);
+                btn_clearActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_create_user1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, -1, -1));
+        jPanel1.add(btn_clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 180, 80, -1));
 
-        lbl_id.setBackground(new java.awt.Color(0, 0, 0));
-        lbl_id.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lbl_id.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(lbl_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, -1, -1));
+        changeBtn.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        changeBtn.setText("Change");
+        changeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                changeBtnMouseClicked(evt);
+            }
+        });
+        changeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changeBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(changeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, -1, -1));
+
+        jLabel2.setForeground(new java.awt.Color(153, 0, 0));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 270, 30));
+        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 280, 30));
+
+        jCheckBox1.setText("Show Password");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -128,12 +128,12 @@ public class Create_user extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    static JFrame f;
        public String encrypt_password(String passsword){
        
            try {
@@ -164,9 +164,7 @@ public class Create_user extends javax.swing.JFrame {
         
     public void clearAll() throws ClassNotFoundException, SQLException{
                     txtx_user_name.setText("");
-                    txtx_password.setText("");
-                    txt_access_level.setText("");
-             
+                    jPasswordField1.setText("");
         }
         
     public String userId_generate(){
@@ -174,38 +172,46 @@ public class Create_user extends javax.swing.JFrame {
             String uuid=UUID.randomUUID().toString();
             uuid=uuid.substring(0,3);
             UID=UID+uuid;
-            lbl_id.setText(UID);
             return UID;
             
         }
         
-    private void btn_create_user1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_create_user1MouseClicked
-            
-            String UserId = lbl_id.getText();
-            String UserName= txtx_user_name.getText();
-            String UserPassword = txtx_password.getText();
-            String hashedPassword = encrypt_password(UserPassword);
-            String AcessLevel = txt_access_level.getText();
-            
-            UserModel user = new UserModel(UserId,UserName,hashedPassword,AcessLevel);
-            User_Controller controller= new User_Controller();
-            
-        try {
-            if(controller.saveUser(user)){
-                userId_generate();
-                JOptionPane.showMessageDialog(this, "The record inserted");
-                clearAll();
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Create_user.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Create_user.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btn_create_user1MouseClicked
+    private void changeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeBtnMouseClicked
+        
+    }//GEN-LAST:event_changeBtnMouseClicked
 
-    private void btn_create_user1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_create_user1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_create_user1ActionPerformed
+    private void changeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeBtnActionPerformed
+        
+        String uname= txtx_user_name.getText();
+        String pword = new String (jPasswordField1.getPassword());
+        RootUser_Controller User_Controller = new RootUser_Controller();
+        Boolean val= User_Controller.checkCredentials(uname, pword);
+        if(val){
+            new ChangePassword().setVisible(true);
+            dispose();
+        }
+        
+        else{
+            
+             f=new JFrame();  
+            JOptionPane.showMessageDialog(f,"**Error name or password invalid.");  
+        }
+        
+    }//GEN-LAST:event_changeBtnActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        if(jCheckBox1.isSelected()){
+             jPasswordField1.setEchoChar((char)0);
+        }
+        else{
+            jPasswordField1.setEchoChar('#');
+        }
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
+        txtx_user_name.setText("");
+        jPasswordField1.setText("");
+    }//GEN-LAST:event_btn_clearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,37 +230,37 @@ public class Create_user extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Create_user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RootLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Create_user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RootLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Create_user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RootLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Create_user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RootLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Create_user().setVisible(true);
+                new RootLogin().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_clear;
-    private javax.swing.JButton btn_create_user1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton changeBtn;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lbl_id;
-    private javax.swing.JTextField txt_access_level;
-    private javax.swing.JTextField txtx_password;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JLabel lblLoginLabel;
     private javax.swing.JTextField txtx_user_name;
     // End of variables declaration//GEN-END:variables
 }
