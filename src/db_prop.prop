@@ -1,4 +1,4 @@
-Dname=com.mysql.cj.jdbc.Driver
-URL=jdbc:mysql://localhost:3306/pb_app_data
-Uname=root
-password=Manakal@2021
+driver.class.name=com.mysql.cj.jdbc.Driver
+db.url=jdbc:mysql://localhost:3306/pb_app_data
+db.username=root
+db.password=Manakal@2021
