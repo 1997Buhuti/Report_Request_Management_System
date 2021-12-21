@@ -141,10 +141,11 @@ public class Report_Requests_Controller {
                 pst.setString(7, request.getCurent_status());
                 pst.setString(8, request.getRemarks());
                 pst.setString(9, request.getOrganization().getType());
+                System.out.println("Org Type="+request.getOrganization().getType());
                 pst.setString(10, request.getOrganization().getOrgName());
+                System.out.println("Org Type="+request.getOrganization().getOrgName());
                 pst.setString(11, request.getDeveloper_name());
                 pst.setString(12, request.getDeveloper_id());
-                pst.setString(13, request.getRecieved_date());
             
                 return pst.executeUpdate()>0;
 
