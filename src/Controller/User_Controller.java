@@ -38,35 +38,7 @@ public class User_Controller {
 
     }
     
-           public String encrypt_password(String passsword){
-       
-           try {
-  
-            // Static getInstance method is called with hashing MD5
-            MessageDigest md = MessageDigest.getInstance("MD5");
-  
-            // digest() method is called to calculate message digest
-            //  of an input digest() return array of byte
-            byte[] messageDigest = md.digest(passsword.getBytes());
-  
-            // Convert byte array into signum representation
-            BigInteger no = new BigInteger(1, messageDigest);
-  
-            // Convert message digest into hex value
-            String hashtext = no.toString(16);
-            while (hashtext.length() < 32) {
-                hashtext = "0" + hashtext;
-            }
-            return hashtext;
-        } 
-  
-        // For specifying wrong message digest algorithms
-        catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
-       }
-    
-    public String get_encrypt_password(String passsword){
+    public String encrypt_password(String passsword){
        
         try {
   
@@ -83,9 +55,37 @@ public class User_Controller {
         // Convert message digest into hex value
         String hashtext = no.toString(16);
         while (hashtext.length() < 32) {
-                hashtext = "0" + hashtext;
+            hashtext = "0" + hashtext;
         }
-        return hashtext;
+            return hashtext;
+        } 
+  
+        // For specifying wrong message digest algorithms
+        catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public String get_encrypt_password(String passsword){
+       
+        try {
+  
+            // Static getInstance method is called with hashing MD5
+            MessageDigest md = MessageDigest.getInstance("MD5");
+
+            // digest() method is called to calculate message digest
+            //  of an input digest() return array of byte
+            byte[] messageDigest = md.digest(passsword.getBytes());
+
+            // Convert byte array into signum representation
+            BigInteger no = new BigInteger(1, messageDigest);
+
+            // Convert message digest into hex value
+            String hashtext = no.toString(16);
+            while (hashtext.length() < 32) {
+                    hashtext = "0" + hashtext;
+            }
+            return hashtext;
         } 
   
         // For specifying wrong message digest algorithms
@@ -93,7 +93,7 @@ public class User_Controller {
             throw new RuntimeException(e);
         }
         
-       }
+    }
     
     public boolean checkCredentials(String uname , String Password){
         
@@ -120,10 +120,10 @@ public class User_Controller {
     public boolean changePassword(String userName, String PW){
         
         try {
-            encrypt_password(PW);
+            String encryptedPW = encrypt_password(PW);
             String sql= "Update users set password=? where user_name=?";
             PreparedStatement pst= con.prepareStatement(sql);
-            pst.setString(1, PW);
+            pst.setString(1, encryptedPW);
             pst.setString(2, userName);
             return pst.executeUpdate()>0;
 
