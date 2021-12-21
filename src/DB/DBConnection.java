@@ -5,12 +5,17 @@
  */
 package DB;
 
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
+import java.io.InputStream;
+import static java.lang.System.in;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,6 +36,7 @@ public class DBConnection {
    static{
             
         try{
+               
                 p=new Properties (); 
                 p.load(new FileInputStream("src/DB/db_prop.prop")); 
                 String dname= (String) p.get ("Dname"); 
@@ -52,10 +58,12 @@ public class DBConnection {
         
         if(con==null){
             System.out.println("Connection established succesfull");
+            //JOptionPane.showMessageDialog(this, "The record updated");
         }
         return con;
     }
 
 }
+
 
 
