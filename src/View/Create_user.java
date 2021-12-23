@@ -99,6 +99,11 @@ public class Create_user extends javax.swing.JFrame {
 
         btn_clear.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_clear.setText("clear");
+        btn_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_clearActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, -1, -1));
 
         btn_create_user1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -204,8 +209,35 @@ public class Create_user extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_create_user1MouseClicked
 
     private void btn_create_user1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_create_user1ActionPerformed
-        // TODO add your handling code here:
+            String UserId = lbl_id.getText();
+            String UserName= txtx_user_name.getText();
+            String UserPassword = txtx_password.getText();
+            String hashedPassword = encrypt_password(UserPassword);
+            String AcessLevel = txt_access_level.getText();
+            
+            UserModel user = new UserModel(UserId,UserName,hashedPassword,AcessLevel);
+            User_Controller controller= new User_Controller();
+            
+        try {
+            if(controller.saveUser(user)){
+                userId_generate();
+                JOptionPane.showMessageDialog(this, "The record inserted");
+                clearAll();
+            }
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(Create_user.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Create_user.class.getName()).log(Level.SEVERE, null, ex); 
+        }
     }//GEN-LAST:event_btn_create_user1ActionPerformed
+
+    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
+        // TODO add your handling code here:
+        txtx_user_name.setText("");
+        txtx_password.setText("");
+        txt_access_level.setText("");
+    }//GEN-LAST:event_btn_clearActionPerformed
 
     /**
      * @param args the command line arguments
