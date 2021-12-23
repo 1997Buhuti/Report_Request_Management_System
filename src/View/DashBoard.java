@@ -63,6 +63,10 @@ public class DashBoard extends javax.swing.JFrame {
         Request_Form_Id_generate();
         this.setLocationRelativeTo(null);
         scaleImage();
+         
+        int w = 1455;
+        int h= 950;
+        this.setSize(w, h);
         try {
             loadMyWorkTable();
         } catch (ClassNotFoundException ex) {
@@ -406,6 +410,7 @@ public class DashBoard extends javax.swing.JFrame {
         cmbTypes = new javax.swing.JComboBox<>();
         lbl_proj_dept_name12 = new javax.swing.JLabel();
         cmb_Org_Name = new javax.swing.JComboBox<>();
+        btn_refresh = new javax.swing.JButton();
         mng_dept_Card = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -1429,6 +1434,14 @@ public class DashBoard extends javax.swing.JFrame {
         lbl_proj_dept_name12.setForeground(new java.awt.Color(0, 0, 0));
         lbl_proj_dept_name12.setText("Type:");
 
+        btn_refresh.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btn_refresh.setText("Refresh");
+        btn_refresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_refreshActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pri_Card3Layout = new javax.swing.GroupLayout(pri_Card3);
         pri_Card3.setLayout(pri_Card3Layout);
         pri_Card3Layout.setHorizontalGroup(
@@ -1438,7 +1451,7 @@ public class DashBoard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pri_Card3Layout.createSequentialGroup()
-                        .addGap(0, 5, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pri_Card3Layout.createSequentialGroup()
                                 .addComponent(lbl_proj_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1466,7 +1479,7 @@ public class DashBoard extends javax.swing.JFrame {
                         .addComponent(lbl_proj_completion_date8, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txt_completion_date2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)))
                 .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pri_Card3Layout.createSequentialGroup()
                         .addComponent(lbl_proj_dept_name9, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1477,27 +1490,35 @@ public class DashBoard extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(combo_proj_status2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pri_Card3Layout.createSequentialGroup()
-                        .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pri_Card3Layout.createSequentialGroup()
+                        .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pri_Card3Layout.createSequentialGroup()
                                 .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lbl_proj_dept_name11, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lbl_proj_dept_name10, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lbl_proj_id4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
                                 .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(pri_Card3Layout.createSequentialGroup()
-                                        .addComponent(btn_submit3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btn_clear3, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane6)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txt_developer_id2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(pri_Card3Layout.createSequentialGroup()
-                                        .addComponent(txt_developer_id2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(cmb_Org_Name, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(pri_Card3Layout.createSequentialGroup()
-                                .addComponent(lbl_proj_dept_name12, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(cmbTypes, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                            .addComponent(cmb_Org_Name, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pri_Card3Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pri_Card3Layout.createSequentialGroup()
+                                        .addComponent(btn_submit3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(61, 61, 61)
+                                        .addComponent(btn_refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(60, 60, 60)
+                                        .addComponent(btn_clear3, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pri_Card3Layout.createSequentialGroup()
+                                        .addComponent(lbl_proj_dept_name12, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cmbTypes, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(16, 16, 16)))))
                         .addGap(3, 3, 3)))
                 .addGap(43, 43, 43))
         );
@@ -1539,9 +1560,10 @@ public class DashBoard extends javax.swing.JFrame {
                             .addComponent(txt_starting_date2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pri_Card3Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_proj_dept_name10, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmb_Org_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(lbl_proj_dept_name10, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pri_Card3Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(cmb_Org_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(25, 25, 25)
                 .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pri_Card3Layout.createSequentialGroup()
@@ -1552,7 +1574,8 @@ public class DashBoard extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                         .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_clear3)
-                            .addComponent(btn_submit3))
+                            .addComponent(btn_submit3)
+                            .addComponent(btn_refresh))
                         .addGap(51, 51, 51))))
         );
 
@@ -2179,7 +2202,6 @@ public class DashBoard extends javax.swing.JFrame {
         txt_projID2.setText("");
         txt_proj_name2.setText("");
         txt_completion_date2.setText("");
-        lbl_current_date2.setText("");
         txt_recieved_date2.setText("");
         txt_starting_date2.setText("");
     }//GEN-LAST:event_btn_clear3ActionPerformed
@@ -2212,12 +2234,15 @@ public class DashBoard extends javax.swing.JFrame {
             String task_details = "";
             String dev_Id = txt_developer_id2.getText();
 
-            if( txt_completion_date2.getText().isEmpty()){
-                
+            System.out.println("completetion date is"+completion_date);
+            
+            if( txt_completion_date2.getText().isEmpty()|| completion_date == "" || completion_date == ""){
+                JOptionPane.showMessageDialog(this, "Inside without completion Date");
+                System.out.println("Inside without completion Date");
                 Organization org = new Organization(org_type,org_name);
                 Report_Requests_Model request = new Report_Requests_Model(ProjId,
                         ProjName,recieved_date,created_date,
-                        starting_date,proj_status,remarks,
+                        starting_date,created_date,proj_status,remarks,
                         task_details,org,developers,dev_Id);
                 
                 Report_Requests_Controller controller= new Report_Requests_Controller();
@@ -2231,30 +2256,39 @@ public class DashBoard extends javax.swing.JFrame {
                     }
                     
                     } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(this, ex.getMessage());
                         Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {
+                        JOptionPane.showMessageDialog(this, ex.getMessage());
                         Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                }
+            }
             
-                Organization org = new Organization(org_type,org_name);
-                Report_Requests_Model request = new  Report_Requests_Model(
-                ProjId,ProjName,recieved_date,created_date,starting_date,
-                completion_date,proj_status,remarks,task_details,org,developers,dev_Id);
-                
-                Report_Requests_Controller controller= new Report_Requests_Controller();
+            else{
+                    System.out.println("Inside with completion Date");
+                    JOptionPane.showMessageDialog(this, "Inside with completion Date"+completion_date);
+                    Organization org = new Organization(org_type,org_name);
+                    Report_Requests_Model request = new  Report_Requests_Model(
+                    ProjId,ProjName,recieved_date,created_date,starting_date,
+                    completion_date,proj_status,remarks,task_details,org,developers,dev_Id);
+                    JOptionPane.showMessageDialog(this, "Inside with completion Date"+request.getCompletion_date());
+                    System.out.println("completion date of project "+request.getProject_name()+" is "+request.getCompletion_date());
+                    Report_Requests_Controller controller= new Report_Requests_Controller();
+                    try {
+                        if(controller.saveReportRequest(request)){
 
-                try {
-                    if(controller.saveReportRequest(request)){
-
-                        JOptionPane.showMessageDialog(this, "The record inserted");
-                        clearAll();
+                            JOptionPane.showMessageDialog(this, "The record inserted");
+                            clearAll();
+                        }
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(this, ex.getMessage());
+                        Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        JOptionPane.showMessageDialog(this, ex.getMessage());
+                        Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                } catch (SQLException ex) {
-                    Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            }
+                
 
     }//GEN-LAST:event_btn_submit3ActionPerformed
 
@@ -2872,6 +2906,11 @@ public class DashBoard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tbl_requests2KeyPressed
 
+    private void btn_refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refreshActionPerformed
+        // TODO add your handling code here:
+        Request_Form_Id_generate();
+    }//GEN-LAST:event_btn_refreshActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2934,6 +2973,7 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdateRegions;
     private javax.swing.JButton btn_clear2;
     private javax.swing.JButton btn_clear3;
+    private javax.swing.JButton btn_refresh;
     private javax.swing.JButton btn_submit2;
     private javax.swing.JButton btn_submit3;
     private javax.swing.JButton btn_update1;

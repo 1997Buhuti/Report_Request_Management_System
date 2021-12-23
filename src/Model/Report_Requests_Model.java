@@ -5,6 +5,7 @@
  */
 package Model;
 
+import javax.swing.JOptionPane;
 import utility.Organization;
 
 /**
@@ -19,6 +20,7 @@ public class Report_Requests_Model {
     private String created_date;
     private String start_date;
     private String completion_date;
+    private String request_date;
     private String curent_status;
     private String remarks;
     private String task_details;
@@ -28,12 +30,13 @@ public class Report_Requests_Model {
     private String developer_id;
     private Organization organization;
 
-    public Report_Requests_Model(String ProjId, String ProjName, String recieved_date, String created_date, String starting_date, String proj_status, String remarks, String task_details, Organization org, String developers, String dev_Id) {
+    public Report_Requests_Model(String ProjId, String ProjName, String recieved_date, String created_date, String starting_date, String request_date , String proj_status, String remarks, String task_details, Organization org, String developers, String dev_Id) {
         this.project_id = ProjId;
         this.project_name = ProjName;
         this.recieved_date = recieved_date;
         this.created_date = created_date;
         this.start_date = starting_date;
+        this.request_date = request_date;
         //this.completion_date = completion_date;
         this.curent_status = proj_status;
         this.remarks = remarks;
@@ -43,13 +46,15 @@ public class Report_Requests_Model {
         this.organization = org;
     }
     
-    public Report_Requests_Model(String ProjId, String ProjName, String recieved_date, String created_date, String starting_date, String completion_Date ,String proj_status, String remarks, String task_details, Organization org, String developers, String dev_Id) {
+    public Report_Requests_Model(String ProjId, String ProjName, String recieved_date, String created_date, String starting_date, String completion_Date ,String request_date ,String proj_status, String remarks, String task_details, Organization org, String developers, String dev_Id) {
+        System.out.println("Completion Date is "+completion_Date);
         this.project_id = ProjId;
         this.project_name = ProjName;
         this.recieved_date = recieved_date;
         this.created_date = created_date;
         this.start_date = starting_date;
         this.completion_date = completion_Date;
+        this.request_date = request_date;
         this.curent_status = proj_status;
         this.remarks = remarks;
         this.task_details = task_details;
@@ -59,7 +64,14 @@ public class Report_Requests_Model {
     }
     
 
-     
+    public String getRequest_date() {
+        return request_date;
+    }
+
+    public void setRequest_date(String request_date) {
+        this.request_date = request_date;
+    }
+    
     public Report_Requests_Model() {
     }
 

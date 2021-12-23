@@ -6,9 +6,14 @@
 package DB;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -52,6 +57,20 @@ public class DBConnection {
                con = DriverManager.getConnection(prop.getProperty(DB_URL),prop.getProperty(DB_USERNAME),prop.getProperty(DB_PASSWORD));
                //DB_URL,DB_USERNAME,DB_PASSWORD
 
+        }
+        catch(FileNotFoundException ex){
+            try {
+                Properties prop = new Properties();
+                prop.load(new FileInputStream("./db_prop.prop"));
+                Class.forName(prop.getProperty(DB_DRIVER_CLASS));
+                con = DriverManager.getConnection(prop.getProperty(DB_URL),prop.getProperty(DB_USERNAME),prop.getProperty(DB_PASSWORD));
+            } catch (IOException ex1) {
+                Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex1);
+            } catch (SQLException ex1) {
+                Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex1);
+            } catch (ClassNotFoundException ex1) {
+                Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex1);
+            }
         }
         catch(Exception ex){
             ex.printStackTrace();

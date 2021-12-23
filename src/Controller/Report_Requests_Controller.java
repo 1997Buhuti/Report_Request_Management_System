@@ -146,6 +146,7 @@ public class Report_Requests_Controller {
                 System.out.println("Org Type="+request.getOrganization().getOrgName());
                 pst.setString(11, request.getDeveloper_name());
                 pst.setString(12, request.getDeveloper_id());
+                pst.setString(13, request.getRequest_date());
             
                 return pst.executeUpdate()>0;
 
