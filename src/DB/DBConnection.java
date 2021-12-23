@@ -47,6 +47,7 @@ public class DBConnection {
                 Properties.load(new FileInputStream())*/
 
                Properties prop = new Properties();
+               //prop.load(new FileInputStream("src/db_prop.prop"));
                prop.load(new FileInputStream("src/db_prop.prop"));
                Class.forName(prop.getProperty(DB_DRIVER_CLASS));
                con = DriverManager.getConnection(prop.getProperty(DB_URL),prop.getProperty(DB_USERNAME),prop.getProperty(DB_PASSWORD));

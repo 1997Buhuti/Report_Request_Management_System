@@ -17,6 +17,7 @@ import Model.Report_Requests_Model;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.sql.Connection;
@@ -56,6 +57,9 @@ public class DashBoard extends javax.swing.JFrame {
     
     public DashBoard(String uname) {
         initComponents();
+        /*Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        pack();
+        setSize(screenSize.width,screenSize.height);*/
         MenuBar.setVisible(false);
         username.setText(uname);
         txt_developer_id2.disable();
@@ -97,7 +101,7 @@ public class DashBoard extends javax.swing.JFrame {
     Single_Row raw_data = new Single_Row();
     Color DefaultColor,ClickedColor,HoveredColor;
     
-    /*    This is used to load the curent dat in the label */
+    /*    This is used to load the credentials   */
     
     public static void loadCredentials(UserCredentials user){
         System.out.println(user.userName);
@@ -108,6 +112,10 @@ public class DashBoard extends javax.swing.JFrame {
     public DashBoard() {
         
     }
+    
+    /* 
+        Method for load date
+    */
     public void load_date(){
            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
            LocalDateTime now = LocalDateTime.now();  
@@ -127,7 +135,10 @@ public class DashBoard extends javax.swing.JFrame {
          "Department Name" ,"Branch Name" ,"Developer Name","Developer_Id"}));
 
     }
-    
+   
+    /* 
+        Method for clearTable2
+    */
     public void clearTable2(){
         
         tbl_requests2.setModel(new DefaultTableModel(null,new String[]
@@ -137,19 +148,27 @@ public class DashBoard extends javax.swing.JFrame {
     }
     
     
-    
+    /* 
+        Method for clearBranchTable
+    */
     public void clearBranchTable(){
         
         tblBranch.setModel(new DefaultTableModel(null,new String[]
         {"branch_Code","branch_Name"}));
     }
     
+    /* 
+        Method for clearing the departments in the table.
+    */
     public void clearDepartmentTable(){
         
         tblDept.setModel(new DefaultTableModel(null,new String[]
         {"Department Id","Department Name"}));
     }
     
+    /* 
+        Method for clearing the regions in the table.
+    */
     public void clearRegionTable(){
         
         tblRegion.setModel(new DefaultTableModel(null,new String[]
@@ -158,7 +177,7 @@ public class DashBoard extends javax.swing.JFrame {
     
     
     
-    /*    This is used to clear all the data in form*/
+    /*This is used to clear all the data in form*/
     
      public void clearAll() throws ClassNotFoundException, SQLException{
         raw_data.txt_proj_id.setText("");
@@ -172,7 +191,7 @@ public class DashBoard extends javax.swing.JFrame {
         combo_proj_status2.getModel().setSelectedItem("");
     }
      
- /*    This is used to scale the image*/
+    /*This is used to scale the image*/
      
     public void scaleImage(){
         //ImageIcon icon = new ImageIcon("C:\\Users\\dpman\\Documents\\NetBeansProjects\\PBApp\\src\\images\\PB LOG.jpg");
@@ -192,6 +211,9 @@ public class DashBoard extends javax.swing.JFrame {
         //Order.setBackground(DefaultColor);
     }
     
+    /* 
+        Method for genarating  id's
+    */
     public String Request_Form_Id_generate(){
             String UID = "Proj" ;
             String uuid=UUID.randomUUID().toString();
@@ -236,6 +258,9 @@ public class DashBoard extends javax.swing.JFrame {
            }
     }
     
+    /*
+        This method is used for loading the loadMyWorkTable
+     */ 
     public void loadMyWorkTable() throws ClassNotFoundException, SQLException{
         
            Report_Requests_Controller controller= new Report_Requests_Controller();
@@ -254,7 +279,9 @@ public class DashBoard extends javax.swing.JFrame {
     
     
     
-
+    /*
+        This method is used for loading the departmentTable
+     */ 
      public void loadDepartmentTable() throws ClassNotFoundException, SQLException{
         
            DeaprtmentController controller= new  DeaprtmentController();
@@ -268,6 +295,9 @@ public class DashBoard extends javax.swing.JFrame {
            }
     }
      
+    /*
+        This method is used for loading the branchTable
+    */ 
     public void loadBranchTable() throws ClassNotFoundException, SQLException{
         
            BranchController controller= new BranchController();
@@ -281,6 +311,9 @@ public class DashBoard extends javax.swing.JFrame {
            }
     }
     
+    /* 
+        Method for clearing the departments in the table.
+    */
     public void loadRegionTable() throws ClassNotFoundException, SQLException{
         
            RegionController controller= new RegionController();
@@ -961,18 +994,17 @@ public class DashBoard extends javax.swing.JFrame {
             .addComponent(red_line, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(menu_headerLayout.createSequentialGroup()
                 .addComponent(lbl_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 262, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(menu_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_headerLayout.createSequentialGroup()
-                        .addGroup(menu_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(UserName, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_headerLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(217, 217, 217)))
+                        .addComponent(UserName)
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_headerLayout.createSequentialGroup()
                         .addGroup(menu_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(menu_headerLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(397, 397, 397)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(60, 60, 60))))
         );
@@ -1217,7 +1249,7 @@ public class DashBoard extends javax.swing.JFrame {
                 .addComponent(lbl_maintenace, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(MenuBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(336, Short.MAX_VALUE))
+                .addContainerGap(441, Short.MAX_VALUE))
         );
 
         jSplitPane_menu.setLeftComponent(menu_bar);
@@ -1252,6 +1284,7 @@ public class DashBoard extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbl_requests);
 
+        refresh.setForeground(new java.awt.Color(255, 0, 102));
         refresh.setText("Refresh");
         refresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1263,19 +1296,21 @@ public class DashBoard extends javax.swing.JFrame {
         pri_Card1.setLayout(pri_Card1Layout);
         pri_Card1Layout.setHorizontalGroup(
             pri_Card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1115, Short.MAX_VALUE)
+            .addGroup(pri_Card1Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pri_Card1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(99, 99, 99))
         );
         pri_Card1Layout.setVerticalGroup(
             pri_Card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pri_Card1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 1706, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pri_CardLayout.add(pri_Card1, "card2");
@@ -1438,7 +1473,7 @@ public class DashBoard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pri_Card3Layout.createSequentialGroup()
-                        .addGap(0, 5, Short.MAX_VALUE)
+                        .addGap(0, 6, Short.MAX_VALUE)
                         .addGroup(pri_Card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pri_Card3Layout.createSequentialGroup()
                                 .addComponent(lbl_proj_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1932,11 +1967,13 @@ public class DashBoard extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel_main, javax.swing.GroupLayout.PREFERRED_SIZE, 1435, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel_main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel_main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel_main, javax.swing.GroupLayout.PREFERRED_SIZE, 995, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 81, Short.MAX_VALUE))
         );
 
         pack();
@@ -2215,6 +2252,7 @@ public class DashBoard extends javax.swing.JFrame {
             if( txt_completion_date2.getText().isEmpty()){
                 
                 Organization org = new Organization(org_type,org_name);
+                System.out.println("after creating org object"+ org.getOrgName()+""+org.getType());
                 Report_Requests_Model request = new Report_Requests_Model(ProjId,
                         ProjName,recieved_date,created_date,
                         starting_date,proj_status,remarks,

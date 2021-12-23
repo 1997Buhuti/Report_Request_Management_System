@@ -27,7 +27,8 @@ public class Report_Requests_Model {
     private String developer_name;
     private String developer_id;
     private Organization organization;
-
+    
+    /*Conatructor without the completion date*/
     public Report_Requests_Model(String ProjId, String ProjName, String recieved_date, String created_date, String starting_date, String proj_status, String remarks, String task_details, Organization org, String developers, String dev_Id) {
         this.project_id = ProjId;
         this.project_name = ProjName;
@@ -43,6 +44,7 @@ public class Report_Requests_Model {
         this.organization = org;
     }
     
+    /*Conatructor with completion date*/
     public Report_Requests_Model(String ProjId, String ProjName, String recieved_date, String created_date, String starting_date, String completion_Date ,String proj_status, String remarks, String task_details, Organization org, String developers, String dev_Id) {
         this.project_id = ProjId;
         this.project_name = ProjName;
