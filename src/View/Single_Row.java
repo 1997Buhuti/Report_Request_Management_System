@@ -263,7 +263,7 @@ public class Single_Row extends javax.swing.JFrame {
         });
 
         combo_dev_names1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        combo_dev_names1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Not Assigned" }));
+        combo_dev_names1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Unassigned" }));
         combo_dev_names1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combo_dev_names1ActionPerformed(evt);

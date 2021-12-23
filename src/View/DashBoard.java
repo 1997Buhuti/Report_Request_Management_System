@@ -238,6 +238,22 @@ public class DashBoard extends javax.swing.JFrame {
            }
     }
     
+    public void loadUnassignedTable() throws ClassNotFoundException, SQLException{
+        
+           Report_Requests_Controller controller= new Report_Requests_Controller();
+           DefaultTableModel dtm= (DefaultTableModel)tbl_requests.getModel();
+           ArrayList<Report_Requests_Model> report_requests = controller.getAllUnassignedReportRequests();
+           
+           for(Report_Requests_Model i: report_requests){
+               
+                Object arr[]={i.getProject_id(),i.getProject_name(),i.getRecieved_date(),
+                i.getCreated_date(),i.getStart_date(), i.getCompletion_date(),i.getCurent_status(),
+                i.getRemarks(),i.getTask_details(),i.getOrganization().getType(),
+                i.getOrganization().getOrgName(),i.getDeveloper_name(),i.getDeveloper_id()};
+                dtm.addRow(arr);
+           }
+    }
+    
     public void loadMyWorkTable() throws ClassNotFoundException, SQLException{
         
            Report_Requests_Controller controller= new Report_Requests_Controller();
@@ -380,6 +396,7 @@ public class DashBoard extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_requests = new javax.swing.JTable();
         refresh = new javax.swing.JButton();
+        refresh2 = new javax.swing.JButton();
         pri_Card3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         lbl_proj_id4 = new javax.swing.JLabel();
@@ -1262,6 +1279,13 @@ public class DashBoard extends javax.swing.JFrame {
             }
         });
 
+        refresh2.setText("Show Unassigned Proects");
+        refresh2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refresh2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pri_Card1Layout = new javax.swing.GroupLayout(pri_Card1);
         pri_Card1.setLayout(pri_Card1Layout);
         pri_Card1Layout.setHorizontalGroup(
@@ -1269,6 +1293,8 @@ public class DashBoard extends javax.swing.JFrame {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1115, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pri_Card1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(refresh2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(93, 93, 93)
                 .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1276,9 +1302,11 @@ public class DashBoard extends javax.swing.JFrame {
             pri_Card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pri_Card1Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGroup(pri_Card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(refresh2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pri_CardLayout.add(pri_Card1, "card2");
@@ -1389,6 +1417,8 @@ public class DashBoard extends javax.swing.JFrame {
         lbl_proj_dept_name10.setForeground(new java.awt.Color(0, 0, 0));
         lbl_proj_dept_name10.setText("Branch Name:");
 
+        combo_developers2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Unassigned" }));
+        combo_developers2.setToolTipText("");
         combo_developers2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 combo_developers2ItemStateChanged(evt);
@@ -2875,6 +2905,18 @@ public class DashBoard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tbl_requests2KeyPressed
 
+    private void refresh2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refresh2ActionPerformed
+        try {
+            // TODO add your handling code here:
+            clearTable();
+            loadUnassignedTable();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_refresh2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3034,6 +3076,7 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JPanel red_line1;
     private javax.swing.JButton refresh;
     private javax.swing.JButton refresh1;
+    private javax.swing.JButton refresh2;
     private javax.swing.JTable tblBranch;
     private javax.swing.JTable tblDept;
     private javax.swing.JTable tblRegion;
