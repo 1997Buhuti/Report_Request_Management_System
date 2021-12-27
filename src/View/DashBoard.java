@@ -1279,7 +1279,7 @@ public class DashBoard extends javax.swing.JFrame {
             }
         });
 
-        refresh2.setText("Show Unassigned Proects");
+        refresh2.setText("Show Unassigned Projects");
         refresh2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refresh2ActionPerformed(evt);
@@ -1294,9 +1294,9 @@ public class DashBoard extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pri_Card1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(refresh2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(93, 93, 93)
+                .addGap(38, 38, 38)
                 .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(14, 14, 14))
         );
         pri_Card1Layout.setVerticalGroup(
             pri_Card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

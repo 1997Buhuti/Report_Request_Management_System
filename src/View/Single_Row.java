@@ -478,12 +478,21 @@ public class Single_Row extends javax.swing.JFrame {
         String developer_id = txt_developer_id.getText();
         String orgName = jComboBox2.getSelectedItem().toString();
         String task_details="";
-
-        Report_Requests_Model Model = new Report_Requests_Model 
+        Report_Requests_Model Model;
+        if(txt_completion_date.getText().isEmpty()){
+           Model  = new Report_Requests_Model 
+        (ProjId,ProjName,recieved_date,requested_date,starting_date,
+         proj_status,remarks,task_details,new Organization(orgType,orgName),
+         developer,developer_id);
+        }
+        
+        else{
+            Model = new Report_Requests_Model 
         (ProjId,ProjName,recieved_date,requested_date,starting_date,
          completion_date,proj_status,remarks,task_details,
          new Organization(orgType,orgName),developer,developer_id);
-        
+        }
+
         Report_Requests_Controller controller= new Report_Requests_Controller();
      
         System.out.println(Model.getBranch_name());

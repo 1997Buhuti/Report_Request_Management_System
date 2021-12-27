@@ -1398,9 +1398,9 @@
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="refresh2" min="-2" pref="284" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                               <Component id="refresh" min="-2" pref="135" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1539,7 +1539,7 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="refresh2">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Show Unassigned Proects"/>
+                        <Property name="text" type="java.lang.String" value="Show Unassigned Projects"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="refresh2ActionPerformed"/>
