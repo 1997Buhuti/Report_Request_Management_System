@@ -32,6 +32,7 @@ public class Single_Row extends javax.swing.JFrame {
      * Creates new form Single_Row
      */
     Connection con = DBConnection.getConnection();
+    //single row constructor
     public Single_Row() {
         initComponents();
          this.setLocationRelativeTo(null);
@@ -41,6 +42,7 @@ public class Single_Row extends javax.swing.JFrame {
          load_OrgNames();
     }
     
+    //Function to load date in the form
     public void load_date(){
            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
            LocalDateTime now = LocalDateTime.now();  
@@ -49,6 +51,7 @@ public class Single_Row extends javax.swing.JFrame {
        
     }
     
+    // Function to load the developers in the combo box
     public void load_developers(){
         try {
                 Report_Requests_Controller controller = new Report_Requests_Controller();
@@ -64,6 +67,7 @@ public class Single_Row extends javax.swing.JFrame {
             }
     }
     
+    //Functions for loading all the organization names
     public void load_OrgNames(){
     
         try {
@@ -80,7 +84,7 @@ public class Single_Row extends javax.swing.JFrame {
             }
     
     }
-    
+    //Clearing all the text boxes
     public void clearAll() {
         
         txt_proj_id.setText("");
@@ -94,6 +98,7 @@ public class Single_Row extends javax.swing.JFrame {
         txt_developer_id.setText("");
     }
     
+    //clearing the organization combobox
     public void clearOrgCombo(){
         jComboBox2.removeAllItems();
     }

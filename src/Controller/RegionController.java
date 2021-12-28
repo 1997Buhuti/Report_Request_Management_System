@@ -25,6 +25,7 @@ import utility.TypeCheck;
 public class RegionController {
     Connection con = DBConnection.getConnection();
     
+    /*Code to get all the region details */
      public ArrayList<RegionModel> getAllRegionDetails() 
             throws ClassNotFoundException, SQLException{
             
@@ -51,6 +52,7 @@ public class RegionController {
         return pst.executeUpdate()>0;
     }
 
+    /*This Code is to update a region */
     public boolean updateRegion (RegionModel region) throws SQLException, ClassNotFoundException{
         System.out.println("inside controller");
         PreparedStatement pst = con.prepareStatement("update region_table set Region_Name=? where  Region_ID=? ");

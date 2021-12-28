@@ -23,6 +23,8 @@ import utility.TypeCheck;
  * @author dpman
  */
 public class BranchController {
+    
+    //getting the connection object
     Connection con = DBConnection.getConnection();
     
         /*
@@ -44,6 +46,7 @@ public class BranchController {
         
         }
     
+        /*Function for adding a new branch to the databse */
     public boolean addBranch(BranchModel branch) throws ClassNotFoundException, SQLException{
         
                 PreparedStatement pst= con.prepareStatement("insert into branch_table (branch_Code,branch_Name) values(? ,?);");
@@ -52,6 +55,7 @@ public class BranchController {
                 return pst.executeUpdate()>0;
     }
 
+        /*Function to update existing branch */
     public boolean updateaddBranch (BranchModel branch) throws SQLException, ClassNotFoundException{
         
                 PreparedStatement pst = con.prepareStatement("update branch_table set branch_Name=? where  branch_Code=? ");
@@ -59,7 +63,7 @@ public class BranchController {
                 pst.setString(2, branch.getBranchCode());
                 return pst.executeUpdate()>0;
     }
-    
+        /*Function to delete existing branch */
     public boolean deleteBranch (String input) throws SQLException, ClassNotFoundException{
         if(TypeCheck.isNumeric(input)){
             PreparedStatement pst = con.prepareStatement("delete from branch_table where  branch_Code=? ");
@@ -73,7 +77,7 @@ public class BranchController {
         }
                 
     }
-    
+    /*Function to load all the branchNames */
     public ArrayList <String> loadBranchNames() throws ClassNotFoundException, SQLException{
         
         String sql="select* from branch_table";

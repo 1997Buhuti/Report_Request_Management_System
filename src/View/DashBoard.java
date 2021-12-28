@@ -195,7 +195,16 @@ public class DashBoard extends javax.swing.JFrame {
     }
     
     public String Request_Form_Id_generate(){
-            String UID = "Proj" ;
+            String UID="";
+            if(combo_developers2.getSelectedItem().toString().isEmpty()){
+                UID = "Proj" ;
+            }
+            else{
+                String devName= combo_developers2.getSelectedItem().toString();
+                devName= devName.substring(0, 3);
+                UID=devName;
+            }
+                       
             String uuid=UUID.randomUUID().toString();
             uuid=uuid.substring(0,3);
             UID=UID+uuid;
@@ -2307,6 +2316,7 @@ public class DashBoard extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             
+            Request_Form_Id_generate();
             String userName = combo_developers2.getSelectedItem().toString();
             PreparedStatement pst = con.prepareStatement("select * from projects_tbl where developer_name= ?");
             pst.setObject(1,userName);
@@ -2777,7 +2787,7 @@ public class DashBoard extends javax.swing.JFrame {
             Logger.getLogger(DashBoard.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnDeleteDepartmentActionPerformed
-
+    //Function handler to handle when item state change
     private void cmbTypesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbTypesItemStateChanged
         // TODO add your handling code here:
         cmb_Org_Name.removeAllItems();
@@ -2856,7 +2866,7 @@ public class DashBoard extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Error connecting to the database");
         }
     }//GEN-LAST:event_refresh1ActionPerformed
-
+    //  individual table detail loading function
     private void tbl_requests2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_requests2MouseClicked
         int index = tbl_requests2.getSelectedRow();
         TableModel model = tbl_requests2.getModel();
@@ -2905,6 +2915,7 @@ public class DashBoard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tbl_requests2KeyPressed
 
+    //Functions for refreshing all the forms.
     private void refresh2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refresh2ActionPerformed
         try {
             // TODO add your handling code here:

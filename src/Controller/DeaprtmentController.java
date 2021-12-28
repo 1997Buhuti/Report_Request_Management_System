@@ -23,7 +23,7 @@ import utility.TypeCheck;
  */
 public class DeaprtmentController {
     Connection con = DBConnection.getConnection();
-    
+    /*Function to get all the department details */
     public ArrayList<DepartmentModel> getAllDepartmentDetails() 
             throws ClassNotFoundException, SQLException{
             
@@ -39,6 +39,7 @@ public class DeaprtmentController {
             return DepartmentDetails;
         
     }
+    /*Function to add a new a department*/
     public boolean addDepartment(DepartmentModel dept) throws ClassNotFoundException, SQLException{
         
                 PreparedStatement pst= con.prepareStatement("insert into department_table (Department_Id,Department_Name) values(? ,?);");
@@ -46,7 +47,8 @@ public class DeaprtmentController {
                 pst.setString(2, dept.getDeparmentName());
                 return pst.executeUpdate()>0;
     }
-
+    
+     /*Function to update a existing department*/
     public boolean updateDepartment (DepartmentModel dept) throws SQLException, ClassNotFoundException{
         
                 PreparedStatement pst = con.prepareStatement("update department_table set Department_Name=? where  Department_Id=?");
