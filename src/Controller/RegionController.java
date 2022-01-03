@@ -60,7 +60,7 @@ public class RegionController {
         pst.setString(2, region.getRegionName());
         return pst.executeUpdate()>0;
     }
-    
+    /* This code is to delete a region */
     public boolean deleteRegion (String input) throws SQLException, ClassNotFoundException{
         
         if(TypeCheck.isNumeric(input)){

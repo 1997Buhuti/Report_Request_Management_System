@@ -57,6 +57,7 @@ public class DeaprtmentController {
                 return pst.executeUpdate()>0;
     }
     
+    /*Function for deleting department info*/
     public boolean deleteDepartment (String input) throws SQLException, ClassNotFoundException{
         
             if(TypeCheck.isNumeric(input)){
